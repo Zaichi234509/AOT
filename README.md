@@ -1,129 +1,538 @@
-# 🗡️ MASTER PROMPT — Attack on Titan 3D Scrollytelling Website
+# 🗡️ MASTER PROMPT — Full Attack on Titan Website Build
 
-> **Copy everything below this line and paste it into your AI coding assistant, dev team brief, or project management tool. It is fully self-contained.**
+> **This is a complete, self-contained prompt to build the entire website from scratch. Copy everything inside the code block below and paste it into your AI coding assistant, dev environment, or hand it to a development team.**
 
 ---
 
 ```markdown
-# MASTER PROMPT: ATTACK ON TITAN — 3D SCROLLYTELLING WEBSITE
+# MASTER PROMPT: BUILD THE ENTIRE ATTACK ON TITAN 3D SCROLLYTELLING WEBSITE
 
-## ═══════════════════════════════════════════════
-## SECTION 1: PROJECT OVERVIEW
-## ═══════════════════════════════════════════════
+## ═══════════════════════════════════════════════════════════
+## SECTION 0: THE DIRECTIVE
+## ═══════════════════════════════════════════════════════════
 
-Build a single-page, scroll-driven 3D "scrollytelling" website themed around
-the anime/manga "Attack on Titan" (Shingeki no Kyojin). The site uses a sticky
-full-viewport 3D canvas as the background, with HTML overlay content that
-animates in sync with the user's scroll position. The 3D camera moves through
-7 cinematic scenes as the user scrolls, creating an immersive narrative journey
-from the fall of Wall Maria to The Rumbling.
+You are building a complete, production-ready, single-page + multi-section
+website dedicated to the anime/manga "Attack on Titan" (Shingeki no Kyojin).
 
-**Core Experience:** The user scrolls down. The 3D world moves. Text, cards,
-and UI elements fade/slide in and out at precise scroll positions. The entire
-site feels like an interactive movie.
+The website's centerpiece is a cinematic 3D scroll-driven "scrollytelling"
+experience where the user scrolls through 7 narrative scenes rendered in
+real-time 3D (Three.js). Below the 3D experience, the site continues with
+rich content sections: an interactive world map, episode guide, character
+encyclopedia, soundtrack player, and community hub.
 
-**Target Audience:** AoT fans, anime community, web design enthusiasts.
-**Tone:** Cinematic, dramatic, reverent, dark.
-**Language:** English with Japanese (kanji) accents for authenticity.
+**You must build the ENTIRE site.** This includes:
+- Project scaffolding and configuration
+- Design system (colors, typography, spacing, components)
+- Global layout (navbar, footer, loading screen, page transitions)
+- The full 3D scrollytelling homepage (7 scenes)
+- All non-3D content sections
+- 3D asset creation pipeline and specifications
+- 2D image generation prompts
+- Responsive design for desktop, tablet, and mobile
+- Performance optimization
+- SEO and metadata
+- Deployment configuration
 
----
-
-## ═══════════════════════════════════════════════
-## SECTION 2: TECH STACK
-## ═══════════════════════════════════════════════
-
-### Core
-- **Framework:** React 18+ (Next.js 14+ App Router preferred for SSR/SEO)
-- **3D Engine:** Three.js r160+ via React Three Fiber (@react-three/fiber v8+)
-- **3D Helpers:** @react-three/drei (ScrollControls, Html, Text, Environment,
-  useGLTF, useTexture, Sparkles, Stars, Trail, Float)
-- **Scroll Animation:** GSAP 3.12+ with ScrollTrigger plugin
-- **Smooth Scroll:** Lenis (lenis/react) — CRITICAL for scrubbed 3D feel
-- **Post-Processing:** @react-three/postprocessing (Bloom, Vignette,
-  ChromaticAberration, Noise, DepthOfField)
-- **Styling:** Tailwind CSS 3.4+ with custom theme
-- **State:** Zustand (lightweight, works well with R3F)
-- **TypeScript:** Strict mode throughout
-
-### Asset Pipeline
-- **3D Models:** Blender 4.0+ → export as .glb/.gltf (Draco compressed)
-- **Textures:** KTX2/Basis Universal for GPU-compressed textures
-- **Fonts:** Google Fonts (Noto Serif JP for Japanese, Cinzel for English headers,
-  Inter for body)
-- **Audio (optional):** Howler.js for ambient SFX triggers on scroll
-
-### Dev Tooling
-- **Bundler:** Vite (via Next.js) or standalone Vite
-- **Deployment:** Vercel (with Edge caching for static assets)
-- **CDN:** Cloudflare R2 or Vercel Blob for 3D assets
-- **Performance Monitoring:** Lighthouse CI, Web Vitals
+**Build everything from scratch. Do not skip any section of this prompt.**
 
 ---
 
-## ═══════════════════════════════════════════════
-## SECTION 3: ARCHITECTURE
-## ═══════════════════════════════════════════════
+## ═══════════════════════════════════════════════════════════
+## SECTION 1: SITE MAP & INFORMATION ARCHITECTURE
+## ═══════════════════════════════════════════════════════════
 
-### Component Tree
+The site is a single-page application (SPA) with anchor-linked sections.
+No separate routes — everything lives on one scrollable page for maximum
+immersion. The 3D scrollytelling is the hero; content sections follow below.
+
+### Full Section Order (top to bottom)
+
 ```
-<App>
-  <LenisSmoothScroll>
-    <Navbar />                    // z:50, fixed, transparent
-    <ScrollProgress />            // z:40, left edge bar
-    <SceneDots />                 // z:40, right edge nav
-    <SoundToggle />               // z:50, top-right
-    <ScrollHint />                // z:40, bottom-center, fades after scroll
-
-    <StickyStage>                 // position: sticky, top: 0, height: 100vh
-      <Canvas>                    // R3F Canvas, full bleed
-        <SceneLighting />
-        <Scene1_Shiganshina />    // conditional render or LOD
-        <Scene2_Walls />
-        <Scene3_Characters />
-        <Scene4_Titans />
-        <Scene5_Trost />
-        <Scene6_Basement />
-        <Scene7_Rumbling />
-        <PostProcessingFX />
-        <CameraController />      // driven by scroll %
-      </Canvas>
-
-      <OverlayLayer>              // absolute, pointer-events-none (except CTAs)
-        <Scene1_Overlay />
-        <Scene2_Overlay />
-        <Scene3_Overlay />
-        <Scene4_Overlay />
-        <Scene5_Overlay />
-        <Scene6_Overlay />
-        <Scene7_Overlay />
-      </OverlayLayer>
-    </StickyStage>
-
-    <ScrollSpacer />              // height: 3200vh (total scroll distance)
-
-    <Non3DSections>
-      <InteractiveMap />
-      <EpisodeGuide />
-      <SoundtrackPlayer />
-      <Community />
-    </Non3DSections>
-
-    <Footer />
-  </LenisSmoothScroll>
-</App>
+1.  LOADING SCREEN          (full-screen overlay, disappears after assets load)
+2.  NAVBAR                  (sticky, transparent, always visible)
+3.  3D SCROLLYTELLING       (sticky 100vh canvas, 3200vh scroll distance)
+    ├── Scene 1: The Fall of Shiganshina
+    ├── Scene 2: The Three Walls
+    ├── Scene 3: The Survey Corps (Characters)
+    ├── Scene 4: The Titans (Bestiary)
+    ├── Scene 5: The Battle of Trost
+    ├── Scene 6: The Basement (The Reveal)
+    └── Scene 7: The Rumbling (Finale + CTA)
+4.  WORLD MAP               (interactive SVG/Canvas map of Paradis + Marley)
+5.  CHARACTER ENCYCLOPEDIA  (searchable/filterable character database)
+6.  TITAN BESTIARY          (detailed Nine Titans + Pure Titans reference)
+7.  EPISODE GUIDE           (season-by-season episode browser)
+8.  TIMELINE                (visual chronological timeline of AoT events)
+9.  SOUNDTRACK PLAYER       (embedded audio player for OST)
+10. GALLERY                 (curated image/manga panel gallery with lightbox)
+11. COMMUNITY               (Discord embed, social links, fan art showcase)
+12. FOOTER                  (credits, links, copyright, "Shinzou wo Sasageyo")
 ```
 
-### Scroll Architecture
-- Total scroll distance: **3200vh** (set by a spacer div behind the sticky stage)
-- The sticky stage is `position: sticky; top: 0; height: 100vh; overflow: hidden`
-- GSAP ScrollTrigger reads the spacer's scroll progress (0 → 1)
-- Each scene occupies a defined range of that 0–1 progress
-- Camera position, rotation, and FOV are interpolated per scene
-- Overlay elements have individual ScrollTrigger timelines for enter/exit
+### Navigation Anchor Links
+| Nav Label | Anchor | Target Section |
+|-----------|--------|---------------|
+| Home | #hero | Scene 1 (scroll to top) |
+| Lore | #lore | Scene 2 / World Map |
+| Characters | #characters | Scene 3 / Encyclopedia |
+| Titans | #titans | Scene 4 / Bestiary |
+| Episodes | #episodes | Episode Guide |
+| Timeline | #timeline | Timeline |
+| Music | #music | Soundtrack |
+| Community | #community | Community |
 
-### Scene Scroll Ranges (normalized 0–1)
-| Scene | Scroll vh | Normalized Range | % of Total |
-|-------|-----------|-----------------|------------|
+---
+
+## ═══════════════════════════════════════════════════════════
+## SECTION 2: DESIGN SYSTEM
+## ═══════════════════════════════════════════════════════════
+
+### Color Palette
+
+**Primary (Brand)**
+| Token | Hex | Usage |
+|-------|-----|-------|
+| `--color-primary` | #2D5A27 | Survey Corps green, CTAs, accents |
+| `--color-primary-light` | #4A7C3F | Hover states, highlights |
+| `--color-primary-dark` | #1A3A18 | Active states, deep accents |
+
+**Secondary (Drama)**
+| Token | Hex | Usage |
+|-------|-----|-------|
+| `--color-secondary` | #CC2200 | Blood red, warnings, titan eyes, Rumbling |
+| `--color-secondary-light` | #FF4422 | Glows, highlights |
+| `--color-secondary-dark` | #8B1500 | Deep shadows, gradients |
+
+**Neutral**
+| Token | Hex | Usage |
+|-------|-----|-------|
+| `--color-bg-dark` | #0A0A0A | Main background, footer |
+| `--color-bg-card` | #141414 | Card backgrounds |
+| `--color-bg-glass` | rgba(20,20,20,0.7) | Glassmorphism overlays |
+| `--color-text-primary` | #F5F0E8 | Main text (warm white) |
+| `--color-text-secondary` | #A09888 | Subtitles, metadata |
+| `--color-text-muted` | #666058 | Captions, disabled |
+| `--color-border` | rgba(255,255,255,0.08) | Card borders, dividers |
+
+**Accent (Scene-Specific)**
+| Token | Hex | Usage |
+|-------|-----|-------|
+| `--color-gold` | #D4A574 | Scene 1 golden hour, warmth |
+| `--color-sky` | #87CEEB | Scene 2 sky blue |
+| `--color-navy` | #1A2744 | Scene 3 night, Survey Corps |
+| `--color-murky` | #3A4A2A | Scene 4 titan fog |
+| `--color-dust` | #D4874A | Scene 5 Trost battle |
+| `--color-amber` | #FF9944 | Scene 6 candlelight |
+| `--color-fire` | #FF6600 | Scene 7 Rumbling fire |
+
+### Typography
+
+**Font Stack:**
+```css
+--font-display: 'Cinzel', serif;        /* Headers, titles, dramatic text */
+--font-japanese: 'Noto Serif JP', serif; /* Kanji, Japanese text */
+--font-body: 'Inter', sans-serif;        /* Body text, UI, cards */
+--font-mono: 'JetBrains Mono', monospace; /* Stats, numbers, data */
+```
+
+**Type Scale:**
+| Token | Size | Weight | Line Height | Usage |
+|-------|------|--------|-------------|-------|
+| `--text-hero` | clamp(3rem, 8vw, 7rem) | 900 | 1.0 | Scene titles, hero text |
+| `--text-h1` | clamp(2rem, 5vw, 4rem) | 700 | 1.1 | Section headers |
+| `--text-h2` | clamp(1.5rem, 3vw, 2.5rem) | 700 | 1.2 | Subsection headers |
+| `--text-h3` | 1.25rem | 600 | 1.3 | Card titles |
+| `--text-body` | 1rem | 400 | 1.6 | Paragraphs |
+| `--text-small` | 0.875rem | 400 | 1.5 | Captions, metadata |
+| `--text-xs` | 0.75rem | 500 | 1.4 | Labels, tags |
+
+**Japanese Text Rule:** All Japanese text uses `--font-japanese`, letter-spacing
+0.1em, and is slightly larger than equivalent English text for readability.
+
+### Spacing System (8px base)
+```
+--space-1: 0.25rem  (4px)
+--space-2: 0.5rem   (8px)
+--space-3: 0.75rem  (12px)
+--space-4: 1rem     (16px)
+--space-6: 1.5rem   (24px)
+--space-8: 2rem     (32px)
+--space-12: 3rem    (48px)
+--space-16: 4rem    (64px)
+--space-24: 6rem    (96px)
+--space-32: 8rem    (128px)
+```
+
+### Border Radius
+```
+--radius-sm: 4px    (tags, badges)
+--radius-md: 8px    (buttons, inputs)
+--radius-lg: 12px   (cards)
+--radius-xl: 16px   (modals, large cards)
+--radius-full: 9999px (pills, avatars)
+```
+
+### Shadows
+```
+--shadow-sm: 0 1px 2px rgba(0,0,0,0.3)
+--shadow-md: 0 4px 12px rgba(0,0,0,0.4)
+--shadow-lg: 0 8px 32px rgba(0,0,0,0.5)
+--shadow-glow-green: 0 0 20px rgba(45,90,39,0.4)
+--shadow-glow-red: 0 0 20px rgba(204,34,0,0.4)
+```
+
+### Glassmorphism Card Style (used throughout)
+```css
+.glass-card {
+  background: rgba(20, 20, 20, 0.65);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+```
+
+### Animation Tokens
+```
+--ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1)
+--ease-in-out: cubic-bezier(0.65, 0, 0.35, 1)
+--duration-fast: 200ms
+--duration-normal: 400ms
+--duration-slow: 800ms
+--duration-cinematic: 1500ms
+```
+
+---
+
+## ═══════════════════════════════════════════════════════════
+## SECTION 3: TECH STACK
+## ═══════════════════════════════════════════════════════════
+
+### Core Framework
+- **Next.js 14+** (App Router, TypeScript, strict mode)
+- **React 18+**
+- **TypeScript 5+** (strict: true)
+
+### 3D & Animation
+- **Three.js r160+** via **React Three Fiber** (@react-three/fiber v8+)
+- **@react-three/drei** (ScrollControls, Html, Text, Environment, useGLTF,
+  useTexture, Sparkles, Stars, Trail, Float, Clouds, Detailed)
+- **@react-three/postprocessing** (Bloom, Vignette, ChromaticAberration,
+  Noise, DepthOfField, ToneMapping)
+- **GSAP 3.12+** with ScrollTrigger, SplitText plugins
+- **Lenis** (lenis/react) for smooth scroll
+
+### Styling
+- **Tailwind CSS 3.4+** with custom theme extending the design system above
+- **tailwindcss-animate** plugin for enter/exit animations
+- **CSS Modules** for complex component-specific styles (glassmorphism, etc.)
+
+### State & Data
+- **Zustand** for global state (scroll progress, active scene, UI toggles)
+- **Static JSON files** in `/data/` for characters, titans, episodes, timeline
+- **No backend/database** — fully static, deployable to edge CDN
+
+### Assets
+- **3D Models:** Blender → .glb (Draco compressed), loaded via useGLTF
+- **Textures:** KTX2/Basis Universal, loaded via useKTX2
+- **Images:** Next.js `<Image>` with automatic WebP/AVIF optimization
+- **Fonts:** next/font/google (Cinzel, Inter, Noto Serif JP)
+- **Icons:** Lucide React (lightweight, tree-shakeable)
+
+### Audio (Optional)
+- **Howler.js** for scroll-triggered ambient SFX
+
+### Dev & Deployment
+- **Package Manager:** pnpm
+- **Linting:** ESLint + Prettier
+- **Deployment:** Vercel (automatic from GitHub)
+- **CDN:** Vercel Blob or Cloudflare R2 for 3D assets
+- **Analytics:** Vercel Analytics (optional)
+
+---
+
+## ═══════════════════════════════════════════════════════════
+## SECTION 4: PROJECT STRUCTURE
+## ═══════════════════════════════════════════════════════════
+
+```
+/aot-archive/
+├── public/
+│   ├── models/                    # 3D .glb files (Draco compressed)
+│   │   ├── wall-maria-gate.glb
+│   │   ├── colossal-titan-head.glb
+│   │   ├── eren-yeager.glb
+│   │   ├── mikasa-ackerman.glb
+│   │   ├── levi-ackerman.glb
+│   │   ├── attack-titan.glb
+│   │   ├── odm-gear.glb
+│   │   ├── pure-titan.glb
+│   │   ├── colossal-titan-full.glb
+│   │   ├── trost-building.glb
+│   │   ├── boulder.glb
+│   │   ├── basement-stairs.glb
+│   │   └── basement-room.glb
+│   ├── textures/                  # KTX2 compressed textures
+│   │   ├── wall-stone.ktx2
+│   │   ├── titan-skin.ktx2
+│   │   ├── ground-grass.ktx2
+│   │   └── cobblestone.ktx2
+│   ├── images/                    # 2D images (optimized)
+│   │   ├── hero/
+│   │   ├── characters/
+│   │   ├── titans/
+│   │   ├── map/
+│   │   ├── episodes/
+│   │   ├── gallery/
+│   │   └── og-image.jpg           # Open Graph social image
+│   ├── audio/                     # Ambient SFX (optional)
+│   │   ├── wind.mp3
+│   │   ├── rumble.mp3
+│   │   └── odm-whoosh.mp3
+│   └── fonts/                     # Fallback font files
+├── src/
+│   ├── app/
+│   │   ├── layout.tsx             # Root layout (fonts, metadata, providers)
+│   │   ├── page.tsx               # Main page (all sections composed)
+│   │   ├── globals.css            # Tailwind directives + custom CSS
+│   │   └── not-found.tsx          # 404 page (themed)
+│   ├── components/
+│   │   ├── layout/
+│   │   │   ├── Navbar.tsx         # Sticky transparent navbar
+│   │   │   ├── Footer.tsx         # Site footer
+│   │   │   ├── LoadingScreen.tsx  # Full-screen asset loader
+│   │   │   ├── ScrollProgress.tsx # Left-edge progress bar
+│   │   │   ├── SceneDots.tsx      # Right-edge scene navigation
+│   │   │   └── ScrollHint.tsx     # "Scroll to begin" indicator
+│   │   ├── scrollytelling/
+│   │   │   ├── StickyStage.tsx    # Sticky 100vh container
+│   │   │   ├── ScrollSpacer.tsx   # 3200vh height spacer
+│   │   │   ├── CameraController.tsx # Scroll-driven camera
+│   │   │   ├── SceneLighting.tsx  # Global + per-scene lights
+│   │   │   ├── PostProcessingFX.tsx # EffectComposer stack
+│   │   │   ├── scenes/
+│   │   │   │   ├── Scene1_Shiganshina.tsx
+│   │   │   │   ├── Scene2_Walls.tsx
+│   │   │   │   ├── Scene3_Characters.tsx
+│   │   │   │   ├── Scene4_Titans.tsx
+│   │   │   │   ├── Scene5_Trost.tsx
+│   │   │   │   ├── Scene6_Basement.tsx
+│   │   │   │   └── Scene7_Rumbling.tsx
+│   │   │   └── overlays/
+│   │   │       ├── OverlayLayer.tsx
+│   │   │       ├── Scene1Overlay.tsx
+│   │   │       ├── Scene2Overlay.tsx
+│   │   │       ├── Scene3Overlay.tsx
+│   │   │       ├── Scene4Overlay.tsx
+│   │   │       ├── Scene5Overlay.tsx
+│   │   │       ├── Scene6Overlay.tsx
+│   │   │       └── Scene7Overlay.tsx
+│   │   ├── sections/
+│   │   │   ├── WorldMap.tsx        # Interactive map section
+│   │   │   ├── CharacterEncyclopedia.tsx
+│   │   │   ├── TitanBestiary.tsx
+│   │   │   ├── EpisodeGuide.tsx
+│   │   │   ├── Timeline.tsx
+│   │   │   ├── SoundtrackPlayer.tsx
+│   │   │   ├── Gallery.tsx
+│   │   │   └── Community.tsx
+│   │   └── ui/
+│   │       ├── GlassCard.tsx       # Reusable glassmorphism card
+│   │       ├── StatBar.tsx         # Animated stat bar (combat 8/10)
+│   │       ├── Badge.tsx           # Tag/badge component
+│   │       ├── Button.tsx          # CTA button (primary/secondary)
+│   │       ├── Modal.tsx           # Lightbox/modal
+│   │       ├── Tabs.tsx            # Tab switcher (seasons, etc.)
+│   │       ├── SearchInput.tsx     # Search with filter
+│   │       ├── AudioPlayer.tsx     # Custom audio player UI
+│   │       └── SectionHeader.tsx   # Reusable section title block
+│   ├── data/
+│   │   ├── characters.json        # Full character database
+│   │   ├── titans.json            # Titan data
+│   │   ├── episodes.json          # Episode guide data
+│   │   ├── timeline.json          # Chronological events
+│   │   ├── map-locations.json     # Map pins + info
+│   │   └── soundtrack.json        # Track list
+│   ├── hooks/
+│   │   ├── useScrollProgress.ts   # Global scroll % hook
+│   │   ├── useCurrentScene.ts     # Active scene detector
+│   │   ├── useIsMobile.ts         # Responsive breakpoint hook
+│   │   ├── useAssetLoader.ts      # 3D asset loading manager
+│   │   └── useGSAP.ts             # GSAP + ScrollTrigger cleanup hook
+│   ├── store/
+│   │   └── useStore.ts            # Zustand global store
+│   ├── lib/
+│   │   ├── constants.ts           # Scroll ranges, breakpoints, etc.
+│   │   ├── utils.ts               # Utility functions
+│   │   └── three-helpers.ts       # Three.js helper functions
+│   └── types/
+│       ├── character.ts           # TypeScript interfaces
+│       ├── titan.ts
+│       ├── episode.ts
+│       └── scene.ts
+├── .env.local                     # Environment variables
+├── next.config.js                 # Next.js config (images, headers)
+├── tailwind.config.ts             # Tailwind theme extension
+├── tsconfig.json                  # TypeScript config
+├── package.json
+└── README.md
+```
+
+---
+
+## ═══════════════════════════════════════════════════════════
+## SECTION 5: GLOBAL LAYOUT & UI COMPONENTS
+## ═══════════════════════════════════════════════════════════
+
+### 5A. Loading Screen
+- **Trigger:** Shows on initial page load while 3D assets + fonts load
+- **Layout:** Full-screen overlay (z-index: 9999), dark background (#0A0A0A)
+- **Content:**
+  - Centered Wings of Freedom logo (SVG, white, 80px)
+  - Text: "Dedicating your hearts..." (Cinzel, 1.25rem, --color-text-secondary)
+  - Progress bar: thin green line, width animated 0→100%
+  - Percentage text: "Loading assets — {n}%" (Inter, 0.875rem)
+- **Exit:** Fades out over 800ms when all critical assets loaded
+- **Implementation:** Zustand `isLoading` + `loadProgress` state.
+  Use Three.js `useProgress()` from drei to track GLTF loading.
+
+### 5B. Navbar
+- **Position:** `fixed`, top: 0, left: 0, right: 0, z-index: 50
+- **Height:** 72px desktop, 60px mobile
+- **Background:** Transparent by default. On scroll past 3200vh (below 3D),
+  transitions to `rgba(10,10,10,0.9)` with backdrop-blur.
+- **Layout:**
+  ```
+  ┌──────────────────────────────────────────────────────────┐
+  │ [Wings Logo] AoT ARCHIVE    Lore  Characters  Titans   │
+  │                            Episodes  Timeline  Music   │
+  │                                          🔊  ☰ (mobile)│
+  └──────────────────────────────────────────────────────────┘
+  ```
+- **Logo:** SVG Wings of Freedom icon (24px) + "AoT ARCHIVE" (Cinzel, 1rem, bold)
+- **Links:** Inter, 0.875rem, --color-text-secondary, hover → --color-text-primary
+  with green underline slide-in animation
+- **Active State:** Link matching current scroll section gets --color-primary
+- **Mobile:** Hamburger menu → full-screen slide-in overlay with links
+- **Sound Toggle:** Speaker icon (Lucide `Volume2` / `VolumeX`), top-right
+
+### 5C. Scroll Progress Bar
+- **Position:** Fixed, left: 0, top: 0, bottom: 0, width: 3px, z-index: 40
+- **Appearance:** Thin green line (--color-primary) growing from top to bottom
+  based on total page scroll progress (0–100%)
+- **Implementation:** `height: ${scrollProgress}%`, transition: height 100ms
+
+### 5D. Scene Navigation Dots
+- **Position:** Fixed, right: 24px, top: 50%, transform: translateY(-50%), z-index: 40
+- **Visible:** Only during 3D scrollytelling (scroll 0–3200vh)
+- **Layout:** 7 vertical dots, 12px diameter, 24px gap
+- **States:**
+  - Inactive: `background: rgba(255,255,255,0.2)`, 8px diameter
+  - Active: `background: --color-primary`, 12px diameter, glow shadow
+  - Hover: Scale 1.3, show tooltip with scene name
+- **Click:** Smooth-scrolls to corresponding scene start position
+- **Labels (tooltips):** Shiganshina | Walls | Corps | Titans | Trost |
+  Basement | Rumbling
+
+### 5E. Scroll Hint
+- **Position:** Fixed, bottom: 32px, left: 50%, transform: translateX(-50%)
+- **Visible:** Only during first 5% of scroll, then fades out
+- **Content:** "↓ Scroll to begin" (Inter, 0.875rem, --color-text-secondary)
+- **Animation:** Gentle Y-axis bounce (GSAP yoyo, 1.5s loop)
+
+### 5F. Section Header (Reusable Component)
+Used for every non-3D section below the scrollytelling.
+```
+┌──────────────────────────────────────────────┐
+│                                              │
+│  ── ✦ ──                                     │  ← Decorative divider
+│  SECTION TITLE                               │  ← Cinzel, --text-h1
+│  日本語サブタイトル                            │  ← Noto Serif JP, smaller
+│  Subtitle description text goes here.        │  ← Inter, --text-body
+│  ── ✦ ──                                     │
+│                                              │
+└──────────────────────────────────────────────┘
+```
+- Centered, max-width: 700px
+- Enters with GSAP fade-up on scroll into view
+- Decorative divider: thin line with diamond center, --color-border
+
+### 5G. Glass Card (Reusable Component)
+- Uses the `.glass-card` style from the design system
+- Props: `padding`, `hover` (lift + glow on hover), `borderColor`
+- Used for: character cards, titan cards, episode cards, lore cards, etc.
+
+### 5H. Footer
+- **Background:** #0A0A0A, top border: 1px solid --color-border
+- **Layout:**
+  ```
+  ┌──────────────────────────────────────────────────────┐
+  │                                                      │
+  │  [Wings Logo]                                        │
+  │  AoT ARCHIVE                                         │
+  │  "Shinzou wo Sasageyo"                               │
+  │                                                      │
+  │  NAVIGATION          LORE            COMMUNITY       │
+  │  Home                The Walls       Discord         │
+  │  Characters          The Titans      Twitter/X       │
+  │  Episodes            Timeline        Reddit          │
+  │  Music               Map             MyAnimeList     │
+  │                                                      │
+  │  ──────────────────────────────────────────────       │
+  │  © 2024 AoT Archive — Fan Project                    │
+  │  Attack on Titan © Hajime Isayama / Kodansha         │
+  │  This is a non-commercial fan-made website.          │
+  │                                                      │
+  └──────────────────────────────────────────────────────┘
+  ```
+- **Typography:** Inter, --text-small, --color-text-muted
+- **Links:** Hover → --color-primary
+- **Padding:** --space-16 top/bottom, --space-8 left/right
+
+---
+
+## ═══════════════════════════════════════════════════════════
+## SECTION 6: 3D SCROLLYTELLING — FULL SPECIFICATION
+## ═══════════════════════════════════════════════════════════
+
+### 6A. Architecture
+
+**Sticky Stage Container:**
+```css
+.sticky-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  z-index: 1;
+}
+```
+
+**Scroll Spacer:**
+```css
+.scroll-spacer {
+  height: 3200vh;
+  width: 100%;
+  position: relative;
+  z-index: 0;
+  pointer-events: none;
+}
+```
+
+**Layer Stack (inside sticky stage):**
+```
+z:1  → Three.js Canvas (full bleed, position: absolute)
+z:2  → Atmospheric FX overlay (CSS gradients, fog divs)
+z:3  → HTML Overlay content (absolute, pointer-events: none except CTAs)
+z:4  → UI Chrome (progress bar, scene dots — actually fixed, not inside stage)
+```
+
+### 6B. Scroll Ranges
+
+| Scene | Scroll vh | Normalized (0–1) | % of Total |
+|-------|-----------|-------------------|------------|
 | 1 — Shiganshina | 0–400 | 0.000–0.125 | 12.5% |
 | 2 — Walls | 400–900 | 0.125–0.281 | 15.6% |
 | 3 — Characters | 900–1500 | 0.281–0.469 | 18.8% |
@@ -132,829 +541,697 @@ site feels like an interactive movie.
 | 6 — Basement | 2400–2800 | 0.750–0.875 | 12.5% |
 | 7 — Rumbling | 2800–3200 | 0.875–1.000 | 12.5% |
 
-### State Management (Zustand)
-```
-store = {
-  scrollProgress: 0,        // 0–1 global
-  currentScene: 1,          // 1–7
-  isMobile: false,          // responsive flag
-  soundEnabled: false,      // audio toggle
-  activeCharacter: 'eren',  // Scene 3 sub-state
-  activeTitan: 'attack',    // Scene 4 sub-state
-  isLoading: true,          // asset loading screen
-  loadProgress: 0,          // 0–100
-}
-```
+### 6C. Camera Controller
+- Reads global scroll progress from Zustand (0–1)
+- Maps progress to camera position, rotation, and FOV per scene
+- Uses GSAP `gsap.to()` with `scrub: 1` for smooth interpolation
+- Each scene defines keyframe arrays: `[{at: 0, pos: [x,y,z], lookAt: [x,y,z], fov: 60}, ...]`
+
+### 6D. Scene-by-Scene 3D + Overlay + FX Specs
 
 ---
 
-## ═══════════════════════════════════════════════
-## SECTION 4: 3D ASSET CREATION GUIDE
-## ═══════════════════════════════════════════════
+#### SCENE 1 — "The Fall of Shiganshina"
+**Scroll:** 0–400vh | **Mood:** Peace → Dread → Catastrophe
+**Colors:** #D4A574 → #666666 → #CC2200
 
-### General Rules for All 3D Assets
-- **Format:** .glb (binary glTF) with Draco mesh compression
-- **Poly Budget:**
-  - Hero models (Colossal Titan, main characters): 15k–30k tris
-  - Environment (walls, buildings): 5k–15k tris per chunk
-  - Props (ODM gear, boulder): 3k–8k tris
-  - Background/far LOD: 1k–3k tris
-- **Textures:** Max 2048x2048 for hero, 1024x1024 for environment, 512x512 for props
-- **Materials:** Use MeshStandardMaterial or MeshPhysicalMaterial. Avoid custom
-  shaders for base materials (reserve for FX).
-- **Scale:** 1 Three.js unit = 1 meter. Titans should be to scale (3m–60m).
-- **Origin:** Center pivot at feet for characters/titans, center for props.
-- **Animations:** Bake to keyframes. Export as separate .glb animation clips.
-  Use skeletal animation for characters, morph targets for face/titan transforms.
+**3D Assets Needed:**
+- Wall Maria gate segment (50m tall, stone, weathered)
+- Colossal Titan head (15m, skinless, steam)
+- Debris chunks (10–20 instanced rock fragments)
+- Ground plane (cobblestone + grass)
+- Sky environment (golden hour → red, HDR equirectangular)
 
-### Asset List by Scene
+**Camera Keyframes:**
+| At (scene-local 0–1) | Position | LookAt | FOV |
+|----------------------|----------|--------|-----|
+| 0.0 | (0, 10, 80) | (0, 20, 0) | 60 |
+| 0.3 | (0, 15, 40) | (0, 30, 0) | 55 |
+| 0.5 | (0, 25, 30) | (0, 55, -10) | 70 |
+| 0.7 | (0, 15, 10) | (0, 20, -20) | 65 |
+| 1.0 | (0, 10, -5) | (0, 10, -50) | 65 |
 
-#### Scene 1 — Shiganshina
-| Asset | Description | Source Method |
-|-------|-------------|---------------|
-| Wall Maria Gate | 50m tall stone wall segment with arched gate, weathered texture | **Blender:** Model from reference photos of medieval walls. Use displacement map for stone detail. |
-| Colossal Titan Head | Skinless muscular head, 15m, steam particles from skin | **Blender:** Sculpt from AoT reference. Use subsurface scattering material. Steam = particle system exported separately. |
-| Debris Chunks | 10–20 rock/brick fragments, various sizes | **Blender:** Fracture modifier on wall mesh. Export 5 variants, instance in Three.js. |
-| Sky Dome | HDR environment map, golden hour → red apocalyptic | **AI Image Gen** (see Section 8) → convert to equirectangular HDR |
-| Ground Plane | Cobblestone street + grass fields outside wall | **Blender:** Tiling texture, 512x512, PBR set (albedo, normal, roughness) |
+**Overlay Timeline:**
+| Scroll % | Element | Animation |
+|----------|---------|-----------|
+| 0–10% | "ATTACK ON TITAN" (h1) + "進撃の巨人" (sub) | Fade in, y:20→0 |
+| 0–10% | "The Ultimate Archive" (tagline) | Fade in, delay 0.6s |
+| 10–20% | Title group | Fade out |
+| 35–50% | White→red flash overlay | opacity 0→0.8→0, 0.5s |
+| 50–70% | "THE COLOSSAL TITAN" label | Scale 0→1, shake |
+| 70–85% | Quote block (left-aligned, max-w 500px) | Fade in from left |
+| 85–100% | Quote block | Fade out |
 
-#### Scene 2 — The Walls
-| Asset | Description | Source Method |
-|-------|-------------|---------------|
-| Three Walls (Maria/Rose/Sina) | Concentric circular walls, 50m tall, 3 radii (480km/380km/250km scaled down) | **Blender:** Procedural cylinder rings with wall texture. Scale is artistic, not literal. |
-| District Markers | Glowing beacons at gate positions (Shiganshina, Trost, Stohess) | **Three.js procedural:** PointLight + sprite glow, no model needed |
-| Terrain | Green rolling hills inside walls, flat outside | **Blender:** Displacement on plane, green/brown texture |
-| Cloud Layer | Volumetric clouds at wall-top height | **Three.js:** Use drei `<Clouds>` component or custom shader plane |
+**Quote:** "That day, mankind received a grim reminder. We lived in fear of
+the Titans and were disgraced to live in these cages we called walls." — Ch.1
 
-#### Scene 3 — Characters
-| Asset | Description | Source Method |
-|-------|-------------|---------------|
-| Eren Yeager | Survey Corps uniform, determined pose, 1.7m | **Blender:** Use Mixamo base mesh → customize hair, uniform. Rig with Mixamo auto-rigger. OR download fan-made model from Sketchfab (check license). |
-| Mikasa Ackerman | Survey Corps uniform + red scarf, combat stance | **Blender:** Same pipeline. Scarf = cloth sim baked to shape keys. |
-| Levi Ackerman | Survey Corps uniform, dual blades, spinning pose | **Blender:** Same pipeline. |
-| Attack Titan (Eren) | 15m muscular titan, pointed ears, long hair | **Blender:** Sculpt from reference. Separate .glb with morph target from human Eren. |
-| ODM Gear Rig | Mechanical gear box, gas canisters, wire spools, blades | **Blender:** Hard-surface model. Metallic PBR material. |
-| Cape/Cloak | Survey Corps Wings of Freedom cloak | **Blender:** Cloth sim, baked. Texture = green with Wings logo. |
-
-#### Scene 4 — Titans
-| Asset | Description | Source Method |
-|-------|-------------|---------------|
-| Pure Titan (3m, 7m, 15m) | Generic grotesque titans, 3 size variants | **Blender:** Sculpt 1 base, scale + morph for variants. Skin material with SSS. |
-| Abnormal Titan | Distorted proportions, crawling pose | **Blender:** Modify pure titan rig, extreme pose |
-| The Nine Titans | Attack, Colossal, Armored, Female, Beast, Jaw, Cart, War Hammer, Founding | **Blender/Sketchfab:** Prioritize Attack, Colossal, Armored (hero). Others can be lower-poly silhouettes. |
-| Steam/Fog Volume | Volumetric fog for titan emergence | **Three.js:** Custom fog shader or drei `<Fog>` + particle system |
-
-#### Scene 5 — Trost Battle
-| Asset | Description | Source Method |
-|-------|-------------|---------------|
-| Trost City Block | 5–10 European-style buildings, 2–4 stories, tile roofs | **Blender:** Modular kit (wall, roof, window, door). Instance randomly. |
-| Rooftop Tiles | Breakable tile fragments | **Blender:** Fracture modifier, 3 variants |
-| ODM Wire Trails | Glowing wire lines from gear to anchor points | **Three.js procedural:** `<Trail>` from drei or custom line geometry |
-| Boulder | 10m spherical rock, rough texture | **Blender:** Icosphere + displacement, 2k tris |
-
-#### Scene 6 — The Basement
-| Asset | Description | Source Method |
-|-------|-------------|---------------|
-| Stone Staircase | Spiral or straight descent, 20 steps, stone walls | **Blender:** Simple geometry, dark stone PBR |
-| Basement Door | Wooden door with ornate keyhole, glowing | **Blender:** Low-poly, emissive keyhole material |
-| Bookshelf | Wooden shelves with books | **Blender:** Array modifier on book blocks |
-| Desk + Journal | Open book with sketches, quill, candle | **Blender:** Simple props, warm emissive candle |
-| Photograph | Framed photo on wall (Grisha's family) | **AI Image Gen** (see Section 8) → apply as texture on plane |
-
-#### Scene 7 — The Rumbling
-| Asset | Description | Source Method |
-|-------|-------------|---------------|
-| Colossal Titan Army | 50–100 Colossal Titan instances marching | **Blender:** 1 detailed model → Three.js InstancedMesh (critical for performance). Only 3–5 in foreground detailed, rest are low-poly LOD. |
-| Crumbling Wall | Wall segments breaking apart | **Blender:** Fracture modifier, animated chunks |
-| Fire/Ember Particles | Floating embers, ground fire | **Three.js:** drei `<Sparkles>` + custom fire shader on ground plane |
-| Apocalyptic Sky | Blood-red sky with dark clouds | **AI Image Gen** → HDR equirectangular or gradient shader |
-
-### Asset Creation Workflow (Step-by-Step)
-1. **Gather References:** Collect AoT manga panels, anime screenshots, and
-   official art for each asset. Create a Pureboard/Milanote board.
-2. **Block Out in Blender:** Start with primitive shapes. Get proportions right
-   before detailing.
-3. **Sculpt & Retopologize:** Sculpt high-poly, retopo to target poly count.
-4. **UV Unwrap & Texture:** Use Substance Painter or Blender texture paint.
-   Create PBR sets (albedo, normal, roughness, metallic, AO).
-5. **Rig & Animate:** Use Mixamo for quick humanoid rigs. Bake idle + action
-   animations per character.
-6. **Export:** Export as .glb with Draco compression. Test in
-   https://gltf-viewer.donmccurdy.com/ before importing to Three.js.
-7. **Optimize:** Use gltf-pipeline or gltf-transform CLI to further compress.
-   Target <2MB per hero model, <500KB per environment chunk.
-
-### Quick-Start Alternative: AI-Assisted 3D
-If you need assets fast and don't have Blender skills:
-- **Meshy.ai** or **Tripo3D** → Text-to-3D for props and simple models
-- **CSM.ai** → Image-to-3D (feed it AoT screenshots)
-- **Sketchfab** → Search "Attack on Titan" for fan models (check CC licenses)
-- **Mixamo** → Auto-rig any humanoid mesh + apply free animations
-- **Note:** AI-generated 3D will need cleanup in Blender. Use for prototyping,
-  refine for production.
+**FX:**
+- Dust particles (drei Sparkles, count=200, color=#D4A574)
+- Fog: warm golden → grey → red (animated color + density)
+- Screen shake on Colossal reveal (CSS transform, amplitude 5px, 30Hz)
+- Debris: 20 instanced rocks with random velocity, triggered at 55%
+- Flash: HTML overlay div, white→red
 
 ---
 
-## ═══════════════════════════════════════════════
-## SECTION 5: 3D EFFECTS & SHADERS
-## ═══════════════════════════════════════════════
+#### SCENE 2 — "The Three Walls"
+**Scroll:** 400–900vh | **Mood:** Awe, scale, mystery
+**Colors:** #87CEEB (sky), #8B8B7A (stone), #4A7C3F (green)
 
-### Post-Processing Stack (applied globally, intensity varies per scene)
+**3D Assets Needed:**
+- Three concentric wall rings (Maria, Rose, Sina) — procedural cylinders
+- Terrain plane (green hills inside, flat outside)
+- District marker beacons (procedural PointLight + sprite)
+- Cloud layer (drei Clouds)
+
+**Camera Keyframes:**
+| At | Position | LookAt | FOV |
+|----|----------|--------|-----|
+| 0.0 | (0, 20, 60) | (0, 0, 0) | 60 |
+| 0.2 | (0, 200, 200) | (0, 0, 0) | 50 |
+| 0.4 | (100, 150, 100) | (0, 0, 0) | 45 |
+| 0.6 | (60, 100, 60) | (0, 0, 0) | 45 |
+| 0.8 | (30, 60, 30) | (0, 0, 0) | 40 |
+| 1.0 | (0, 250, 0) | (0, 0, 0) | 55 |
+
+**Overlay Timeline:**
+| Scroll % | Element | Animation |
+|----------|---------|-----------|
+| 0–10% | "THE THREE WALLS" title | Fade in center |
+| 20–40% | Wall Maria info card | Slide in from left |
+| 40–45% | Maria card | Slide out |
+| 45–65% | Wall Rose info card | Slide in from right |
+| 65–70% | Rose card | Slide out |
+| 70–85% | Wall Sina info card | Fade in center |
+| 85–100% | All labels + summary | Fade in |
+
+**Card Content:**
+- *Maria:* Radius 480km, Districts: Shiganshina/Trost, Status: BREACHED (845)
+- *Rose:* Radius 380km, Districts: Trost/Krolva/Karanes, Status: COMPROMISED (850)
+- *Sina:* Radius 250km, Districts: Stohess/Mitras, Status: INTACT (Royal Seat)
+
+**FX:**
+- Clear sky fog: #87CEEB, near=100, far=500
+- District glow: PointLight + additive sprite
+- Clouds: drei Clouds, y=60, opacity=0.6
+- Optional god rays
+
+---
+
+#### SCENE 3 — "The Survey Corps"
+**Scroll:** 900–1500vh | **Mood:** Heroic, emotional
+**Colors:** #1A2744 (navy), #4A7C3F (green), #C4956A (warm)
+
+**3D Assets Needed:**
+- Eren Yeager model (Survey Corps, 1.7m, rigged)
+- Mikasa Ackerman model (Survey Corps + red scarf)
+- Levi Ackerman model (dual blades, combat pose)
+- Attack Titan model (15m, morph from Eren)
+- ODM Gear rig (metallic, detailed)
+- Cape/cloak (Wings of Freedom)
+
+**Camera Keyframes:**
+| At | Position | LookAt | FOV |
+|----|----------|--------|-----|
+| 0.0 | (0, 2, 5) | (0, 1.5, 0) | 50 |
+| 0.15 | (-3, 1.5, 4) | (0, 1, 0) | 45 |
+| 0.4 | (3, 1.5, 4) | (0, 1, 0) | 45 |
+| 0.6 | (0, 2, 3) | (0, 1.2, 0) | 40 |
+| 0.85 | (0, 5, 12) | (0, 1, 0) | 55 |
+
+**Overlay Timeline:**
+| Scroll % | Element | Animation |
+|----------|---------|-----------|
+| 0–8% | "WINGS OF FREEDOM" + corps logo | Fade in |
+| 10–25% | Eren card (left, 340px) | Slide in |
+| 25–35% | Titan toggle (if clicked) | Card morph |
+| 35–50% | Mikasa card (right) | Slide in |
+| 50–65% | Levi card (left) | Slide in |
+| 65–80% | Roster thumbnails grid | Stagger fade |
+| 80–95% | Group quote | Fade in center |
+
+**Character Data:**
+- *Eren:* Combat 8, Initiative 10, Intellect 6, Titan 10. "I'll keep moving forward."
+- *Mikasa:* Combat 10, Initiative 8, Intellect 7, Titan 0. "If I win, I live."
+- *Levi:* Combat 10, Initiative 9, Intellect 8, Titan 0. "No regrets."
+
+**FX:**
+- Rim lighting (directional, #4A90D9, intensity=2)
+- Scarf wind displacement (vertex shader sin wave)
+- ODM wire trails (drei Trail, color=#888)
+- Bokeh DOF (focused on active character)
+- Dust particles (count=100, warm)
+
+---
+
+#### SCENE 4 — "The Titans"
+**Scroll:** 1500–2000vh | **Mood:** Horror, unease
+**Colors:** #3A4A2A (murky), #8B7355 (brown), #FF4400 (eye glow)
+
+**3D Assets Needed:**
+- Pure Titan (3 sizes: 3m, 7m, 15m)
+- Abnormal Titan (distorted, crawling)
+- Nine Titans (prioritize Attack, Colossal, Armored; others as silhouettes)
+- Volumetric fog/steam
+
+**Camera Keyframes:**
+| At | Position | LookAt | FOV |
+|----|----------|--------|-----|
+| 0.0 | (0, 1.7, 20) | (0, 5, 0) | 60 |
+| 0.25 | (0, 1.7, 10) | (0, 4, 0) | 65 |
+| 0.4 | (5, 1, 5) | (-3, 2, 0) | 70 |
+| 0.6 | (0, 10, 30) | (0, 10, 0) | 50 |
+| 0.9 | (0, 5, 15) | (0, 40, 0) | 80 |
+
+**Overlay Timeline:**
+| Scroll % | Element | Animation |
+|----------|---------|-----------|
+| 0–10% | "THE TITANS" (glitch effect) | Fade in |
+| 15–30% | "Pure Titans" label | Fade in left |
+| 35–45% | "ABNORMAL" warning | Flash red, shake |
+| 50–75% | Nine Titans 3x3 grid | Stagger fade |
+| 80–90% | Size comparison chart | Bars animate |
+| 90–100% | Colossal label | Scale up |
+
+**Nine Titans:** Founding (13m), Attack (15m), Colossal (60m), Armored (15m),
+Female (14m), Beast (17m), Jaw (5m), Cart (4m), War Hammer (15m)
+
+**FX:**
+- Heavy fog: #3A4A2A, near=10, far=80
+- Steam on titan skin (noise-based emissive shader)
+- Camera Y shake on titan steps (amplitude=0.2)
+- Eye glow (emissive #FF4400, intensity=3, caught by Bloom)
+- Silhouette back-lighting
+
+---
+
+#### SCENE 5 — "The Battle of Trost"
+**Scroll:** 2000–2400vh | **Mood:** Adrenaline, chaos
+**Colors:** #D4874A (dust), #666666 (smoke), #CC2200 (blood)
+
+**3D Assets Needed:**
+- Trost city block (5–10 modular buildings, instanced)
+- ODM wire trails (procedural)
+- Boulder (10m sphere, rough texture)
+- Rooftop tile fragments
+
+**Camera Keyframes:**
+| At | Position | LookAt | FOV |
+|----|----------|--------|-----|
+| 0.0 | (5, 15, 5) | (0, 10, -20) | 60 |
+| 0.3 | (0, 12, -30) | (0, 8, -60) | 75 |
+| 0.5 | (-2, 8, -50) | (3, 10, -55) | 80 |
+| 0.7 | (0, 40, -30) | (0, 0, -50) | 50 |
+| 1.0 | (0, 5, -70) | (0, 8, -80) | 55 |
+
+**Overlay Timeline:**
+| Scroll % | Element | Animation |
+|----------|---------|-----------|
+| 0–10% | "BATTLE OF TROST" | Slam in, shake |
+| 15–25% | Speed "142 km/h" | Pin to 3D |
+| 30–40% | "Titan Kill #1" | Flash |
+| 50–60% | Battle stats | Count-up |
+| 70–80% | "Eren's first transformation" | Dramatic text |
+| 85–95% | Boulder quote | Slow fade |
+
+**Stats:** Titans: 62 | Casualties: 208 | Evacuated: ~300,000 | First victory
+**Quote:** "I'll close the gate... no matter what it takes."
+
+**FX:**
+- Motion blur (directional post-FX)
+- Speed lines (SVG overlay, opacity = scroll speed)
+- Dust particles (count=500, brown)
+- Impact frames (white flash, 1 frame, at 40% and 60%)
+- FOV widen 60→80 for speed
+
+---
+
+#### SCENE 6 — "The Basement"
+**Scroll:** 2400–2800vh | **Mood:** Tension, revelation
+**Colors:** #0A0A0A → #FF9944 → #FFFFFF
+
+**3D Assets Needed:**
+- Stone staircase (20 steps, dark)
+- Basement door (wooden, glowing keyhole)
+- Bookshelf + desk + journal + candle
+- Photograph on wall (AI-generated texture)
+
+**Camera Keyframes:**
+| At | Position | LookAt | FOV |
+|----|----------|--------|-----|
+| 0.0 | (0, 3, 5) | (0, 1, 0) | 50 |
+| 0.25 | (0, 1, 2) | (0, 0, -3) | 45 |
+| 0.45 | (0, 1.5, 0.5) | (0, 1.5, -1) | 40 |
+| 0.65 | (0, 1.5, -2) | (0, 1.5, -5) | 50 |
+| 1.0 | (0, 1.6, -4) | (0, 1.6, -5) | 35 |
+
+**Overlay Timeline:**
+| Scroll % | Element | Animation |
+|----------|---------|-----------|
+| 0–15% | "The key..." | Flicker, small |
+| 20–35% | "GRISHA'S BASEMENT" | Warm fade in |
+| 40–55% | "The truth lies beyond..." | Fade |
+| 60–75% | Marley + Eldia lore cards | Float from sides |
+| 80–90% | Photo reveal | Full-screen |
+| 90–100% | "The world beyond the walls..." | Slow fade |
+
+**Lore:**
+- *Marley:* Nation across the sea, oppresses Eldians, weaponizes 7 Titans
+- *Eldia:* Ancient empire, descendants of Ymir, Titan power
+- *Photo:* "This is not a drawing. This is a photograph."
+
+**FX:**
+- Heavy vignette (offset=0.8, darkness=1.2)
+- Candle flicker (PointLight, intensity 0.8–1.2, 8Hz)
+- Dust motes (count=50, #FFCC88, slow)
+- Light leak from doorway (cone mesh, additive)
+- Film grain (noise post-FX, opacity=0.15)
+
+---
+
+#### SCENE 7 — "The Rumbling"
+**Scroll:** 2800–3200vh | **Mood:** Apocalyptic, final
+**Colors:** #1A0000 → #FF2200 → #FF6600 → #000000
+
+**3D Assets Needed:**
+- Colossal Titan army (1 detailed + InstancedMesh for 100 copies)
+- Crumbling wall segments (fractured)
+- Fire/ember particles
+- Apocalyptic sky (custom shader or HDR)
+
+**Camera Keyframes:**
+| At | Position | LookAt | FOV |
+|----|----------|--------|-----|
+| 0.0 | (0, 20, 50) | (0, 30, 0) | 60 |
+| 0.25 | (0, 50, 100) | (0, 20, -100) | 70 |
+| 0.5 | (0, 10, 20) | (0, 30, -50) | 80 |
+| 0.75 | (0, 100, 0) | (0, 0, -200) | 90 |
+| 1.0 | (0, 5, 0) | (0, 5, -10) | 60 |
+
+**Overlay Timeline:**
+| Scroll % | Element | Animation |
+|----------|---------|-----------|
+| 0–15% | "THE RUMBLING" | Slam in, massive |
+| 20–40% | "60,000,000 Colossal Titans" | Count-up |
+| 40–60% | Eren monologue | Typewriter |
+| 65–80% | "心臓を捧げよ — SHINZOU WO SASAGEYO" | Huge, center |
+| 85–95% | Fade to black | — |
+| 95–100% | CTA buttons + footer transition | Fade from black |
+
+**Monologue:** "I will keep moving forward. Until my enemies are destroyed.
+I was born into this world. I am free."
+
+**CTAs:**
+- Primary: "Explore the Full Archive" → scrolls to #lore
+- Secondary: "Join the Community" → scrolls to #community
+
+**FX:**
+- INTENSE screen shake (amplitude=10px, multi-axis)
+- Red sky shader (gradient #1A0000 → #FF2200 → #FF6600)
+- Ember particles (count=2000, #FF4400, rising)
+- Heat distortion (UV displacement post-FX)
+- Ground cracks (animated alpha mask)
+- Bloom max (intensity=1.5)
+- Audio rumble (low-freq, volume = scroll %)
+
+---
+
+### 6E. Post-Processing Stack (Global)
 ```
 <EffectComposer>
-  <Bloom
-    intensity={scene === 7 ? 1.5 : 0.4}
-    luminanceThreshold={0.6}
-    mipmapBlur
-  />
-  <Vignette
-    eskil={false}
-    offset={scene === 6 ? 0.8 : 0.3}
-    darkness={scene === 6 ? 1.2 : 0.5}
-  />
-  <ChromaticAberration
-    offset={screenShake ? [0.005, 0.005] : [0, 0]}
-  />
-  <Noise
-    opacity={scene === 6 ? 0.15 : 0.03}
-  />
-  <DepthOfField
-    focusDistance={cameraFocusTarget}
-    focalLength={0.02}
-    bokehScale={scene === 3 ? 3 : 1}
-  />
-  <ToneMapping
-    mode={ACESFilmicToneMapping}
-  />
+  <Bloom intensity={0.4–1.5 per scene} luminanceThreshold={0.6} mipmapBlur />
+  <Vignette offset={0.3–0.8} darkness={0.5–1.2} />
+  <ChromaticAberration offset={shake ? [0.005,0.005] : [0,0]} />
+  <Noise opacity={0.03–0.15} />
+  <DepthOfField focusDistance={target} focalLength={0.02} bokehScale={1–3} />
+  <ToneMapping mode={ACESFilmicToneMapping} />
 </EffectComposer>
 ```
 
-### Per-Scene FX Specifications
-
-#### Scene 1 — Shiganshina FX
-- **Particles:** Dust motes (drei `<Sparkles>` count=200, size=0.05, color=#d4a574)
-- **Fog:** `<fog attach="fog" args={['#c4956a', 50, 200]} />` (warm, distant)
-- **Screen Shake:** On Colossal reveal (scroll 50–70%), apply CSS `transform: translate()`
-  to canvas container using GSAP random wiggle (amplitude: 5px, frequency: 30Hz)
-- **Flash Overlay:** White → red HTML overlay div, opacity 0→0.8→0 over 0.5s
-  triggered at scroll 50%
-- **Debris Physics:** 20 instanced rock meshes with random velocity vectors,
-  triggered at scroll 55%, animated via useFrame
-
-#### Scene 2 — Walls FX
-- **Atmosphere:** Clear sky, minimal fog `<fog args={['#87CEEB', 100, 500]} />`
-- **Glow:** District markers use `<PointLight>` + sprite with additive blending
-- **Clouds:** drei `<Clouds>` at y=60, opacity=0.6, speed=0.2
-- **God Rays:** Optional — use `<GodRays>` from postprocessing if performance allows
-
-#### Scene 3 — Characters FX
-- **Rim Lighting:** Strong directional light from behind (color=#4a90d9,
-  intensity=2) for dramatic silhouette
-- **Scarf Physics:** Mikasa's scarf = soft body or vertex shader wind displacement
-  (sin wave on vertex positions, amplitude=0.1, frequency=2)
-- **ODM Wire Trails:** drei `<Trail>` component, color=#888, width=0.02,
-  length=10, attenuation=2
-- **Bokeh DOF:** Shallow depth of field focused on active character,
-  background blurred
-- **Particle Dust:** Subtle floating particles, count=100, warm color
-
-#### Scene 4 — Titans FX
-- **Volumetric Fog:** Heavy green-brown fog `<fog args={['#3a4a2a', 10, 80]} />`
-- **Steam Emission:** Custom shader on titan skin — noise-based emissive patches
-  that pulse (use `onBeforeCompile` to inject noise into emissive channel)
-- **Ground Shake:** Camera Y oscillation (amplitude=0.2, frequency=3) when
-  large titans step
-- **Eye Glow:** Emissive material on titan eyes (color=#ff4400, intensity=3)
-  with Bloom catching it
-- **Silhouette Lighting:** Back-lit with strong rim, front dark — horror mood
-
-#### Scene 5 — Trost FX
-- **Motion Blur:** Simulated via `<Trail>` on camera or post-processing
-  `<SMAA>` + directional blur shader
-- **Speed Lines:** HTML overlay SVG lines radiating from center, opacity tied
-  to scroll speed (faster scroll = more lines)
-- **Dust Clouds:** Particle system at building level, brown/tan, count=500
-- **Impact Frames:** At key moments (scroll 40%, 60%), flash white for 1 frame
-  (manga-style impact)
-- **Camera FOV Shift:** Widen FOV from 60→80 during fast flight for speed feel
-
-#### Scene 6 — Basement FX
-- **Darkness:** Very heavy vignette, fog color=#0a0a0a, near=2, far=15
-- **Candle Flicker:** PointLight with random intensity oscillation
-  (0.8–1.2, frequency=8Hz) + warm color=#ff9944
-- **Dust Motes:** Sparse, slow particles, count=50, size=0.02, color=#ffcc88
-- **Light Leak:** When door opens (scroll 45%), volumetric light cone from
-  doorway (use a cone mesh with additive transparent material)
-- **Film Grain:** Increased noise post-processing (opacity=0.15) for
-  vintage photo feel
-
-#### Scene 7 — Rumbling FX
-- **Screen Shake:** INTENSE, continuous, amplitude=10px, multi-axis
-- **Red Sky Gradient:** Custom sky shader — gradient from #1a0000 (zenith)
-  to #ff2200 (horizon) to #ff6600 (ground glow)
-- **Ember Particles:** Massive count=2000, color=#ff4400, rising upward,
-  size=0.1–0.5
-- **Heat Distortion:** Custom post-processing shader — UV displacement based
-  on noise texture, subtle wave effect
-- **Ground Cracks:** Animated texture on ground plane (crack alpha mask
-  expanding over time)
-- **Bloom:** Max intensity (1.5) for apocalyptic glow
-- **Audio Rumble:** Low-frequency rumble SFX, volume tied to scroll progress
-
-### Custom Shader Snippets Needed
-1. **Titan Steam Shader:** Vertex displacement + emissive noise for skin steam
-2. **Heat Distortion Post-FX:** UV warp using simplex noise
-3. **Apocalyptic Sky Shader:** Gradient + noise clouds + red tint
-4. **ODM Wire Shader:** Glowing line with distance fade
-5. **Crack Propagation Shader:** Alpha mask expansion on ground plane
-
 ---
 
-## ═══════════════════════════════════════════════
-## SECTION 6: SCENE-BY-SCENE FULL SPECIFICATION
-## ═══════════════════════════════════════════════
-
-### SCENE 1 — "The Fall of Shiganshina"
-**Scroll:** 0–400vh | **Mood:** Peace → Dread → Catastrophe
-**Colors:** #d4a574 (golden) → #666666 (grey) → #cc2200 (blood red)
-
-**Camera Path:**
-- Start: pos(0, 10, 80), lookAt(0, 20, 0), fov=60
-- Mid: pos(0, 15, 40), lookAt(0, 30, 0), fov=55 (pushing toward gate)
-- Colossal: pos(0, 25, 30), lookAt(0, 55, -10), fov=70 (tilt up to face)
-- End: pos(0, 10, -5), lookAt(0, 10, -50), fov=65 (through gate)
-
-**Overlay Timeline:**
-| Scroll % | Element | Animation |
-|----------|---------|-----------|
-| 0–10% | Title "ATTACK ON TITAN" | Fade in, y: 20→0, duration 1s |
-| 0–10% | Subtitle "進撃の巨人" | Fade in, delay 0.3s |
-| 0–10% | Tagline "The Ultimate Archive" | Fade in, delay 0.6s |
-| 10–20% | Title group | Fade out |
-| 35–50% | Warning flash | White→red overlay, 0.5s |
-| 50–70% | Colossal label "THE COLOSSAL TITAN" | Scale 0→1, shake |
-| 70–85% | Quote block | Fade in from left, max-w 500px |
-| 85–100% | Quote block | Fade out |
-
-**Quote Text:**
-> "That day, mankind received a grim reminder. We lived in fear of the Titans
-> and were disgraced to live in these cages we called walls."
-> — Chapter 1
-
----
-
-### SCENE 2 — "The Walls"
-**Scroll:** 400–900vh | **Mood:** Awe, scale, mystery
-**Colors:** #87CEEB (sky blue), #8B8B7A (stone), #4a7c3f (green fields)
-
-**Camera Path:**
-- Start: pos(0, 20, 60), lookAt(0, 0, 0), fov=60 (ground level)
-- Rise: pos(0, 200, 200), lookAt(0, 0, 0), fov=50 (bird's eye)
-- Maria: pos(100, 150, 100), lookAt(0, 0, 0), fov=45 (orbit to Maria)
-- Rose: pos(60, 100, 60), lookAt(0, 0, 0), fov=45 (zoom to Rose)
-- Sina: pos(30, 60, 30), lookAt(0, 0, 0), fov=40 (zoom to Sina)
-- End: pos(0, 250, 0), lookAt(0, 0, 0), fov=55 (top-down overview)
-
-**Overlay Timeline:**
-| Scroll % | Element | Animation |
-|----------|---------|-----------|
-| 0–10% | Section title "THE THREE WALLS" | Fade in, center |
-| 20–40% | Wall Maria info card | Slide in from left |
-| 40–45% | Maria card | Slide out left |
-| 45–65% | Wall Rose info card | Slide in from right |
-| 65–70% | Rose card | Slide out right |
-| 70–85% | Wall Sina info card | Fade in, center |
-| 85–100% | All labels + summary text | Fade in |
-
-**Card Content:**
-
-*Wall Maria Card:*
-- Title: WALL MARIA
-- Radius: 480km
-- Key Districts: Shiganshina (South), Trost (South-East)
-- Status: BREACHED — Year 845
-- Description: "The outermost wall. Its fall marked the beginning of humanity's darkest era."
-
-*Wall Rose Card:*
-- Title: WALL ROSE
-- Radius: 380km
-- Key Districts: Trost, Krolva, Karanes, Utopia
-- Status: COMPROMISED — Year 850
-- Description: "The middle wall. Refuge for those who survived the fall of Maria."
-
-*Wall Sina Card:*
-- Title: WALL SINA
-- Radius: 250km
-- Key Districts: Stohess (Capital), Mitras, Ehrmich, Yarckel
-- Status: INTACT (Royal Seat)
-- Description: "The innermost wall. Home to the royal government and the Military Police."
-
----
-
-### SCENE 3 — "The Survey Corps"
-**Scroll:** 900–1500vh | **Mood:** Heroic, emotional
-**Colors:** #1a2744 (navy), #4a7c3f (corps green), #c4956a (warm skin)
-
-**Camera Path:**
-- Start: pos(0, 2, 5), lookAt(0, 1.5, 0), fov=50 (ODM gear close-up)
-- Eren: pos(-3, 1.5, 4), lookAt(0, 1, 0), fov=45
-- Mikasa: pos(3, 1.5, 4), lookAt(0, 1, 0), fov=45
-- Levi: pos(0, 2, 3), lookAt(0, 1.2, 0), fov=40 (low angle, heroic)
-- Group: pos(0, 5, 12), lookAt(0, 1, 0), fov=55 (wide formation)
-
-**Overlay Timeline:**
-| Scroll % | Element | Animation |
-|----------|---------|-----------|
-| 0–8% | "WINGS OF FREEDOM" title + corps logo | Fade in |
-| 10–25% | Eren card | Slide in from left |
-| 25–35% | Eren titan toggle | Card morphs (if user clicks) |
-| 35–50% | Mikasa card | Slide in from right |
-| 50–65% | Levi card | Slide in from left |
-| 65–80% | Additional roster thumbnails | Fade in grid |
-| 80–95% | Group quote | Fade in center |
-| 95–100% | "View Full Roster" CTA | Pulse animation |
-
-**Character Data:**
-
-*Eren Yeager:*
-- Affiliation: Survey Corps
-- Height: 170cm | Weight: 63kg
-- Stats: Combat 8/10, Initiative 10/10, Intellect 6/10, Titan 10/10
-- Quote: "I'll keep moving forward until my enemies are destroyed."
-- Titan Form: Attack Titan (15m)
-
-*Mikasa Ackerman:*
-- Affiliation: Survey Corps
-- Height: 176cm | Weight: 68kg
-- Stats: Combat 10/10, Initiative 8/10, Intellect 7/10, Titan 0/10
-- Quote: "If I can't, then I'll just die. But if I win, I live."
-
-*Levi Ackerman:*
-- Affiliation: Survey Corps (Captain)
-- Height: 160cm | Weight: 65kg
-- Stats: Combat 10/10, Initiative 9/10, Intellect 8/10, Titan 0/10
-- Quote: "The only thing we're allowed to do is believe that we won't regret the choice we made."
-
----
-
-### SCENE 4 — "The Titans"
-**Scroll:** 1500–2000vh | **Mood:** Horror, scale, unease
-**Colors:** #3a4a2a (murky green), #8B7355 (sickly brown), #ff4400 (eye glow)
-
-**Camera Path:**
-- Start: pos(0, 1.7, 20), lookAt(0, 5, 0), fov=60 (human eye level, fog)
-- Pure: pos(0, 1.7, 10), lookAt(0, 4, 0), fov=65 (titans approach)
-- Abnormal: pos(5, 1, 5), lookAt(-3, 2, 0), fov=70 (low, tilted)
-- Nine: pos(0, 10, 30), lookAt(0, 10, 0), fov=50 (wide, all nine)
-- Colossal: pos(0, 5, 15), lookAt(0, 40, 0), fov=80 (extreme tilt up)
-
-**Overlay Timeline:**
-| Scroll % | Element | Animation |
-|----------|---------|-----------|
-| 0–10% | "THE TITANS" title | Fade in, glitch effect |
-| 15–30% | "Pure Titans" label + desc | Fade in left |
-| 35–45% | "ABNORMAL" warning | Flash red, shake |
-| 50–75% | Nine Titans grid | Stagger fade in (3x3 grid) |
-| 80–90% | Size comparison chart | Animate bars growing |
-| 90–100% | Colossal label | Scale up dramatically |
-
-**Nine Titans Data:**
-| Titan | Height | Current Holder | Ability |
-|-------|--------|---------------|---------|
-| Founding | 13m | Eren Yeager | Coordinate, memory manipulation |
-| Attack | 15m | Eren Yeager | Future memory inheritance |
-| Colossal | 60m | Armin Arlert | Explosive transformation, steam |
-| Armored | 15m | Reiner Braun | Hardened armor plating |
-| Female | 14m | Annie Leonhart | Crystallization, adaptive |
-| Beast | 17m | Zeke Yeager | Throwing, spinal fluid control |
-| Jaw | 5m | Falco Grice | Crushing jaw, speed |
-| Cart | 4m | Pieck Finger | Endurance, quadrupedal |
-| War Hammer | 15m | Eren Yeager | Structural hardening |
-
----
-
-### SCENE 5 — "The Battle of Trost"
-**Scroll:** 2000–2400vh | **Mood:** Adrenaline, chaos
-**Colors:** #d4874a (dusty orange), #666666 (smoke), #cc2200 (blood)
-
-**Camera Path:**
-- Start: pos(5, 15, 5), lookAt(0, 10, -20), fov=60 (rooftop launch)
-- Flight: pos(0, 12, -30), lookAt(0, 8, -60), fov=75 (weaving)
-- Near-miss: pos(-2, 8, -50), lookAt(3, 10, -55), fov=80 (titan grab)
-- Wide: pos(0, 40, -30), lookAt(0, 0, -50), fov=50 (battle overview)
-- Boulder: pos(0, 5, -70), lookAt(0, 8, -80), fov=55 (Eren + boulder)
-
-**Overlay Timeline:**
-| Scroll % | Element | Animation |
-|----------|---------|-----------|
-| 0–10% | "BATTLE OF TROST" title | Slam in, shake |
-| 15–25% | Speed indicator "142 km/h" | Pin to 3D position |
-| 30–40% | "Titan Kill #1" callout | Pin to titan, flash |
-| 50–60% | Battle stats overlay | Count-up animation |
-| 70–80% | "Eren's first transformation" | Dramatic text |
-| 85–95% | Boulder quote | Slow fade, serif |
-
-**Battle Stats:**
-- Titans Engaged: 62
-- Survey Corps Casualties: 208
-- Civilians Evacuated: ~300,000
-- Outcome: First human victory
-
-**Boulder Quote:**
-> "I'll close the gate... no matter what it takes."
-> The first human victory against the Titans.
-
----
-
-### SCENE 6 — "The Basement"
-**Scroll:** 2400–2800vh | **Mood:** Tension, mystery, revelation
-**Colors:** #0a0a0a (black) → #ff9944 (candle amber) → #ffffff (white reveal)
-
-**Camera Path:**
-- Start: pos(0, 3, 5), lookAt(0, 1, 0), fov=50 (top of stairs)
-- Descent: pos(0, 1, 2), lookAt(0, 0, -3), fov=45 (mid-stairs)
-- Door: pos(0, 1.5, 0.5), lookAt(0, 1.5, -1), fov=40 (close on door)
-- Enter: pos(0, 1.5, -2), lookAt(0, 1.5, -5), fov=50 (inside room)
-- Photo: pos(0, 1.6, -4), lookAt(0, 1.6, -5), fov=35 (close on photo)
-
-**Overlay Timeline:**
-| Scroll % | Element | Animation |
-|----------|---------|-----------|
-| 0–15% | "The key..." | Flicker in, small, center |
-| 20–35% | "GRISHA'S BASEMENT" | Fade in, warm color |
-| 40–55% | Door opening text | "The truth lies beyond..." |
-| 60–75% | Lore cards (Marley + Eldia) | Float in from sides |
-| 80–90% | Photo reveal | Full-screen fade |
-| 90–100% | "The world beyond the walls..." | Slow fade |
-
-**Lore Content:**
-
-*Marley Card:*
-- Title: MARLEY
-- Description: "A nation across the sea that rose to power by subjugating Eldians and weaponizing seven of the Nine Titans. For centuries, they oppressed the Eldian people both within their borders and on Paradis Island."
-
-*Eldia Card:*
-- Title: ELDIA
-- Description: "An ancient empire that once ruled the world through the Power of the Titans. The Eldian people, descendants of Ymir Fritz, carry the ability to transform into Titans. Feared and hated by the world."
-
-*Photo Reveal Text:*
-> "This is not a drawing. This is a photograph. The world beyond the walls is not empty. Humanity lives on... and they want us dead."
-
----
-
-### SCENE 7 — "The Rumbling"
-**Scroll:** 2800–3200vh | **Mood:** Apocalyptic, overwhelming, final
-**Colors:** #1a0000 (dark red) → #ff2200 (fire) → #ff6600 (orange) → #000000 (black)
-
-**Camera Path:**
-- Start: pos(0, 20, 50), lookAt(0, 30, 0), fov=60 (walls crumbling)
-- Reveal: pos(0, 50, 100), lookAt(0, 20, -100), fov=70 (thousands marching)
-- Head-on: pos(0, 10, 20), lookAt(0, 30, -50), fov=80 (facing the march)
-- Horizon: pos(0, 100, 0), lookAt(0, 0, -200), fov=90 (endless line)
-- End: pos(0, 5, 0), lookAt(0, 5, -10), fov=60 (fade to black)
-
-**Overlay Timeline:**
-| Scroll % | Element | Animation |
-|----------|---------|-----------|
-| 0–15% | "THE RUMBLING" title | Slam in, massive, shake |
-| 20–40% | Scale text "60,000,000 Colossal Titans" | Count-up |
-| 40–60% | Eren monologue | Typewriter effect |
-| 65–80% | "Shinzou wo Sasageyo" | Fade in, huge, center |
-| 85–95% | Fade to black | — |
-| 95–100% | CTA + footer | Fade in from black |
-
-**Eren Monologue:**
-> "I will keep moving forward. Until my enemies are destroyed. I was born into this world. I am free."
-
-**CTA Section:**
-- Primary: "Explore the Full Archive" → links to lore section
-- Secondary: "Join the Community" → links to Discord/forum
-- Footer: About | Credits | Privacy | © 2024 AoT Archive — Fan Project
-
----
-
-## ═══════════════════════════════════════════════
-## SECTION 7: CONTENT & COPY (ALL SECTIONS)
-## ═══════════════════════════════════════════════
-
-### Navbar
-- Logo: "AoT ARCHIVE" (or Wings of Freedom icon)
-- Links: Lore | Characters | Titans | Map | Episodes | Community
-- Sound toggle icon (speaker)
-
-### Loading Screen
-- Text: "Dedicating your hearts..." (progress bar below)
-- Subtext: "Loading 3D assets — {progress}%"
-
-### Scroll Hint (bottom, first 5% of scroll)
-- Text: "↓ Scroll to begin"
-- Animation: Gentle bounce
-
-### Scene Transition Texts (between scenes, brief flashes)
-- Scene 1→2: "Behind the walls..."
-- Scene 2→3: "Those who fight..."
-- Scene 3→4: "The enemy..."
-- Scene 4→5: "The first battle..."
-- Scene 5→6: "The truth..."
-- Scene 6→7: "The end of the world..."
-
-### Non-3D Section Copy
-
-*Interactive Map:*
-- Title: "THE WORLD OF ATTACK ON TITAN"
-- Subtitle: "Explore Paradis Island and the continent of Marley"
-- Instructions: "Click on any location to learn more"
-
-*Episode Guide:*
-- Title: "EPISODE ARCHIVE"
-- Subtitle: "All 87 episodes across 4 seasons"
-- Seasons: Season 1 (25 eps) | Season 2 (12 eps) | Season 3 (22 eps) | Season 4 (28 eps)
-
-*Soundtrack Player:*
-- Title: "THE SOUND OF WAR"
-- Subtitle: "Music by Hiroyuki Sawano"
-- Featured Tracks: "Guren no Yumiya", "Jiyuu no Tsubasa", "Sasageyo!", "Vogel im Käfig", "YouSeeBIGGIRL", "The Rumbling"
-
-*Community:*
-- Title: "JOIN THE SURVEY CORPS"
-- Subtitle: "Connect with fellow fans"
-- CTA: "Join our Discord" | "Follow on Twitter" | "Reddit Community"
-
----
-
-## ═══════════════════════════════════════════════
-## SECTION 8: IMAGE & 2D ASSET GENERATION PROMPTS
-## ═══════════════════════════════════════════════
-
-Use these prompts in Midjourney, DALL-E 3, or Stable Diffusion to generate
-2D assets needed for the site.
-
-### HDR Sky Environments
-1. **Golden Hour Sky (Scene 1 start):**
-   "Equirectangular HDR panorama, golden hour sunset sky over medieval walled
-   city, warm orange and pink clouds, peaceful atmosphere, photorealistic,
-   8K resolution, 360 degree"
-
-2. **Apocalyptic Red Sky (Scene 7):**
-   "Equirectangular HDR panorama, apocalyptic blood red sky, dark storm clouds,
-   fire glow on horizon, volcanic ash particles, dramatic, cinematic,
-   photorealistic, 8K, 360 degree"
-
-3. **Dark Basement (Scene 6):**
-   "Equirectangular panorama, pitch black underground stone cellar, single
-   warm candle light source, dust particles in light beam, moody, dark,
-   photorealistic"
-
-### UI / Overlay Assets
-4. **Wings of Freedom Logo:**
-   "Attack on Titan Survey Corps Wings of Freedom logo, clean vector style,
-   white and blue overlapping wings, transparent background, high resolution,
-   minimalist"
-
-5. **Wall Texture (Seamless):**
-   "Seamless tileable texture, ancient stone wall, weathered grey-brown,
-   medieval fortress, PBR material, 4K resolution, top-down view"
-
-6. **Titan Skin Texture:**
-   "Seamless tileable texture, muscular human skin without epidermis,
-   red muscle fibers, anatomical, dark, grotesque, 2K resolution,
-   for 3D material"
-
-7. **Old Photograph (Basement):**
-   "Vintage sepia photograph, early 1900s style, family portrait of three
-   people standing in front of a building, slightly damaged edges, faded,
-   realistic, mysterious"
-
-8. **Parchment/Journal Page:**
-   "Aged parchment paper texture, hand-drawn sketches of titans in margins,
-   handwritten text in German-style script, coffee stains, worn edges,
-   top-down view, high resolution"
-
-9. **Impact Frame (Manga Style):**
-   "Manga-style impact frame, black and white speed lines radiating from
-   center, dramatic action lines, high contrast, transparent center,
-   vector style, 4K"
-
-10. **Fire/Ember Particle Sprite:**
-    "Single glowing ember particle sprite, orange-red gradient, soft glow,
-    transparent background, circular, 64x64px, for game engine"
-
-### Background Illustrations (for non-3D sections)
-11. **Map Background:**
-    "Fantasy cartographic map of a circular island with three concentric
-    walls, medieval style, parchment texture, compass rose, sea monsters
-    in the ocean, hand-drawn aesthetic, warm tones, top-down view"
-
-12. **Episode Guide Header:**
-    "Cinematic wide shot of Survey Corps soldiers standing on a wall at
-    sunset, capes flowing, dramatic clouds, anime art style, widescreen
-    16:9, high detail"
-
----
-
-## ═══════════════════════════════════════════════
-## SECTION 9: NON-3D SECTIONS SPECIFICATION
-## ═══════════════════════════════════════════════
-
-These sections appear AFTER the 3200vh scrollytelling stage, in normal
-document flow (not sticky).
-
-### Interactive Map
-- **Layout:** Full-width, min-height 80vh
-- **Tech:** SVG-based or Leaflet.js with custom tile layer
-- **Features:**
-  - Clickable districts (Shiganshina, Trost, Stohess, etc.)
-  - Hover tooltips with district info
-  - Toggle between Paradis Island and Marley views
-  - Animated path of key events (Fall of Maria → Trost → Expedition → etc.)
-- **Style:** Parchment texture background, hand-drawn aesthetic
-
-### Episode Guide
-- **Layout:** Grid of season cards → expandable episode lists
-- **Features:**
-  - Season tabs (1–4)
-  - Episode cards with thumbnail, title, air date, rating
-  - Expandable synopsis
-  - "Key Moments" tags for important episodes
-- **Data Source:** Static JSON file with episode metadata
-
-### Soundtrack Player
-- **Layout:** Horizontal scrolling card carousel
-- **Features:**
-  - Album art for each track
-  - Play/pause (embed YouTube/SoundCloud iframe or use Howler.js)
-  - Track info: title, composer, episode/scene association
-  - Visualizer animation (CSS bars) when playing
-
-### Community
-- **Layout:** 3-column card grid
-- **Cards:** Discord embed, Twitter feed, Reddit link
-- **CTA:** "Dedicate Your Heart — Join Us"
-
----
-
-## ═══════════════════════════════════════════════
-## SECTION 10: PERFORMANCE & OPTIMIZATION
-## ═══════════════════════════════════════════════
-
-### Hard Targets
-- **LCP:** < 2.5s (loading screen covers 3D init)
-- **FPS:** 60fps on desktop (GTX 1060+), 30fps minimum on mid-range
-- **Bundle Size:** < 500KB initial JS (lazy-load 3D scenes)
-- **Asset Size:** < 20MB total 3D assets (Draco + KTX2)
-
-### Strategies
-1. **Progressive Loading:**
-   - Load Scene 1 assets first, show loading screen
-   - Lazy-load Scenes 2–7 as user scrolls (prefetch next scene at 80% of current)
-   - Use React.lazy() + Suspense for scene components
-
-2. **LOD (Level of Detail):**
-   - 3 LOD levels per model: high (< 20m from camera), mid (20–50m), low (50m+)
-   - Use drei `<Detailed>` component or Three.js LOD class
-
-3. **Instancing:**
-   - Rumbling scene: InstancedMesh for 100 Colossal Titans (1 draw call)
-   - Buildings: InstancedMesh for city blocks
-   - Debris: InstancedMesh for rock fragments
-
-4. **Texture Optimization:**
-   - KTX2/Basis Universal compression (70–90% size reduction)
-   - Use drei `<useKTX2>` loader
-   - Mipmapping enabled on all textures
-
-5. **Render Optimization:**
-   - `frameloop="demand"` on Canvas when not scrolling (saves GPU)
-   - Reduce pixel ratio on mobile: `dpr={[1, 1.5]}`
-   - Disable shadows on mobile
-   - Use `<BakeShadows>` for static scenes
-
-6. **Memory Management:**
-   - Dispose geometries, materials, textures when scene unmounts
-   - Use `useEffect` cleanup functions
-   - Monitor with Three.js `renderer.info`
-
-7. **Scroll Performance:**
-   - Lenis smooth scroll (prevents jank)
-   - GSAP `scrub: 1` (smoothed interpolation, not 1:1)
-   - Throttle scroll events to rAF
-   - Use `will-change: transform` on overlay elements
-
----
-
-## ═══════════════════════════════════════════════
-## SECTION 11: RESPONSIVE STRATEGY
-## ═══════════════════════════════════════════════
-
-### Breakpoints
-- **Desktop:** > 1024px → Full 3D experience
-- **Tablet:** 768–1024px → Reduced 3D (fewer particles, lower LOD, no DOF)
-- **Mobile:** < 768px → **2D parallax fallback** (see below)
-
-### Mobile Fallback (CRITICAL)
-On mobile devices (detect via `window.innerWidth < 768` or GPU tier check):
-- Replace 3D Canvas with **CSS parallax layers** using background images
-- Each scene = a full-screen background image with parallax depth
-- Overlay text animates the same way (GSAP ScrollTrigger still works)
-- Use the AI-generated images from Section 8 as parallax layers
-- This ensures the site works on ALL devices without killing battery/FPS
-
-### Responsive Overlay Adjustments
-- Desktop: Cards at 320–360px width, positioned at edges
-- Tablet: Cards at 280px, centered bottom
-- Mobile: Cards at 90vw, stacked vertically, larger text
-
-### Touch Considerations
-- Disable orbit controls on mobile (scroll only)
-- Increase touch target sizes for interactive elements (min 44px)
-- Add swipe hint instead of scroll hint on mobile
-
----
-
-## ═══════════════════════════════════════════════
-## SECTION 12: BUILD ORDER & PRIORITIES
-## ═══════════════════════════════════════════════
-
-### Phase 1: Foundation (Week 1)
-- [ ] Set up Next.js + R3F + GSAP + Lenis + Tailwind
-- [ ] Build sticky scroll stage shell (Canvas + Overlay + Spacer)
-- [ ] Implement global scroll progress tracking (Zustand)
-- [ ] Create CameraController driven by scroll %
-- [ ] Build loading screen with progress bar
-- [ ] Verify smooth scroll + 3D sync at 60fps
-
-### Phase 2: Scene 1 Prototype (Week 2)
-- [ ] Model/import Wall Maria gate + Colossal Titan head
-- [ ] Set up Scene 1 camera path
-- [ ] Add overlay text animations (title, quote)
-- [ ] Add FX: dust particles, fog, screen shake, flash
-- [ ] Test scroll scrub feel — iterate on timing
-
-### Phase 3: Scenes 2–4 (Weeks 3–4)
-- [ ] Build Scene 2 (Walls) — concentric rings, info cards
-- [ ] Build Scene 3 (Characters) — 3 character models, cards, stats
-- [ ] Build Scene 4 (Titans) — titan models, grid, size chart
-- [ ] Add scene transition effects between each
-
-### Phase 4: Scenes 5–7 (Weeks 5–6)
-- [ ] Build Scene 5 (Trost) — city, flight path, action FX
-- [ ] Build Scene 6 (Basement) — staircase, room, reveal
-- [ ] Build Scene 7 (Rumbling) — instanced titans, apocalyptic FX
-- [ ] Add finale CTA + footer
-
-### Phase 5: Non-3D Sections (Week 7)
-- [ ] Build Interactive Map
-- [ ] Build Episode Guide
-- [ ] Build Soundtrack Player
-- [ ] Build Community section
-
-### Phase 6: Polish & Optimize (Week 8)
-- [ ] Add mobile parallax fallback
-- [ ] Optimize all 3D assets (Draco, KTX2, LOD)
-- [ ] Performance audit (Lighthouse, FPS profiling)
-- [ ] Add ambient audio (optional)
-- [ ] Cross-browser testing
-- [ ] SEO meta tags, Open Graph images
-- [ ] Deploy to Vercel
-
----
-
-## ═══════════════════════════════════════════════
-## FINAL INSTRUCTIONS FOR THE AI / DEVELOPER
-## ═══════════════════════════════════════════════
-
-1. **Start with Phase 1.** Do not attempt to build all scenes at once.
-   Get the scroll-to-3D pipeline working with a single cube first.
-
-2. **Use the scroll ranges from Section 3** as the source of truth for
-   all GSAP ScrollTrigger configurations.
-
-3. **Follow the camera paths from Section 6** exactly for each scene.
-   Interpolate between keyframes using GSAP's `gsap.to()` with `scrub: true`.
-
-4. **Apply the FX specs from Section 5** per scene. Start with fog and
-   particles (cheap), add post-processing last (expensive).
-
-5. **Use the content/copy from Section 7** verbatim for all overlay text.
-
-6. **Generate 2D assets using the prompts in Section 8** via Midjourney
-   or DALL-E 3. Convert sky images to equirectangular HDR for Three.js
-   Environment maps.
-
-7. **Follow the 3D asset guidelines in Section 4** for all models.
-   Prioritize Draco compression and LOD.
-
-8. **Implement the mobile fallback from Section 11** before launch.
-   The 3D experience is desktop-first.
-
-9. **Reference the wireframe layouts** from the earlier conversation
-   (Scenes 1–7 ASCII wireframes) for overlay positioning.
-
-10. **This prompt is the single source of truth.** If there's a conflict
-    between this prompt and other instructions, this prompt wins.
-
----
-
-*Shinzou wo Sasageyo. Build something legendary.* 🗡️
+## ═══════════════════════════════════════════════════════════
+## SECTION 7: NON-3D CONTENT SECTIONS — FULL SPECS
+## ═══════════════════════════════════════════════════════════
+
+These sections appear AFTER the 3200vh scrollytelling, in normal document flow.
+Each section uses a dark background (#0A0A0A or #0F0F0F alternating), the
+SectionHeader component, and GSAP scroll-triggered entrance animations.
+
+### 7A. World Map (#lore)
+**Layout:** Full-width, min-height 100vh, padding --space-16
+**Background:** Dark with subtle parchment texture overlay (opacity 0.05)
+
+**Features:**
+- Large SVG/Canvas map of Paradis Island (center) + Marley continent (right)
+- Clickable location pins (Shiganshina, Trost, Stohess, Karanes, Utopia,
+  Krolva, Ehrmich, Yarckel, Mitras, Liberio, Fort Salta)
+- Hover → tooltip with location name + brief description
+- Click → expand GlassCard with full lore (district info, key events, image)
+- Toggle button: "Paradis" / "Marley" / "Full World"
+- Animated event path: dotted line showing key story progression
+  (Shiganshina → Trost → Stohess → Liberio → Fort Salta)
+- Zoom/pan controls (mouse wheel + drag)
+
+**Data Structure (map-locations.json):**
+```json
+{
+  "id": "shiganshina",
+  "name": "Shiganshina District",
+  "wall": "Maria",
+  "position": { "x": 50, "y": 85 },
+  "description": "Southernmost district of Wall Maria...",
+  "keyEvents": ["Fall of Wall Maria (845)", "Battle of Shiganshina (850)"],
+  "image": "/images/map/shiganshina.jpg"
+}
 ```
 
+### 7B. Character Encyclopedia (#characters)
+**Layout:** Full-width, min-height 100vh, padding --space-16
+**Background:** #0F0F0F
+
+**Features:**
+- Search bar at top (filter by name)
+- Filter tabs: All | Survey Corps | Military Police | Garrison | Titans | Marley
+- Grid of character cards (3 columns desktop, 2 tablet, 1 mobile)
+- Each card: character image, name, affiliation badge, key stat
+- Click card → Modal with full profile:
+  - Large image
+  - Name (EN + JP)
+  - Affiliation, rank, height, weight
+  - Stat bars (Combat, Initiative, Intellect, Teamwork, Titan)
+  - Biography (2–3 paragraphs)
+  - Key quotes (2–3)
+  - Relationships
+  - First/last appearance
+
+**Data Structure (characters.json):**
+```json
+{
+  "id": "eren-yeager",
+  "name": "Eren Yeager",
+  "nameJP": "エレン・イェーガー",
+  "affiliation": "Survey Corps",
+  "rank": "Private",
+  "height": "170cm",
+  "weight": "63kg",
+  "stats": { "combat": 8, "initiative": 10, "intellect": 6, "teamwork": 5, "titan": 10 },
+  "bio": "Eren Yeager is the main protagonist...",
+  "quotes": ["I'll keep moving forward...", "Because I was born into this world."],
+  "image": "/images/characters/eren.jpg",
+  "titanForm": "Attack Titan"
+}
+```
+
+**Characters to include (minimum 15):**
+Eren, Mikasa, Levi, Armin, Erwin, Hange, Annie, Jean, Connie, Sasha,
+Reiner, Bertholdt, Zeke, Historia, Falco, Gabi, Pieck, Grisha
+
+### 7C. Titan Bestiary (#titans)
+**Layout:** Full-width, min-height 80vh, padding --space-16
+**Background:** #0A0A0A with subtle green fog gradient at bottom
+
+**Features:**
+- Two tabs: "The Nine Titans" | "Pure Titans & Abnormals"
+- Nine Titans: horizontal scrollable cards (large, detailed)
+  - Each card: titan illustration, name, height, current holder,
+    ability description, weakness, history
+- Pure Titans: grid of info cards with size categories (3–5m, 5–10m, 10–15m)
+- Size comparison visual: horizontal bar chart (Human → 3m → 7m → 15m → 60m)
+  with silhouettes
+
+**Data Structure (titans.json):**
+```json
+{
+  "id": "attack-titan",
+  "name": "Attack Titan",
+  "nameJP": "進撃の巨人",
+  "height": "15m",
+  "holder": "Eren Yeager",
+  "previousHolders": ["Grisha Yeager", "Eren Kruger"],
+  "ability": "Future memory inheritance, exceptional combat ability",
+  "weakness": "No unique hardening or elemental ability",
+  "history": "The Attack Titan has always fought for freedom...",
+  "image": "/images/titans/attack.jpg"
+}
+```
+
+### 7D. Episode Guide (#episodes)
+**Layout:** Full-width, min-height 100vh, padding --space-16
+**Background:** #0F0F0F
+
+**Features:**
+- Season tabs: Season 1 (25 eps) | Season 2 (12 eps) | Season 3 (22 eps) |
+  Season 4 (28 eps)
+- Episode list: vertical accordion or grid
+- Each episode card:
+  - Thumbnail image
+  - Episode number + title (EN + JP)
+  - Air date
+  - Rating (star or number)
+  - Synopsis (expandable)
+  - Tags: "Key Moment", "Titan Reveal", "Battle", "Lore", "Emotional"
+- "Jump to Key Episodes" quick filter
+
+**Data Structure (episodes.json):**
+```json
+{
+  "season": 1,
+  "episode": 1,
+  "title": "To You, in 2000 Years",
+  "titleJP": "二千年後の君へ",
+  "airDate": "2013-04-07",
+  "rating": 9.2,
+  "synopsis": "After 100 years of peace, humanity's worst nightmare...",
+  "tags": ["Key Moment", "Lore"],
+  "thumbnail": "/images/episodes/s1e1.jpg"
+}
+```
+
+### 7E. Timeline (#timeline)
+**Layout:** Full-width, min-height 80vh, padding --space-16
+**Background:** #0A0A0A
+
+**Features:**
+- Vertical timeline with central line
+- Events alternate left/right of the line
+- Each event node: year, title, brief description, optional image
+- Scroll-triggered: events fade in as they enter viewport
+- Eras: "Ancient History" → "The Great Titan War" → "100 Years of Peace" →
+  "Year 845: The Fall" → "Year 850: The Return" → "Year 854: The Rumbling"
+- Color-coded by era (gold → green → red → black)
+
+**Data Structure (timeline.json):**
+```json
+{
+  "year": "845",
+  "era": "The Fall",
+  "title": "Fall of Wall Maria",
+  "description": "The Colossal and Armored Titans breach Wall Maria...",
+  "image": "/images/timeline/fall-of-maria.jpg",
+  "color": "#CC2200"
+}
+```
+
+### 7F. Soundtrack Player (#music)
+**Layout:** Full-width, min-height 60vh, padding --space-16
+**Background:** #0F0F0F with subtle gradient
+
+**Features:**
+- Header: "THE SOUND OF WAR" + "Music by Hiroyuki Sawano"
+- Featured tracks as horizontal scrollable cards
+- Each track card: album art, title, duration, scene association
+- Click → plays embedded audio (YouTube iframe or SoundCloud embed)
+- Custom player bar at bottom (sticky within section):
+  - Track name, play/pause, progress bar, volume
+- Visualizer: CSS animated bars when playing (decorative, not real FFT)
+
+**Track List:**
+1. "Guren no Yumiya" — OP1 (Linked Horizon)
+2. "Jiyuu no Tsubasa" — OP2 (Linked Horizon)
+3. "Sasageyo!" — OP3 (Linked Horizon)
+4. "Vogel im Käfig" — Emotional/Reveal scenes
+5. "YouSeeBIGGIRL/T:T" — Female Titan reveal
+6. "The Rumbling" — Final Season OP (SiM)
+7. "Akuma no Ko" — Final Season ED (Higuchi Ai)
+8. "Call Your Name" — Emotional scenes
+9. "Attack on Titan" — Main theme
+10. "Barricades" — Battle of Trost
+
+**Data Structure (soundtrack.json):**
+```json
+{
+  "id": "guren-no-yumiya",
+  "title": "Guren no Yumiya",
+  "artist": "Linked Horizon",
+  "composer": "Hiroyuki Sawano",
+  "type": "Opening 1",
+  "season": 1,
+  "duration": "5:16",
+  "embedUrl": "https://www.youtube.com/embed/...",
+  "albumArt": "/images/music/guren.jpg"
+}
+```
+
+### 7G. Gallery
+**Layout:** Full-width, min-height 80vh, padding --space-16
+**Background:** #0A0A0A
+
+**Features:**
+- Masonry grid of images (3–4 columns desktop, 2 tablet, 1 mobile)
+- Categories: Anime Screenshots | Manga Panels | Official Art | Fan Art
+- Click → Lightbox modal with full-size image, caption, source
+- Lazy loading with blur-up placeholder
+- "Load More" pagination (20 images per batch)
+
+### 7H. Community (#community)
+**Layout:** Full-width, min-height 60vh, padding --space-16
+**Background:** #0F0F0F
+
+**Features:**
+- 3-column card grid:
+  - **Discord:** Embedded widget or "Join Server" CTA with member count
+  - **Social:** Twitter/X feed embed or link, Reddit link, MyAnimeList link
+  - **Fan Art:** "Submit Your Art" CTA + showcase of 3–4 featured pieces
+- Large CTA: "DEDICATE YOUR HEART — JOIN THE SURVEY CORPS"
+  (green button, --color-primary, glow shadow)
+
+---
+
+## ═══════════════════════════════════════════════════════════
+## SECTION 8: 3D ASSET CREATION GUIDE
+## ═══════════════════════════════════════════════════════════
+
+### General Rules
+- **Format:** .glb (binary glTF) with Draco mesh compression
+- **Poly Budget:** Hero models 15k–30k tris, environment 5k–15k, props 3k–8k,
+  background LOD 1k–3k
+- **Textures:** Max 2048 hero, 1024 environment, 512 props. KTX2 compressed.
+- **Scale:** 1 unit = 1 meter. Titans to scale (3m–60m).
+- **Origin:** Center pivot at feet for characters, center for props.
+- **Animations:** Bake to keyframes, export as .glb clips. Skeletal for
+  characters, morph targets for transforms.
+- **Pipeline:** Blender → gltf-transform CLI (Draco + KTX2) → /public/models/
+
+### Full Asset List
+
+| Scene | Asset | Polys | Method |
+|-------|-------|-------|--------|
+| 1 | Wall Maria Gate | 15k | Blender: medieval wall + arch, displacement map |
+| 1 | Colossal Titan Head | 25k | Blender: sculpt from reference, SSS material |
+| 1 | Debris Chunks (x5) | 2k each | Blender: fracture modifier on wall mesh |
+| 1 | Ground Plane | 5k | Tiling PBR texture (cobblestone + grass) |
+| 2 | Three Wall Rings | 10k each | Blender: procedural cylinders + wall texture |
+| 2 | Terrain | 8k | Blender: displacement plane, green/brown |
+| 3 | Eren Yeager | 20k | Blender/Mixamo: rig + Survey Corps uniform |
+| 3 | Mikasa Ackerman | 20k | Same + red scarf (cloth sim baked) |
+| 3 | Levi Ackerman | 20k | Same + dual blades |
+| 3 | Attack Titan | 25k | Blender: sculpt, morph from Eren |
+| 3 | ODM Gear | 8k | Blender: hard-surface, metallic PBR |
+| 4 | Pure Titan (x3 sizes) | 15k each | Blender: 1 base + scale/morph variants |
+| 4 | Abnormal Titan | 15k | Modified pure titan, extreme pose |
+| 4 | Nine Titans (hero 3) | 20k each | Attack, Colossal, Armored detailed |
+| 4 | Nine Titans (silhouette 6) | 5k each | Low-poly outlines only |
+| 5 | Trost Buildings (x5 modular) | 8k each | Blender: modular kit, instanced |
+| 5 | Boulder | 3k | Icosphere + displacement |
+| 6 | Staircase | 5k | Simple geometry, dark stone PBR |
+| 6 | Basement Room | 8k | Door, shelves, desk, candle |
+| 7 | Colossal Titan (detailed) | 25k | Full body, for foreground |
+| 7 | Colossal Titan (LOD) | 5k | For InstancedMesh army |
+| 7 | Wall Fragments | 3k each | Fracture modifier, animated |
+
+### Quick-Start Alternatives (if no Blender skills)
+- **Meshy.ai / Tripo3D:** Text-to-3D for props
+- **CSM.ai:** Image-to-3D from AoT screenshots
+- **Sketchfab:** Search "Attack on Titan" (check CC licenses)
+- **Mixamo:** Auto-rig humanoids + free animation library
+- **Note:** AI 3D needs cleanup. Use for prototyping, refine for production.
+
+---
+
+## ═══════════════════════════════════════════════════════════
+## SECTION 9: 2D IMAGE GENERATION PROMPTS
+## ═══════════════════════════════════════════════════════════
+
+Use these in Midjourney, DALL-E 3, or Stable Diffusion.
+
+### Environment / HDR
+1. **Golden Sky:** "Equirectangular HDR panorama, golden hour sunset over
+   medieval walled city, warm orange pink clouds, peaceful, photorealistic, 8K"
+2. **Red Apocalyptic Sky:** "Equirectangular HDR, blood red apocalyptic sky,
+   dark storm clouds, fire glow horizon, volcanic ash, cinematic, 8K"
+3. **Dark Basement:** "Equirectangular, pitch black stone cellar, single warm
+   candle light, dust in beam, moody, photorealistic"
+
+### Textures
+4. **Wall Stone:** "Seamless tileable, ancient stone wall, weathered grey-brown,
+   medieval fortress, PBR, 4K, top-down"
+5. **Titan Skin:** "Seamless tileable, muscular skin without epidermis, red
+   muscle fibers, anatomical, grotesque, 2K"
+6. **Parchment:** "Aged parchment, hand-drawn titan sketches in margins,
+   handwritten German script, coffee stains, worn edges, top-down, 4K"
+
+### UI / Assets
+7. **Wings Logo:** "Survey Corps Wings of Freedom logo, clean vector, white and
+   blue overlapping wings, transparent bg, high res, minimalist"
+8. **Vintage Photo:** "Sepia photograph, early 1900s, family of three before
+   building, damaged edges, faded, mysterious, realistic"
+9. **Impact Frame:** "Manga impact frame, black white speed lines from center,
+   dramatic, high contrast, transparent center, vector, 4K"
+10. **Ember Sprite:** "Glowing ember particle, orange-red gradient, soft glow,
+    transparent bg, circular, 64x64"
+
+### Section Backgrounds
+11. **Map Background:** "Fantasy cartographic map, circular island with three
+    concentric walls, medieval parchment, compass rose, sea monsters, hand-drawn,
+    warm tones, top-down"
+12. **Episode Header:** "Cinematic wide shot, Survey Corps on wall at sunset,
+    capes flowing, dramatic clouds, anime art style, 16:9, high detail"
+13. **Community Banner:** "Survey Corps soldiers charging forward, Wings of
+    Freedom capes, dramatic low angle, anime cinematic, widescreen, epic"
+
+---
+
+## ═══════════════════════════════════════════════════════════
+## SECTION 10: RESPONSIVE DESIGN STRATEGY
+## ═══════════════════════════════════════════════════════════
+
+### Breakpoints
+| Tier | Width | 3D Experience | Overlay | Content Sections |
+|------|-------|---------------|---------|-----------------|
+| Desktop | >1024px | Full 3D, all FX | Cards at edges, 320–360px | 3–4 column grids |
+| Tablet | 768–1024px | Reduced 3D (fewer particles, no DOF, lower LOD) | Cards centered, 280px | 2 column grids |
+| Mobile | <768px | **2D parallax fallback** (no WebGL) | Cards 90vw, stacked | 1 column |
+
+### Mobile Fallback (CRITICAL)
+When `window.innerWidth < 768` OR GPU tier is low:
+- Replace `<Canvas>` with CSS parallax layers using background images
+- Each scene = full-screen background image with `transform: translateY()` parallax
+- Overlay text animates identically via GSAP ScrollTrigger (still works)
+- Use AI-generated images from Section 9 as parallax layers
+- Saves battery, prevents crashes on low-end devices
+- User still gets the narrative experience, just without real-time 3D
+
+### Touch Adjustments
+- Disable orbit/pointer controls on mobile
+- Min touch target: 44px
+- Swipe hint instead of scroll hint
+- Larger text on mobile (+10% base size)
+
+### Responsive Overlay Rules
+- All overlay cards: `max-width: min(90vw, 360px)` on mobile
+- Stats bars: stack vertically on mobile
+- Nine Titans grid: 3x3 → 2x2 → 1 column
+- Episode list: grid → accordion
+
+---
+
+## ═══════════════════════════════════════════════════════════
+## SECTION 11: PERFORMANCE OPTIMIZATION
+## ═══════════════════════════════════════════════════════════
+
+### Targets
+- **LCP:** < 2.5s (loading screen covers 3D init)
+- **FPS:** 60fps desktop (GTX 1060+), 30fps minimum mid-range
+- **Initial JS:** < 500KB (lazy-load 3D)
+- **Total 3D Assets:** < 20MB (Draco + KTX
