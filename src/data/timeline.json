@@ -1,0 +1,122 @@
+[
+  {
+    "id": "ymir-pact",
+    "year": "c. 1000 BCE",
+    "era": "Ancient History",
+    "title": "Ymir Fritz and the Source of All Organic Matter",
+    "description": "A slave girl in the Eldian tribe makes a pact with a spine-like creature beneath a great tree. She becomes the first titan — and the first of the Nine.",
+    "color": "#D4A574"
+  },
+  {
+    "id": "eldian-empire",
+    "year": "c. 990 BCE",
+    "era": "Eldian Empire",
+    "title": "The Empire Built on Titan Power",
+    "description": "Ymir's daughters inherit her flesh. Eldia conquers the continent with titan armies, and Marley is made a vassal for nearly two thousand years.",
+    "color": "#C0B7A4"
+  },
+  {
+    "id": "great-titan-war",
+    "year": "c. 743 CE",
+    "era": "The Great Titan War",
+    "title": "The Nine Turn on One Another",
+    "description": "The empire splinters. Eight titans are claimed by Marley; the Founding Titan stays with the Fritz family and Karl Fritz chooses exile over victory.",
+    "color": "#8A9BA8"
+  },
+  {
+    "id": "walls-raised",
+    "year": "c. 743 CE",
+    "era": "100 Years of Peace",
+    "title": "The Walls Are Raised",
+    "description": "Karl Fritz hardens thousands of Colossal Titans into three concentric walls on Paradis, erases the memory of the world and takes his people into a century of ignorance.",
+    "color": "#87CEEB"
+  },
+  {
+    "id": "fall-of-maria",
+    "year": "845",
+    "era": "The Fall",
+    "title": "Fall of Wall Maria",
+    "description": "The Colossal Titan breaches Shiganshina's outer gate; the Armored Titan breaks the inner gate. Carla Yeager is eaten as her son watches. Humanity loses a third of its land and population.",
+    "color": "#CC2200"
+  },
+  {
+    "id": "trost-850",
+    "year": "850",
+    "era": "The Return",
+    "title": "The Battle of Trost",
+    "description": "A second breach. Eren Yeager transforms for the first time and, with the 104th and the Garrison, seals the gate with a boulder. Humanity's first victory over the titans.",
+    "color": "#D4874A"
+  },
+  {
+    "id": "female-titan",
+    "year": "850",
+    "era": "The Return",
+    "title": "The Female Titan and the Betrayal at Stohess",
+    "description": "Annie Leonhart's infiltration ends in a crystallised tomb beneath the streets of the capital, and the Survey Corps learns that the enemy is human.",
+    "color": "#9B7BB8"
+  },
+  {
+    "id": "clash-utgard",
+    "year": "850",
+    "era": "The Return",
+    "title": "Utgard Castle and the Warriors' Reveal",
+    "description": "Reiner Braun and Bertholdt Hoover admit they are the Armored and Colossal Titans. The Coordinate awakens, and the Survey Corps' war becomes a chase across the walls.",
+    "color": "#B08A3E"
+  },
+  {
+    "id": "reiss-coup",
+    "year": "850",
+    "era": "The Return",
+    "title": "The Reiss Coup and the Coronation of Historia",
+    "description": "The true history of the walls is dragged into the light. Historia Reiss shatters her father's titan and takes the throne; the Survey Corps stops being expendable.",
+    "color": "#C0B7A4"
+  },
+  {
+    "id": "shiganshina-return",
+    "year": "850",
+    "era": "The Return",
+    "title": "Return to Shiganshina",
+    "description": "The Beast, Armored and Colossal Titans meet the Survey Corps in the ruins of Eren's hometown. Erwin charges the Beast Titan; Armin inherits the Colossal; the basement opens.",
+    "color": "#4A7C3F"
+  },
+  {
+    "id": "the-sea",
+    "year": "851",
+    "era": "The Sea",
+    "title": "The Ocean",
+    "description": "The Survey Corps reaches the sea for the first time in a century of history. Eren points at the horizon and asks the question the archive has been building toward: if we kill them all, will we be free?",
+    "color": "#87CEEB"
+  },
+  {
+    "id": "liberio",
+    "year": "854",
+    "era": "Marley",
+    "title": "The Raid on Liberio",
+    "description": "Eren attacks during Willy Tybur's declaration of war. The Beast Titan falls to Levi, the War Hammer is eaten, and Sasha Blouse dies on an airship over the sea.",
+    "color": "#8B1500"
+  },
+  {
+    "id": "paths",
+    "year": "854",
+    "era": "The Rumbling",
+    "title": "The Paths and the Founding Titan",
+    "description": "Eren reaches Ymir inside the Paths and asks for the power of the Founder. The walls crack open across Paradis.",
+    "color": "#FF6600"
+  },
+  {
+    "id": "the-rumbling",
+    "year": "854",
+    "era": "The Rumbling",
+    "title": "The Rumbling",
+    "description": "Tens of millions of Colossal Titans march across the world, flattening everything outside Paradis. Marley, the alliance and the Jaegerists converge on Fort Salta.",
+    "color": "#FF2200"
+  },
+  {
+    "id": "the-dawn",
+    "year": "854",
+    "era": "After",
+    "title": "The Dawn",
+    "description": "The alliance stops the Rumbling at the cost of nearly everything. Three years later, the survivors walk back into a world that will spend generations arguing about what was worth it.",
+    "color": "#D8C9A8"
+  }
+]

@@ -1,0 +1,179 @@
+[
+  {
+    "id": "shiganshina",
+    "name": "Shiganshina District",
+    "nameJP": "シガンシナ区",
+    "wall": "Maria",
+    "position": {
+      "x": 50,
+      "y": 88
+    },
+    "description": "The southernmost district of Wall Maria and Eren's hometown. Its outer gate faces the world and its inner gate faces Wall Rose — which is why it was chosen for the first breach.",
+    "keyEvents": [
+      "Fall of Wall Maria (845)",
+      "Battle of Shiganshina (850)",
+      "The basement opened (850)"
+    ],
+    "accent": "#CC2200"
+  },
+  {
+    "id": "trost",
+    "name": "Trost District",
+    "nameJP": "トロスト区",
+    "wall": "Rose",
+    "position": {
+      "x": 50,
+      "y": 66
+    },
+    "description": "A garrison district south of Wall Rose and the site of humanity's first victory. Its streets are a maze of sloped roofs, perfect for ODM manoeuvres and terrible for cavalry.",
+    "keyEvents": [
+      "Battle of Trost (850)",
+      "Eren's first transformation",
+      "The boulder seals the gate"
+    ],
+    "accent": "#D4874A"
+  },
+  {
+    "id": "karanes",
+    "name": "Karanes District",
+    "nameJP": "カラネス区",
+    "wall": "Rose",
+    "position": {
+      "x": 24,
+      "y": 62
+    },
+    "description": "An eastern district of Wall Rose. The Survey Corps' 57th expedition passed through its gate into the territory where the Female Titan was waiting.",
+    "keyEvents": [
+      "57th Exterior Scouting Mission (850)"
+    ],
+    "accent": "#8A9BA8"
+  },
+  {
+    "id": "krolva",
+    "name": "Krolva District",
+    "nameJP": "クロルバ区",
+    "wall": "Rose",
+    "position": {
+      "x": 76,
+      "y": 60
+    },
+    "description": "A western district of Wall Rose. Its evacuation routes became a bottleneck during the second breach scare of 850.",
+    "keyEvents": [
+      "Evacuation of Wall Rose (850)"
+    ],
+    "accent": "#B08A3E"
+  },
+  {
+    "id": "utgard",
+    "name": "Utgard Castle",
+    "nameJP": "ウトガルド城",
+    "wall": "Rose",
+    "position": {
+      "x": 69,
+      "y": 42
+    },
+    "description": "A ruined castle inside Wall Rose. The 104th held it overnight against the Beast Titan's Pure Titans and learned who among them was never a soldier.",
+    "keyEvents": [
+      "Siege of Utgard (850)",
+      "Reiner and Bertholdt reveal themselves"
+    ],
+    "accent": "#7A8C6A"
+  },
+  {
+    "id": "ehrmich",
+    "name": "Ehrmich District",
+    "nameJP": "エルミハ区",
+    "wall": "Sina",
+    "position": {
+      "x": 50,
+      "y": 48
+    },
+    "description": "The southern district of Wall Sina and the staging ground for the Survey Corps' departure to Shiganshina. Its refugee camps held the survivors of Wall Maria for five years.",
+    "keyEvents": [
+      "Refugee crisis (845–850)",
+      "Departure for Shiganshina (850)"
+    ],
+    "accent": "#C0B7A4"
+  },
+  {
+    "id": "stohess",
+    "name": "Stohess District",
+    "nameJP": "ストヘス区",
+    "wall": "Sina",
+    "position": {
+      "x": 30,
+      "y": 38
+    },
+    "description": "A wealthy district of the interior and the site of the Female Titan's capture. Beneath its streets, Annie Leonhart has been crystallised for four years.",
+    "keyEvents": [
+      "Battle of Stohess (850)",
+      "Annie crystallised"
+    ],
+    "accent": "#9B7BB8"
+  },
+  {
+    "id": "mitras",
+    "name": "Mitras",
+    "nameJP": "ミットラス",
+    "wall": "Sina",
+    "position": {
+      "x": 50,
+      "y": 32
+    },
+    "description": "The royal capital at the centre of the walls. The Reiss chapel beneath it hid the founding family, the truth of the walls and a cavern full of titans.",
+    "keyEvents": [
+      "Reiss chapel collapse (850)",
+      "Historia crowned queen"
+    ],
+    "accent": "#D8C9A8"
+  },
+  {
+    "id": "paradis",
+    "name": "Paradis Island",
+    "nameJP": "パラディ島",
+    "wall": "Beyond",
+    "position": {
+      "x": 50,
+      "y": 44
+    },
+    "description": "The island where Karl Fritz took his people. Three walls, one ocean, and a world that considered everyone inside them a threat for a century.",
+    "keyEvents": [
+      "Walls raised (743)",
+      "The Rumbling begins (854)"
+    ],
+    "accent": "#4A7C3F"
+  },
+  {
+    "id": "liberio",
+    "name": "Liberio",
+    "nameJP": "レベリオ",
+    "wall": "Marley",
+    "position": {
+      "x": 86,
+      "y": 30
+    },
+    "description": "The Eldian internment zone in Marley where Grisha, Zeke, Reiner and Gabi were raised. Willy Tybur's festival turned it into a battlefield in a single night.",
+    "keyEvents": [
+      "Declaration of War (854)",
+      "Raid on Liberio (854)",
+      "Sasha Blouse killed"
+    ],
+    "accent": "#9B3B2E"
+  },
+  {
+    "id": "fort-salta",
+    "name": "Fort Salta",
+    "nameJP": "サルタ要塞",
+    "wall": "Marley",
+    "position": {
+      "x": 80,
+      "y": 12
+    },
+    "description": "Marley's last defensive line and the final battlefield. The alliance, the warriors and the Founder meet here while the Rumbling reaches the horizon.",
+    "keyEvents": [
+      "The final battle (854)",
+      "The Rumbling stopped"
+    ],
+    "accent": "#FF4400"
+  }
+]

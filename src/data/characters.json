@@ -1,0 +1,445 @@
+[
+  {
+    "id": "eren-yeager",
+    "name": "Eren Yeager",
+    "nameJP": "エレン・イェーガー",
+    "affiliation": "Survey Corps",
+    "rank": "Scout · Special Operations",
+    "status": "Deceased — 854",
+    "height": "170 cm",
+    "weight": "63 kg",
+    "age": "19 (854)",
+    "stats": { "combat": 8, "initiative": 10, "intellect": 6, "teamwork": 5, "titan": 10 },
+    "bio": "Born in Shiganshina, Eren watched the Colossal Titan tear down his home and his mother in the same afternoon. He enlisted with one sentence — that he would kill every last titan — and discovered that the power to do it had been inside him all along. As the holder of the Attack and Founding Titans, he inherited a will that has always moved forward, across generations and across memory itself. What he does with that inheritance turns the story from a war against monsters into a question about freedom.",
+    "quotes": [
+      "I'll keep moving forward. Until my enemies are destroyed.",
+      "Because I was born into this world, I am free.",
+      "If you win, you live. If you lose, you die. If you don't fight, you can't win."
+    ],
+    "relationships": [
+      { "name": "Mikasa Ackerman", "relation": "Adopted sister · closest bond" },
+      { "name": "Armin Arlert", "relation": "Childhood friend · strategist" },
+      { "name": "Zeke Yeager", "relation": "Half-brother · rival ally" },
+      { "name": "Grisha Yeager", "relation": "Father · predecessor as Attack Titan" }
+    ],
+    "firstAppearance": "S1E1 · To You, in 2000 Years",
+    "lastAppearance": "The Final Chapters · The Dawn",
+    "titanForm": "Attack Titan · Founding Titan",
+    "accent": "#4A7C3F",
+    "monogram": "EY"
+  },
+  {
+    "id": "mikasa-ackerman",
+    "name": "Mikasa Ackerman",
+    "nameJP": "ミカサ・アッカーマン",
+    "affiliation": "Survey Corps",
+    "rank": "Scout · Ackerman bloodline",
+    "status": "Alive — 854",
+    "height": "170 cm",
+    "weight": "68 kg",
+    "age": "19 (854)",
+    "stats": { "combat": 10, "initiative": 8, "intellect": 7, "teamwork": 6, "titan": 0 },
+    "bio": "The strongest soldier of her generation and the best cadet of the 104th, Mikasa fights with an economy that unnerves even veterans. Her Ackerman blood grants her awakened strength, but what actually drives her is narrower and warmer: keeping Eren alive. She wears the scarf he gave her as a child, and the whole series can be read as her slow struggle to decide whether love is a reason or an excuse.",
+    "quotes": [
+      "This world is cruel, but it is also very beautiful.",
+      "If I win, I live. If I don't fight, I can't win."
+    ],
+    "relationships": [
+      { "name": "Eren Yeager", "relation": "Anchor · childhood rescue" },
+      { "name": "Armin Arlert", "relation": "Found family" },
+      { "name": "Levi Ackerman", "relation": "Distant kin" }
+    ],
+    "firstAppearance": "S1E1 · To You, in 2000 Years",
+    "lastAppearance": "The Final Chapters · The Dawn",
+    "accent": "#CC2200",
+    "monogram": "MA"
+  },
+  {
+    "id": "levi-ackerman",
+    "name": "Levi Ackerman",
+    "nameJP": "リヴァイ・アッカーマン",
+    "affiliation": "Survey Corps",
+    "rank": "Captain · Special Operations",
+    "status": "Alive — 854",
+    "height": "160 cm",
+    "weight": "65 kg",
+    "age": "30s",
+    "stats": { "combat": 10, "initiative": 9, "intellect": 8, "teamwork": 7, "titan": 0 },
+    "bio": "Raised in the Underground by Kenny Ackerman, Levi learned early that cleanliness and violence are both forms of discipline. He is humanity's strongest soldier and its least sentimental one: no speeches, no ceremony, just the decision to do what must be done. His squad dies around him more than once, and each loss sharpens the same hard creed — choose without regret, because regrets change nothing.",
+    "quotes": [
+      "No regrets. Decide, and then don't look back.",
+      "The only thing we're allowed to do is believe that we won't regret the choice we made."
+    ],
+    "relationships": [
+      { "name": "Erwin Smith", "relation": "Commander · mutual trust" },
+      { "name": "Hange Zoë", "relation": "Friend and foil" },
+      { "name": "Kenny Ackerman", "relation": "Uncle · mentor in violence" }
+    ],
+    "firstAppearance": "S1E13 · Primal Desire",
+    "lastAppearance": "The Final Chapters · The Dawn",
+    "accent": "#87CEEB",
+    "monogram": "LA"
+  },
+  {
+    "id": "armin-arlert",
+    "name": "Armin Arlert",
+    "nameJP": "アルミン・アルレルト",
+    "affiliation": "Survey Corps",
+    "rank": "Commander · 854",
+    "status": "Alive — 854",
+    "height": "163 cm",
+    "weight": "55 kg",
+    "age": "19 (854)",
+    "stats": { "combat": 6, "initiative": 8, "intellect": 10, "teamwork": 8, "titan": 0 },
+    "bio": "The boy who read books about the sea while the walls told him there was nothing beyond them. Armin's weapon is the one thing titans cannot harden against: a plan. He gambles his own life as a coin and wins more often than mathematics allows, then inherits the Colossal Titan and the weight of being called a hero by the person who chose him.",
+    "quotes": [
+      "I can't die yet. I have to see the sea.",
+      "Someone who cannot sacrifice anything can never change anything."
+    ],
+    "relationships": [
+      { "name": "Eren Yeager", "relation": "Childhood friend" },
+      { "name": "Mikasa Ackerman", "relation": "Found family" },
+      { "name": "Erwin Smith", "relation": "Mentor in command" }
+    ],
+    "firstAppearance": "S1E1 · To You, in 2000 Years",
+    "lastAppearance": "The Final Chapters · The Dawn",
+    "titanForm": "Colossal Titan",
+    "accent": "#D4A574",
+    "monogram": "AA"
+  },
+  {
+    "id": "erwin-smith",
+    "name": "Erwin Smith",
+    "nameJP": "エルヴィン・スミス",
+    "affiliation": "Survey Corps",
+    "rank": "Commander · 845–850",
+    "status": "Deceased — 850",
+    "height": "188 cm",
+    "weight": "92 kg",
+    "age": "30s",
+    "stats": { "combat": 8, "initiative": 9, "intellect": 9, "teamwork": 8, "titan": 0 },
+    "bio": "Erwin sold his soldiers' lives in fractions and kept a ledger of the dead. He believed the truth behind the walls justified any charge, and he was right often enough to be dangerous. At Shiganshina he built the perfect gamble, then gave the syringe to a boy instead of his own dream — the last order of a man who chose humanity over his own answer.",
+    "quotes": [
+      "Give up on your dreams and die for us.",
+      "Soldiers! Rage! Humiliate yourselves! And dedicate your hearts!"
+    ],
+    "relationships": [
+      { "name": "Levi Ackerman", "relation": "Right hand" },
+      { "name": "Hange Zoë", "relation": "Successor" },
+      { "name": "Zeke Yeager", "relation": "Adversary at Shiganshina" }
+    ],
+    "firstAppearance": "S1E5 · First Battle",
+    "lastAppearance": "S3E18 · Midnight Sun",
+    "accent": "#8A9BA8",
+    "monogram": "ES"
+  },
+  {
+    "id": "hange-zoe",
+    "name": "Hange Zoë",
+    "nameJP": "ハンジ・ゾエ",
+    "affiliation": "Survey Corps",
+    "rank": "Commander · 850–854",
+    "status": "Deceased — 854",
+    "height": "170 cm",
+    "weight": "60 kg",
+    "age": "30s",
+    "stats": { "combat": 7, "initiative": 9, "intellect": 10, "teamwork": 7, "titan": 0 },
+    "bio": "Hange talked to titans before anyone would call them enemies, then inherited an army that needed them to be a general. Their love of the grotesque made them the best naturalist the Survey Corps ever had; their refusal to look away made them the one commander willing to negotiate with the people who had been killing them.",
+    "quotes": [
+      "Research means going where nobody has gone.",
+      "I want to understand them. Isn't that reason enough?"
+    ],
+    "relationships": [
+      { "name": "Levi Ackerman", "relation": "Trusted comrade" },
+      { "name": "Erwin Smith", "relation": "Predecessor" },
+      { "name": "Moblit Berner", "relation": "Squad member" }
+    ],
+    "firstAppearance": "S1E5 · First Battle",
+    "lastAppearance": "S4E24 · Pride",
+    "accent": "#9B7BB8",
+    "monogram": "HZ"
+  },
+  {
+    "id": "jean-kirstein",
+    "name": "Jean Kirstein",
+    "nameJP": "ジャン・キルシュタイン",
+    "affiliation": "Survey Corps",
+    "rank": "Squad Leader",
+    "status": "Alive — 854",
+    "height": "175 cm",
+    "weight": "65 kg",
+    "age": "19 (854)",
+    "stats": { "combat": 7, "initiative": 6, "intellect": 7, "teamwork": 8, "titan": 0 },
+    "bio": "Jean joined to live safely inside Wall Sina and spent the series becoming the person who tells the truth when the room would rather not hear it. He is not the strongest or the smartest, but he understands crowds, chains of command and the cowardice of wanting to survive — which makes him a leader.",
+    "quotes": [
+      "Someone has to keep a level head while everyone else loses theirs.",
+      "If we survive this, I'm going to say everything I never said."
+    ],
+    "relationships": [
+      { "name": "Eren Yeager", "relation": "Rival" },
+      { "name": "Marco Bott", "relation": "Friend · loss" },
+      { "name": "Armin Arlert", "relation": "Reliable comrade" }
+    ],
+    "firstAppearance": "S1E4 · The Night of the Closing Ceremony",
+    "lastAppearance": "The Final Chapters · The Dawn",
+    "accent": "#B08A3E",
+    "monogram": "JK"
+  },
+  {
+    "id": "connie-springer",
+    "name": "Connie Springer",
+    "nameJP": "コニー・スプリンガー",
+    "affiliation": "Survey Corps",
+    "rank": "Scout",
+    "status": "Alive — 854",
+    "height": "158 cm",
+    "weight": "54 kg",
+    "age": "19 (854)",
+    "stats": { "combat": 6, "initiative": 5, "intellect": 4, "teamwork": 8, "titan": 0 },
+    "bio": "The one who says the obvious thing people needed said. Connie's family became a failed experiment in Ragako, and he spent the rest of the war deciding what loyalty to friends costs when friends become monsters.",
+    "quotes": ["I'm not smart, so tell me straight.", "That's my family out there."],
+    "relationships": [
+      { "name": "Sasha Blouse", "relation": "Best friend" },
+      { "name": "Jean Kirstein", "relation": "Squad mate" }
+    ],
+    "firstAppearance": "S1E4 · The Night of the Closing Ceremony",
+    "lastAppearance": "The Final Chapters · The Dawn",
+    "accent": "#8A8278",
+    "monogram": "CS"
+  },
+  {
+    "id": "sasha-blouse",
+    "name": "Sasha Blouse",
+    "nameJP": "サシャ・ブラウス",
+    "affiliation": "Survey Corps",
+    "rank": "Scout · 104th",
+    "status": "Deceased — 854",
+    "height": "168 cm",
+    "weight": "55 kg",
+    "age": "19 (854)",
+    "stats": { "combat": 7, "initiative": 7, "intellect": 4, "teamwork": 8, "titan": 0 },
+    "bio": "A hunter from Dauper who joined the army in order to eat meat and accidentally became one of its most beloved soldiers. Sasha's instincts were wild, her aim impossible and her loyalty absolute. She died on an airship over Liberio, apologising for the meal she would not finish.",
+    "quotes": ["Meat!", "I'm going home to Sasha's family and telling them everything."],
+    "relationships": [
+      { "name": "Connie Springer", "relation": "Best friend" },
+      { "name": "Kaya", "relation": "Protected child" },
+      { "name": "Nicolo", "relation": "Bond forged over food" }
+    ],
+    "firstAppearance": "S1E4 · The Night of the Closing Ceremony",
+    "lastAppearance": "S4E8 · Assassin's Bullet",
+    "accent": "#D4874A",
+    "monogram": "SB"
+  },
+  {
+    "id": "annie-leonhart",
+    "name": "Annie Leonhart",
+    "nameJP": "アニ・レオンハート",
+    "affiliation": "Marley",
+    "rank": "Warrior · Female Titan",
+    "status": "Alive — 854",
+    "height": "153 cm",
+    "weight": "50 kg",
+    "age": "19 (854)",
+    "stats": { "combat": 10, "initiative": 7, "intellect": 8, "teamwork": 3, "titan": 9 },
+    "bio": "Sent to Paradis as a child with a mission she did not choose, Annie built her whole life around the exit. She was the object of Armin's first fascination and the instrument of Levi's squad's death, which is exactly the kind of contradiction she refused to resolve. The crystal that kept her out of the war kept her out of the world too — until the world ended and someone asked her to fight for it.",
+    "quotes": ["I just want to go home.", "You're running away too, aren't you?"],
+    "relationships": [
+      { "name": "Reiner Braun", "relation": "Warrior comrade" },
+      { "name": "Bertholdt Hoover", "relation": "Warrior comrade" },
+      { "name": "Armin Arlert", "relation": "Complicated bond" }
+    ],
+    "firstAppearance": "S1E3 · A Dim Light Amid Despair",
+    "lastAppearance": "The Final Chapters · The Dawn",
+    "titanForm": "Female Titan",
+    "accent": "#9B7BB8",
+    "monogram": "AL"
+  },
+  {
+    "id": "reiner-braun",
+    "name": "Reiner Braun",
+    "nameJP": "ライナー・ブラウン",
+    "affiliation": "Marley",
+    "rank": "Warrior · Armored Titan",
+    "status": "Alive — 854",
+    "height": "185 cm",
+    "weight": "82 kg",
+    "age": "21 (854)",
+    "stats": { "combat": 9, "initiative": 6, "intellect": 6, "teamwork": 5, "titan": 9 },
+    "bio": "The soldier who was also a spy who was also a soldier. Reiner's mind split cleanly down the middle of his mission: in one half he was a big brother to the 104th, in the other he was the Armored Titan that killed their friends. No other character carries the story's central accusation — that everyone is the hero of a different war — as literally as he does.",
+    "quotes": ["I'm a warrior. And a soldier.", "There's no such thing as a good person from an enemy's point of view."],
+    "relationships": [
+      { "name": "Bertholdt Hoover", "relation": "Closest friend" },
+      { "name": "Annie Leonhart", "relation": "Warrior comrade" },
+      { "name": "Eren Yeager", "relation": "Target and mirror" }
+    ],
+    "firstAppearance": "S1E3 · A Dim Light Amid Despair",
+    "lastAppearance": "The Final Chapters · The Dawn",
+    "titanForm": "Armored Titan",
+    "accent": "#8A9BA8",
+    "monogram": "RB"
+  },
+  {
+    "id": "bertholdt-hoover",
+    "name": "Bertholdt Hoover",
+    "nameJP": "ベルトルト・フーバー",
+    "affiliation": "Marley",
+    "rank": "Warrior · Colossal Titan",
+    "status": "Deceased — 850",
+    "height": "192 cm",
+    "weight": "81 kg",
+    "age": "17 (850)",
+    "stats": { "combat": 8, "initiative": 4, "intellect": 6, "teamwork": 6, "titan": 10 },
+    "bio": "Quiet to the point of invisibility, Bertholdt carried the power that began everything: the Colossal Titan that broke Wall Maria. He was kind, which made his choices worse. At Shiganshina he burned Erwin's army to the ground and was pulled from the smoke by a boy with a plan.",
+    "quotes": ["We're all going to die anyway.", "Someone has to do it. Someone has to carry the blood."],
+    "relationships": [
+      { "name": "Reiner Braun", "relation": "Closest friend" },
+      { "name": "Annie Leonhart", "relation": "Warrior comrade" },
+      { "name": "Armin Arlert", "relation": "Killed by his gambit" }
+    ],
+    "firstAppearance": "S1E3 · A Dim Light Amid Despair",
+    "lastAppearance": "S3E17 · Hero",
+    "titanForm": "Colossal Titan",
+    "accent": "#9B3B2E",
+    "monogram": "BH"
+  },
+  {
+    "id": "zeke-yeager",
+    "name": "Zeke Yeager",
+    "nameJP": "ジーク・イェーガー",
+    "affiliation": "Marley",
+    "rank": "Warrior · Beast Titan",
+    "status": "Deceased — 854",
+    "height": "183 cm",
+    "weight": "95 kg",
+    "age": "29 (854)",
+    "stats": { "combat": 8, "initiative": 8, "intellect": 10, "teamwork": 4, "titan": 10 },
+    "bio": "A brilliant man taught by a spy to hate the country that made him, Zeke arrived at a solution worse than any enemy's: end the future of his own people so that the next generation cannot inherit the grudge. He plays baseball with artillery, strands soldiers in titan bodies and argues, calmly, for extinction.",
+    "quotes": ["I'm going to save Eldia. I just have to destroy it first.", "The only way to break the cycle is to end it."],
+    "relationships": [
+      { "name": "Eren Yeager", "relation": "Half-brother" },
+      { "name": "Tom Ksaver", "relation": "True father figure" },
+      { "name": "Levi Ackerman", "relation": "Executor" }
+    ],
+    "firstAppearance": "S2E1 · Beast Titan",
+    "lastAppearance": "The Final Chapters · The Dawn",
+    "titanForm": "Beast Titan",
+    "accent": "#B08A3E",
+    "monogram": "ZY"
+  },
+  {
+    "id": "historia-reiss",
+    "name": "Historia Reiss",
+    "nameJP": "ヒストリア・レイス",
+    "affiliation": "Military Police",
+    "rank": "Queen of the Walls · 850–854",
+    "status": "Alive — 854",
+    "height": "145 cm",
+    "weight": "42 kg",
+    "age": "19 (854)",
+    "stats": { "combat": 5, "initiative": 8, "intellect": 8, "teamwork": 7, "titan": 0 },
+    "bio": "Raised as a hidden heir, then used by a council, then chosen by herself. Historia took the throne in the middle of a coup and turned the monarchy into something that could protect the island. She is the first person in the story to say out loud that she is finished pretending to be small.",
+    "quotes": ["I'm going to be the worst girl in the world.", "I trust myself."],
+    "relationships": [
+      { "name": "Ymir", "relation": "Love · Jaw Titan" },
+      { "name": "Rod Reiss", "relation": "Father · antagonist" },
+      { "name": "Eren Yeager", "relation": "Ally" }
+    ],
+    "firstAppearance": "S1E3 · A Dim Light Amid Despair",
+    "lastAppearance": "The Final Chapters · The Dawn",
+    "accent": "#C0B7A4",
+    "monogram": "HR"
+  },
+  {
+    "id": "falco-grice",
+    "name": "Falco Grice",
+    "nameJP": "ファルコ・グライス",
+    "affiliation": "Marley",
+    "rank": "Warrior candidate · Jaw Titan",
+    "status": "Alive — 854",
+    "height": "168 cm",
+    "weight": "60 kg",
+    "age": "12 (854)",
+    "stats": { "combat": 6, "initiative": 7, "intellect": 7, "teamwork": 8, "titan": 8 },
+    "bio": "A candidate who wanted to protect his brother and the girl he loved, and got a titan instead. Falco inherits the Jaw and, with it, a memory that lets him fly into a war he never chose — and land in the middle of the one kid who might end it.",
+    "quotes": ["I'll do whatever it takes for Gabi.", "Maybe we were all just children in a war we didn't start."],
+    "relationships": [
+      { "name": "Gabi Braun", "relation": "Childhood friend" },
+      { "name": "Colt Grice", "relation": "Older brother" },
+      { "name": "Annie Leonhart", "relation": "Liberatori" }
+    ],
+    "firstAppearance": "S4E1 · The Other Side of the Sea",
+    "lastAppearance": "The Final Chapters · The Dawn",
+    "titanForm": "Jaw Titan",
+    "accent": "#D4A574",
+    "monogram": "FG"
+  },
+  {
+    "id": "gabi-braun",
+    "name": "Gabi Braun",
+    "nameJP": "ガビ・ブラウン",
+    "affiliation": "Marley",
+    "rank": "Warrior candidate · 104th",
+    "status": "Alive — 854",
+    "height": "138 cm",
+    "weight": "40 kg",
+    "age": "12 (854)",
+    "stats": { "combat": 9, "initiative": 8, "intellect": 6, "teamwork": 4, "titan": 0 },
+    "bio": "A perfect little propaganda machine who kills Sasha and then has to live with having killed a person. Gabi is what the cycle looks like at the bottom: a child trained to be proud of a shot she should not have taken, and brave enough to stop taking it.",
+    "quotes": ["I am a warrior of Marley.", "I'm sick of regretting the things I can't change."],
+    "relationships": [
+      { "name": "Falco Grice", "relation": "Closest friend" },
+      { "name": "Reiner Braun", "relation": "Cousin · mentor" }
+    ],
+    "firstAppearance": "S4E1 · The Other Side of the Sea",
+    "lastAppearance": "The Final Chapters · The Dawn",
+    "accent": "#CC2200",
+    "monogram": "GB"
+  },
+  {
+    "id": "pieck-finger",
+    "name": "Pieck Finger",
+    "nameJP": "ピーク・フィンガー",
+    "affiliation": "Marley",
+    "rank": "Warrior · Cart Titan",
+    "status": "Alive — 854",
+    "height": "155 cm",
+    "weight": "45 kg",
+    "age": "20s",
+    "stats": { "combat": 7, "initiative": 9, "intellect": 9, "teamwork": 7, "titan": 9 },
+    "bio": "The Cart Titan's holder spent four years crawling across the world as it was dismantled and reassembled. Pieck is the most tactically dangerous of the warriors precisely because she never acts like a weapon: she waits, observes and arrives exactly where the enemy was not looking.",
+    "quotes": ["I'm just a cart, after all.", "I've had a good run of it."],
+    "relationships": [
+      { "name": "Zeke Yeager", "relation": "Commander · distrust" },
+      { "name": "Reiner Braun", "relation": "Warrior comrade" }
+    ],
+    "firstAppearance": "S2E1 · Beast Titan",
+    "lastAppearance": "The Final Chapters · The Dawn",
+    "titanForm": "Cart Titan",
+    "accent": "#7A8C6A",
+    "monogram": "PF"
+  },
+  {
+    "id": "grisha-yeager",
+    "name": "Grisha Yeager",
+    "nameJP": "グリシャ・イェーガー",
+    "affiliation": "Civilian",
+    "rank": "Eldian Restorationists · Attack Titan",
+    "status": "Deceased — 845",
+    "height": "183 cm",
+    "weight": "76 kg",
+    "age": "40s at death",
+    "stats": { "combat": 7, "initiative": 8, "intellect": 9, "teamwork": 5, "titan": 9 },
+    "bio": "A doctor in Shiganshina with three keys and two families. Grisha came from Liberio's restorationists, inherited the Attack Titan from Eren Kruger, and walked into Wall Maria carrying the future in his memory. What he did to his son — and what his son did to him across time — is the loop the story turns on.",
+    "quotes": ["The truth is out there. Someone has to buy it with their life.", "I'll show you what's in the basement."],
+    "relationships": [
+      { "name": "Eren Yeager", "relation": "Son · successor" },
+      { "name": "Zeke Yeager", "relation": "Son · betrayed" },
+      { "name": "Eren Kruger", "relation": "Predecessor · Owl" }
+    ],
+    "firstAppearance": "S1E1 · To You, in 2000 Years",
+    "lastAppearance": "S3E21 · Attack Titan",
+    "titanForm": "Attack Titan · Founding Titan",
+    "accent": "#8A6A34",
+    "monogram": "GY"
+  }
+]
