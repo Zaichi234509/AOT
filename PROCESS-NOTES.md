@@ -98,9 +98,18 @@ Technical architecture lives in [`BUILD.md`](./BUILD.md); the original spec live
    no longer send people to an image search — they show a real still. 18 character
    portraits (720×900) and 9 titan stills (1280×720) now live in
    `public/images/characters/` and `public/images/titans/`, referenced by a new `image`
-   field in `characters.json` / `titans.json`. Card grids, gallery plates and the map stay
-   procedural, and the small "search images" chips on the cards were left alone. Details
-   and licensing note: `public/images/README.md`.
+   field in `characters.json` / `titans.json`. Details and licensing note:
+   `public/images/README.md`.
+   **Update (this request):** the **card grids** now use those same stills, so the two
+   sections that still looked procedural are gone. `CharacterEncyclopedia` cards render
+   `<img object-cover object-top>` in the 4:5 tile (dark bottom gradient, name + rank
+   overlay and affiliation badge kept); `TitanBestiary`'s Nine Titans cards render
+   `<img object-cover object-[center_32%]>` in the `h-44` header (height pill, monogram
+   line, name and JP title kept). The per-card **"Search images" chips are removed** —
+   the top-right chip on both card types, and the inline link plus its `border-t`
+   wrapper on the Pure Titans cards (those classes have no images, so nothing replaces
+   it). Modals, gallery, map and og-image untouched; `CharacterGlyph` is no longer
+   used by any card but the component is kept.
 3. **Synthesised audio instead of streamed music** — wind + rumble via WebAudio; the
    soundtrack section is an honest simulated transport linking to official streams.
 4. **Depth of field + motion blur omitted** — both are full-screen per-frame passes that
@@ -117,6 +126,11 @@ Technical architecture lives in [`BUILD.md`](./BUILD.md); the original spec live
 
 - `npx tsc --noEmit` → no errors (strict mode).
 - `npx next build` → success, page statically prerendered; first load 197 kB.
+- Card stills: all **27** image URLs (`18` characters + `9` titans) return `200 image/jpeg`
+  from `next start`, and the prerendered HTML contains 18 + 9 `<img>` tags with
+  `object-cover object-top` / `object-[center_32%]`, and **zero** "Search images" chips.
+  Titan header crops were rendered offline at 340×176 with the same `object-position`
+  to confirm no head is cut off.
 - Dev server on `0.0.0.0:3000`; `/`, `/robots.txt`, `/sitemap.xml`, `/icon.svg`,
   `/og-image.jpg` all 200, unknown route → 404.
 - Rendered HTML contains all 8 section anchors, 18 character cards, 25 season-1 episode
@@ -157,6 +171,7 @@ Good next steps, in priority order:
 
 1. Scroll the site on a desktop and a phone; tune camera framing/brightness in
    `src/lib/sceneKeyframes.ts` and `scrollytelling/scenes/*`.
-2. Replace procedural plates with real captures (`public/images/`) if you have licensed art.
+2. Replace remaining procedural plates (gallery, soundtrack, map, community) with real
+   captures in `public/images/` if you have licensed art.
 3. Optional: add authored `.glb` models per `public/models/README.md`.
 4. Optional: add depth of field / motion blur behind a desktop quality check.

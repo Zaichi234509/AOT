@@ -7,12 +7,10 @@ import pureRaw from '@/data/pure-titans.json'
 import type { Titan, PureTitanClass } from '@/types/titan'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { SearchInput } from '@/components/ui/SearchInput'
-import { ImageSearchLink } from '@/components/ui/ImageSearchLink'
 import { Tabs } from '@/components/ui/Tabs'
 import { Badge } from '@/components/ui/Badge'
 import { GlassCard } from '@/components/ui/GlassCard'
 import { Modal } from '@/components/ui/Modal'
-import { ScenePoster } from '@/components/ui/ScenePoster'
 import { useSectionReveal } from '@/hooks/useGSAP'
 
 const titans = titansRaw as Titan[]
@@ -108,9 +106,15 @@ export function TitanBestiary() {
                   aria-label={`Open ${titan.name} details`}
                 >
                   <GlassCard padding="none" hover className="h-full" style={{ borderColor: `${titan.accent}2e` }}>
-                    <div className="relative h-44 overflow-hidden">
-                      <ScenePoster motif="titan" accent={titan.accent} showLabel={false} seed={titan.name.length * 7} />
-                      <div className="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/30 to-transparent" />
+                    <div className="relative h-44 overflow-hidden bg-ink-850">
+                      <img
+                        src={titan.image}
+                        alt={`${titan.name} — still from Attack on Titan`}
+                        loading="lazy"
+                        decoding="async"
+                        className="absolute inset-0 h-full w-full object-cover object-[center_32%] transition-transform duration-700 ease-out-expo group-hover:scale-[1.05]"
+                      />
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/30 to-transparent" />
                       <span className="absolute left-3 top-3 rounded-full border border-white/20 bg-black/50 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.16em] text-parchment/80 backdrop-blur">
                         {titan.height}
                       </span>
@@ -137,10 +141,6 @@ export function TitanBestiary() {
                     </div>
                   </GlassCard>
                 </button>
-                <ImageSearchLink
-                  name={titan.name}
-                  className="absolute right-3 top-3 z-10"
-                />
               </div>
             ))}
           </div>
@@ -168,9 +168,6 @@ export function TitanBestiary() {
                   <span className="font-mono text-[9px] text-smoke">{pure.heightMeters} m avg.</span>
                 </div>
                 <p className="mt-3 text-[12px] leading-relaxed text-ash">{pure.description}</p>
-                <div className="mt-4 border-t border-white/10 pt-3">
-                  <ImageSearchLink name={`${pure.name} titan`} variant="inline" />
-                </div>
               </GlassCard>
             ))}
           </div>
