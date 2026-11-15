@@ -6,10 +6,8 @@ import charactersRaw from '@/data/characters.json'
 import type { Affiliation, Character } from '@/types/character'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { SearchInput } from '@/components/ui/SearchInput'
-import { ImageSearchLink } from '@/components/ui/ImageSearchLink'
 import { Tabs } from '@/components/ui/Tabs'
 import { Badge, AFFILIATION_COLORS } from '@/components/ui/Badge'
-import { CharacterGlyph } from '@/components/ui/CharacterGlyph'
 import { GlassCard } from '@/components/ui/GlassCard'
 import { StatBar } from '@/components/ui/StatBar'
 import { Modal } from '@/components/ui/Modal'
@@ -96,18 +94,19 @@ export function CharacterEncyclopedia() {
                 className="h-full"
                 style={{ borderColor: `${character.accent}22` }}
               >
-                <div className="relative aspect-[4/5] overflow-hidden">
+                <div className="relative aspect-[4/5] overflow-hidden bg-ink-850">
                   <button
                     type="button"
                     onClick={() => setOpenId(character.id)}
                     className="focus-ring absolute inset-0 block h-full w-full text-left"
                     aria-label={`Open ${character.name}'s profile`}
                   >
-                    <CharacterGlyph
-                      monogram={character.monogram}
-                      nameJP={character.nameJP.split('・')[0]}
-                      accent={character.accent}
-                      className="h-full w-full transition-transform duration-700 ease-out-expo group-hover:scale-[1.04]"
+                    <img
+                      src={character.image}
+                      alt={`${character.name} — portrait still from Attack on Titan`}
+                      loading="lazy"
+                      decoding="async"
+                      className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 ease-out-expo group-hover:scale-[1.04]"
                     />
                     <span className="pointer-events-none absolute inset-x-0 bottom-0 block bg-gradient-to-t from-black/90 to-transparent p-3 pt-10">
                       <span className="block font-display text-base text-parchment">
@@ -123,11 +122,6 @@ export function CharacterEncyclopedia() {
                       {character.affiliation}
                     </Badge>
                   </div>
-                  {/* href image-search link overlaid on the portrait */}
-                  <ImageSearchLink
-                    name={character.name}
-                    className="absolute right-3 top-3 z-10"
-                  />
                 </div>
 
                 <div className="p-3.5">

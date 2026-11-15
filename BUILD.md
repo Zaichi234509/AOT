@@ -31,7 +31,7 @@ npm run typecheck  # tsc --noEmit
 | 6 · 3D scrollytelling | ✅ | 3200vh stage, 7 procedural scenes, keyframed camera, per-scene FX, HTML overlay timelines |
 | 7 · Content sections | ✅ | Map, encyclopedia, bestiary, episodes, timeline, soundtrack, gallery, community |
 | 8 · 3D asset pipeline | ⚠️ adapted | No authored `.glb` assets in the repo — scenes are built procedurally (see §3) |
-| 9 · 2D image prompts | ✅ | Procedural "archive plates" (see §4) + generated OG image; character and titan modals now use real stills from `public/images/` |
+| 9 · 2D image prompts | ✅ | Real stills from `public/images/` on the character cards + modal and the Nine Titans cards + modal; procedural "archive plates" (see §4) elsewhere; generated OG image |
 | 10 · Responsive | ✅ | Desktop 3D, tablet reduced DPR, mobile 2D parallax fallback (<768px), touch targets ≥44px |
 | 11 · Performance | ✅ | 3D lazy-loaded in its own chunk, `dpr` capped, bloom/vignette only, no external assets |
 
@@ -111,12 +111,15 @@ The prompt asks for Midjourney/DALL·E prompts and a gallery of anime screenshot
 and fan art. Shipping licensed artwork is not appropriate here, so the site renders **original
 procedural artwork** instead:
 
-- `CharacterGlyph` — monogram plates with bust silhouettes, speed lines, kanji and accent glows.
+- `CharacterGlyph` — monogram plates with bust silhouettes, speed lines, kanji and accent glows
+  (no longer used by the encyclopedia cards, which now show real portraits).
 - `ScenePoster` — layered SVG scene plates (wall, colossal, corps, titan, Trost, basement,
-  Rumbling, map, wings, sky) used by the map panel, bestiary, soundtrack and gallery.
+  Rumbling, map, wings, sky) used by the world map, soundtrack, gallery and community sections.
 - `public/og-image.jpg` — a generated social card (1376×768) wired into Open Graph/Twitter.
-- Real images can be dropped into `public/images/` and swapped in; the data model and section
-  layouts already accept them.
+- Real images are used where the archive has them: the character cards/modal read
+  `characters.json` → `image`, and the Nine Titans cards/modal read `titans.json` → `image`
+  (`public/images/characters/`, `public/images/titans/`). The remaining procedural plates can
+  be swapped the same way.
 
 ---
 
