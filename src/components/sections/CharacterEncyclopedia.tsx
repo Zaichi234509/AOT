@@ -1,11 +1,12 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import { ArrowUpRight, Quote, Users } from 'lucide-react'
+import { Quote, Users } from 'lucide-react'
 import charactersRaw from '@/data/characters.json'
 import type { Affiliation, Character } from '@/types/character'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { SearchInput } from '@/components/ui/SearchInput'
+import { ImageSearchLink } from '@/components/ui/ImageSearchLink'
 import { Tabs } from '@/components/ui/Tabs'
 import { Badge, AFFILIATION_COLORS } from '@/components/ui/Badge'
 import { CharacterGlyph } from '@/components/ui/CharacterGlyph'
@@ -13,7 +14,6 @@ import { GlassCard } from '@/components/ui/GlassCard'
 import { StatBar } from '@/components/ui/StatBar'
 import { Modal } from '@/components/ui/Modal'
 import { useSectionReveal } from '@/hooks/useGSAP'
-import { cn } from '@/lib/utils'
 
 const characters = charactersRaw as Character[]
 
@@ -89,13 +89,7 @@ export function CharacterEncyclopedia() {
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {filtered.map((character) => (
-            <button
-              key={character.id}
-              type="button"
-              onClick={() => setOpenId(character.id)}
-              className="focus-ring group animate-fade-up text-left"
-              aria-label={`Open ${character.name}'s profile`}
-            >
+            <div key={character.id} className="group animate-fade-up">
               <GlassCard
                 padding="none"
                 hover
@@ -103,28 +97,37 @@ export function CharacterEncyclopedia() {
                 style={{ borderColor: `${character.accent}22` }}
               >
                 <div className="relative aspect-[4/5] overflow-hidden">
-                  <CharacterGlyph
-                    monogram={character.monogram}
-                    nameJP={character.nameJP.split('・')[0]}
-                    accent={character.accent}
-                    className="h-full w-full transition-transform duration-700 ease-out-expo group-hover:scale-[1.04]"
-                  />
-                  <div className="absolute left-3 top-3">
+                  <button
+                    type="button"
+                    onClick={() => setOpenId(character.id)}
+                    className="focus-ring absolute inset-0 block h-full w-full text-left"
+                    aria-label={`Open ${character.name}'s profile`}
+                  >
+                    <CharacterGlyph
+                      monogram={character.monogram}
+                      nameJP={character.nameJP.split('・')[0]}
+                      accent={character.accent}
+                      className="h-full w-full transition-transform duration-700 ease-out-expo group-hover:scale-[1.04]"
+                    />
+                    <span className="pointer-events-none absolute inset-x-0 bottom-0 block bg-gradient-to-t from-black/90 to-transparent p-3 pt-10">
+                      <span className="block font-display text-base text-parchment">
+                        {character.name}
+                      </span>
+                      <span className="block font-mono text-[9px] uppercase tracking-[0.16em] text-ash/80">
+                        {character.rank}
+                      </span>
+                    </span>
+                  </button>
+                  <div className="pointer-events-none absolute left-3 top-3">
                     <Badge color={AFFILIATION_COLORS[character.affiliation]} variant="solid">
                       {character.affiliation}
                     </Badge>
                   </div>
-                  <div className="absolute right-3 top-3 opacity-0 transition-opacity group-hover:opacity-100">
-                    <span className="grid h-7 w-7 place-items-center rounded-full border border-white/25 bg-black/50 text-parchment">
-                      <ArrowUpRight size={13} />
-                    </span>
-                  </div>
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 to-transparent p-3 pt-10">
-                    <p className="font-display text-base text-parchment">{character.name}</p>
-                    <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-ash/80">
-                      {character.rank}
-                    </p>
-                  </div>
+                  {/* href image-search link overlaid on the portrait */}
+                  <ImageSearchLink
+                    name={character.name}
+                    className="absolute right-3 top-3 z-10"
+                  />
                 </div>
 
                 <div className="p-3.5">
@@ -154,7 +157,7 @@ export function CharacterEncyclopedia() {
                   )}
                 </div>
               </GlassCard>
-            </button>
+            </div>
           ))}
         </div>
 
@@ -205,6 +208,9 @@ export function CharacterEncyclopedia() {
                 {active.name}
               </h3>
               <p className="font-jp text-sm tracking-[0.2em] text-ash">{active.nameJP}</p>
+              <div className="mt-4">
+                <ImageSearchLink name={active.name} variant="button" accent={active.accent} />
+              </div>
 
               <dl className="mt-5 grid grid-cols-2 gap-3 border-y border-white/10 py-4 text-[12px]">
                 {[
