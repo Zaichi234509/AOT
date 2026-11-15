@@ -1,0 +1,1082 @@
+[
+  {
+    "season": 1,
+    "episode": 1,
+    "title": "To You, in 2000 Years",
+    "titleJP": "二千年後の君へ",
+    "airDate": "2013-04-07",
+    "rating": 9.2,
+    "synopsis": "A hundred years of peace end the day the Colossal Titan appears above Wall Maria.",
+    "tags": [
+      "Key Moment",
+      "Lore"
+    ]
+  },
+  {
+    "season": 1,
+    "episode": 2,
+    "title": "That Day",
+    "titleJP": "その日",
+    "airDate": "2013-04-14",
+    "rating": 9.3,
+    "synopsis": "The fall of Shiganshina: Eren loses his mother, his home and his innocence in a single afternoon.",
+    "tags": [
+      "Key Moment",
+      "Emotional"
+    ]
+  },
+  {
+    "season": 1,
+    "episode": 3,
+    "title": "A Dim Light Amid Despair",
+    "titleJP": "絶望の中で鈍く光る",
+    "airDate": "2013-04-21",
+    "rating": 8.7,
+    "synopsis": "Eren awakens in the refugee camp and learns what the walls really cost.",
+    "tags": [
+      "Lore"
+    ]
+  },
+  {
+    "season": 1,
+    "episode": 4,
+    "title": "The Night of the Closing Ceremony",
+    "titleJP": "解散式の夜",
+    "airDate": "2013-04-28",
+    "rating": 8.6,
+    "synopsis": "Training begins. Ten years of peace shatter into a single night of resolve.",
+    "tags": [
+      "Lore"
+    ]
+  },
+  {
+    "season": 1,
+    "episode": 5,
+    "title": "First Battle",
+    "titleJP": "初陣",
+    "airDate": "2013-05-05",
+    "rating": 9,
+    "synopsis": "Trost is breached and the 104th Cadet Corps faces a titan for the first time.",
+    "tags": [
+      "Battle"
+    ]
+  },
+  {
+    "season": 1,
+    "episode": 6,
+    "title": "The World the Girl Saw",
+    "titleJP": "少女が見た世界",
+    "airDate": "2013-05-12",
+    "rating": 9.4,
+    "synopsis": "Mikasa’s past is revealed as the cadets fight to survive the streets of Trost.",
+    "tags": [
+      "Key Moment",
+      "Titan Reveal"
+    ]
+  },
+  {
+    "season": 1,
+    "episode": 7,
+    "title": "Small Blade",
+    "titleJP": "小さな刃",
+    "airDate": "2013-05-19",
+    "rating": 8.9,
+    "synopsis": "Armin’s plan buys a blade’s length of hope against an impossible enemy.",
+    "tags": [
+      "Battle"
+    ]
+  },
+  {
+    "season": 1,
+    "episode": 8,
+    "title": "I Can Hear His Heartbeat",
+    "titleJP": "心臓の鼓動が聞こえる",
+    "airDate": "2013-05-26",
+    "rating": 8.8,
+    "synopsis": "Eren is swallowed — and something inside the titan begins to move.",
+    "tags": [
+      "Battle"
+    ]
+  },
+  {
+    "season": 1,
+    "episode": 9,
+    "title": "Whereabouts of His Left Arm",
+    "titleJP": "左腕の行方",
+    "airDate": "2013-06-02",
+    "rating": 9.1,
+    "synopsis": "A titan fights titans, and the garrison watches a boy step out of its spine.",
+    "tags": [
+      "Titan Reveal"
+    ]
+  },
+  {
+    "season": 1,
+    "episode": 10,
+    "title": "Response",
+    "titleJP": "応える",
+    "airDate": "2013-06-09",
+    "rating": 8.9,
+    "synopsis": "Eren’s transformation is covered up, and the plan to retake Trost begins.",
+    "tags": [
+      "Lore",
+      "Battle"
+    ]
+  },
+  {
+    "season": 1,
+    "episode": 11,
+    "title": "Idol",
+    "titleJP": "偶像",
+    "airDate": "2013-06-16",
+    "rating": 8.7,
+    "synopsis": "The boulder must reach the gate. Pixis gambles the lives of everyone behind him.",
+    "tags": [
+      "Lore"
+    ]
+  },
+  {
+    "season": 1,
+    "episode": 12,
+    "title": "Wound",
+    "titleJP": "傷",
+    "airDate": "2013-06-23",
+    "rating": 8.9,
+    "synopsis": "Eren’s body fails at the worst moment, and Mikasa steps into the gap.",
+    "tags": [
+      "Battle"
+    ]
+  },
+  {
+    "season": 1,
+    "episode": 13,
+    "title": "Primal Desire",
+    "titleJP": "原初的欲求",
+    "airDate": "2013-06-30",
+    "rating": 9,
+    "synopsis": "The gate is sealed. Humanity wins its first battle — and learns what Eren is worth.",
+    "tags": [
+      "Key Moment"
+    ]
+  },
+  {
+    "season": 1,
+    "episode": 14,
+    "title": "Can’t Look Into His Eyes Yet",
+    "titleJP": "まだ目を見れない",
+    "airDate": "2013-07-07",
+    "rating": 8.5,
+    "synopsis": "A tribunal decides whether Eren is a weapon, a monster, or a soldier.",
+    "tags": [
+      "Lore"
+    ]
+  },
+  {
+    "season": 1,
+    "episode": 15,
+    "title": "Special Operations Squad",
+    "titleJP": "特別作戦班",
+    "airDate": "2013-07-14",
+    "rating": 8.8,
+    "synopsis": "Levi takes custody of Eren. The Squad prepares for what comes next.",
+    "tags": [
+      "Lore",
+      "Emotional"
+    ]
+  },
+  {
+    "season": 1,
+    "episode": 16,
+    "title": "What Needs to Be Done Now",
+    "titleJP": "今、何をすべきか",
+    "airDate": "2013-07-21",
+    "rating": 8.6,
+    "synopsis": "The 57th expedition departs with a lie on its back and a target on its heels.",
+    "tags": [
+      "Lore"
+    ]
+  },
+  {
+    "season": 1,
+    "episode": 17,
+    "title": "Female Titan",
+    "titleJP": "女型の巨人",
+    "airDate": "2013-07-28",
+    "rating": 9.2,
+    "synopsis": "An intelligent titan tears through the formation hunting Eren.",
+    "tags": [
+      "Titan Reveal",
+      "Battle"
+    ]
+  },
+  {
+    "season": 1,
+    "episode": 18,
+    "title": "Forest of Giant Trees",
+    "titleJP": "巨大樹の森",
+    "airDate": "2013-08-04",
+    "rating": 9.3,
+    "synopsis": "The trap is set in the canopy — and the Female Titan walks straight into it.",
+    "tags": [
+      "Battle"
+    ]
+  },
+  {
+    "season": 1,
+    "episode": 19,
+    "title": "Bite",
+    "titleJP": "噛みつく",
+    "airDate": "2013-08-11",
+    "rating": 9.1,
+    "synopsis": "Levi’s squad dies defending a boy who cannot transform.",
+    "tags": [
+      "Battle",
+      "Emotional"
+    ]
+  },
+  {
+    "season": 1,
+    "episode": 20,
+    "title": "Erwin Smith",
+    "titleJP": "エルヴィン・スミス",
+    "airDate": "2013-08-18",
+    "rating": 9,
+    "synopsis": "The Commander’s gambit is revealed, and the Female Titan escapes.",
+    "tags": [
+      "Key Moment"
+    ]
+  },
+  {
+    "season": 1,
+    "episode": 21,
+    "title": "Crushing Blow",
+    "titleJP": "猛進",
+    "airDate": "2013-08-25",
+    "rating": 8.9,
+    "synopsis": "The Stohess operation begins; Annie Leonhart stops running.",
+    "tags": [
+      "Battle"
+    ]
+  },
+  {
+    "season": 1,
+    "episode": 22,
+    "title": "The Defeated",
+    "titleJP": "敗者達",
+    "airDate": "2013-09-01",
+    "rating": 9.3,
+    "synopsis": "The Female Titan is unmasked inside Wall Sina, and crystallises before capture.",
+    "tags": [
+      "Titan Reveal",
+      "Emotional"
+    ]
+  },
+  {
+    "season": 1,
+    "episode": 23,
+    "title": "Smile",
+    "titleJP": "微笑み",
+    "airDate": "2013-09-08",
+    "rating": 8.4,
+    "synopsis": "Aftermath: the dead are counted, the living are questioned, and Wall Rose is breached again.",
+    "tags": [
+      "Lore"
+    ]
+  },
+  {
+    "season": 1,
+    "episode": 24,
+    "title": "Mercy",
+    "titleJP": "慈悲",
+    "airDate": "2013-09-15",
+    "rating": 8.8,
+    "synopsis": "The supply squad turns on itself; Connie’s village is found silent.",
+    "tags": [
+      "Battle"
+    ]
+  },
+  {
+    "season": 1,
+    "episode": 25,
+    "title": "Wall",
+    "titleJP": "壁",
+    "airDate": "2013-09-22",
+    "rating": 9,
+    "synopsis": "A titan appears inside Wall Rose, and the season ends with a hand on a wall.",
+    "tags": [
+      "Key Moment",
+      "Titan Reveal"
+    ]
+  },
+  {
+    "season": 2,
+    "episode": 1,
+    "title": "Beast Titan",
+    "titleJP": "獣の巨人",
+    "airDate": "2017-04-01",
+    "rating": 9.5,
+    "synopsis": "The Beast Titan speaks. A wall is breached from the inside out.",
+    "tags": [
+      "Key Moment",
+      "Titan Reveal"
+    ]
+  },
+  {
+    "season": 2,
+    "episode": 2,
+    "title": "I’m Home",
+    "titleJP": "ただいま",
+    "airDate": "2017-04-08",
+    "rating": 8.9,
+    "synopsis": "Sasha returns to her village and finds that hospitality has a price.",
+    "tags": [
+      "Lore"
+    ]
+  },
+  {
+    "season": 2,
+    "episode": 3,
+    "title": "Southwestward",
+    "titleJP": "南西へ",
+    "airDate": "2017-04-15",
+    "rating": 8.8,
+    "synopsis": "The scouts ride for Wall Rose, chasing a breach that may not exist.",
+    "tags": [
+      "Battle"
+    ]
+  },
+  {
+    "season": 2,
+    "episode": 4,
+    "title": "Soldier",
+    "titleJP": "兵士",
+    "airDate": "2017-04-22",
+    "rating": 9.4,
+    "synopsis": "Utgard Castle falls, and a warrior learns what he is willing to do.",
+    "tags": [
+      "Key Moment",
+      "Emotional"
+    ]
+  },
+  {
+    "season": 2,
+    "episode": 5,
+    "title": "Historia",
+    "titleJP": "ヒストリア",
+    "airDate": "2017-04-29",
+    "rating": 8.8,
+    "synopsis": "A name is chosen: Historia Reiss means to live up to it.",
+    "tags": [
+      "Lore"
+    ]
+  },
+  {
+    "season": 2,
+    "episode": 6,
+    "title": "Warrior",
+    "titleJP": "戦士",
+    "airDate": "2017-05-06",
+    "rating": 9.7,
+    "synopsis": "Reiner and Bertholdt reveal themselves on the wall above Utgard.",
+    "tags": [
+      "Titan Reveal",
+      "Key Moment"
+    ]
+  },
+  {
+    "season": 2,
+    "episode": 7,
+    "title": "Close Combat",
+    "titleJP": "打・投・極",
+    "airDate": "2017-05-13",
+    "rating": 9.5,
+    "synopsis": "Eren fights the Armored Titan hand to hand and loses the will to win.",
+    "tags": [
+      "Battle"
+    ]
+  },
+  {
+    "season": 2,
+    "episode": 8,
+    "title": "The Hunters",
+    "titleJP": "追う者",
+    "airDate": "2017-05-20",
+    "rating": 9.2,
+    "synopsis": "The scouts pursue the traitors into the forest of giant trees.",
+    "tags": [
+      "Battle"
+    ]
+  },
+  {
+    "season": 2,
+    "episode": 9,
+    "title": "Opening",
+    "titleJP": "開口",
+    "airDate": "2017-05-27",
+    "rating": 9.3,
+    "synopsis": "Hannes stands his ground. The Coordinate awakens.",
+    "tags": [
+      "Battle",
+      "Emotional"
+    ]
+  },
+  {
+    "season": 2,
+    "episode": 10,
+    "title": "Children",
+    "titleJP": "子供達",
+    "airDate": "2017-06-03",
+    "rating": 9,
+    "synopsis": "Reiner remembers the mission as Bertholdt prepares to burn the forest down.",
+    "tags": [
+      "Lore",
+      "Emotional"
+    ]
+  },
+  {
+    "season": 2,
+    "episode": 11,
+    "title": "Charge",
+    "titleJP": "突撃",
+    "airDate": "2017-06-10",
+    "rating": 9.4,
+    "synopsis": "The Survey Corps’ suicidal charge gives Erwin a moment to speak truth.",
+    "tags": [
+      "Battle",
+      "Key Moment"
+    ]
+  },
+  {
+    "season": 2,
+    "episode": 12,
+    "title": "Scream",
+    "titleJP": "叫び",
+    "airDate": "2017-06-17",
+    "rating": 9.6,
+    "synopsis": "Eren commands titans to his side, and a mother is saved too late.",
+    "tags": [
+      "Key Moment",
+      "Emotional"
+    ]
+  },
+  {
+    "season": 3,
+    "episode": 1,
+    "title": "Smoke Signal",
+    "titleJP": "狼煙",
+    "airDate": "2018-07-23",
+    "rating": 9,
+    "synopsis": "The Survey Corps is hunted by the crown as a new enemy appears in the Interior.",
+    "tags": [
+      "Lore"
+    ]
+  },
+  {
+    "season": 3,
+    "episode": 2,
+    "title": "Pain",
+    "titleJP": "痛み",
+    "airDate": "2018-07-30",
+    "rating": 8.7,
+    "synopsis": "Levi’s squad fights the interior police in a wood outside Stohess.",
+    "tags": [
+      "Battle"
+    ]
+  },
+  {
+    "season": 3,
+    "episode": 3,
+    "title": "Old Story",
+    "titleJP": "昔話",
+    "airDate": "2018-08-06",
+    "rating": 8.8,
+    "synopsis": "Kenny Ackerman’s past is told, and Levi’s beginning with it.",
+    "tags": [
+      "Lore"
+    ]
+  },
+  {
+    "season": 3,
+    "episode": 4,
+    "title": "Trust",
+    "titleJP": "信頼",
+    "airDate": "2018-08-13",
+    "rating": 9.1,
+    "synopsis": "The plan to abduct Historia begins with a fake murder and a silenced crowd.",
+    "tags": [
+      "Key Moment"
+    ]
+  },
+  {
+    "season": 3,
+    "episode": 5,
+    "title": "Reply",
+    "titleJP": "回答",
+    "airDate": "2018-08-20",
+    "rating": 9,
+    "synopsis": "Historia is offered a throne. She answers with her own will.",
+    "tags": [
+      "Lore"
+    ]
+  },
+  {
+    "season": 3,
+    "episode": 6,
+    "title": "Sin",
+    "titleJP": "罪",
+    "airDate": "2018-08-27",
+    "rating": 9.2,
+    "synopsis": "Rod Reiss reveals the truth of the walls’ founding and his own crime.",
+    "tags": [
+      "Key Moment"
+    ]
+  },
+  {
+    "season": 3,
+    "episode": 7,
+    "title": "Wish",
+    "titleJP": "願い",
+    "airDate": "2018-09-03",
+    "rating": 9.3,
+    "synopsis": "Historia takes her father’s syringe and decides what kind of queen she will be.",
+    "tags": [
+      "Key Moment"
+    ]
+  },
+  {
+    "season": 3,
+    "episode": 8,
+    "title": "Outside the Walls of Orvud",
+    "titleJP": "オルブド区外壁",
+    "airDate": "2018-09-10",
+    "rating": 9.1,
+    "synopsis": "A 120-metre titan crawls toward the district. The cadets hold the wall.",
+    "tags": [
+      "Battle"
+    ]
+  },
+  {
+    "season": 3,
+    "episode": 9,
+    "title": "Ruler of the Walls",
+    "titleJP": "壁の王",
+    "airDate": "2018-09-17",
+    "rating": 9.2,
+    "synopsis": "Historia shatters her father’s titan, and the Reiss chapel collapses.",
+    "tags": [
+      "Key Moment"
+    ]
+  },
+  {
+    "season": 3,
+    "episode": 10,
+    "title": "Friends",
+    "titleJP": "友人",
+    "airDate": "2018-09-24",
+    "rating": 8.9,
+    "synopsis": "Eren’s father’s journal becomes the only path forward.",
+    "tags": [
+      "Lore",
+      "Emotional"
+    ]
+  },
+  {
+    "season": 3,
+    "episode": 11,
+    "title": "Bystander",
+    "titleJP": "傍観者",
+    "airDate": "2018-10-01",
+    "rating": 9,
+    "synopsis": "The Survey Corps returns to Shiganshina with a plan, a press corps and a debt.",
+    "tags": [
+      "Emotional"
+    ]
+  },
+  {
+    "season": 3,
+    "episode": 12,
+    "title": "Night of the Battle to Retake the Wall",
+    "titleJP": "奪還作戦の夜",
+    "airDate": "2018-10-08",
+    "rating": 9.1,
+    "synopsis": "The night before departure, every soldier makes their peace.",
+    "tags": [
+      "Lore"
+    ]
+  },
+  {
+    "season": 3,
+    "episode": 13,
+    "title": "The Town Where Everything Began",
+    "titleJP": "はじまりの街",
+    "airDate": "2019-04-29",
+    "rating": 9.4,
+    "synopsis": "The retaking of Shiganshina begins in perfect, terrible silence.",
+    "tags": [
+      "Battle"
+    ]
+  },
+  {
+    "season": 3,
+    "episode": 14,
+    "title": "Thunder Spears",
+    "titleJP": "雷槍",
+    "airDate": "2019-05-06",
+    "rating": 9.3,
+    "synopsis": "The Armored Titan is brought to its knees by a weapon built for it.",
+    "tags": [
+      "Battle"
+    ]
+  },
+  {
+    "season": 3,
+    "episode": 15,
+    "title": "Descent",
+    "titleJP": "光臨",
+    "airDate": "2019-05-13",
+    "rating": 9.5,
+    "synopsis": "The Beast Titan enters the field, and the formation is annihilated.",
+    "tags": [
+      "Titan Reveal",
+      "Battle"
+    ]
+  },
+  {
+    "season": 3,
+    "episode": 16,
+    "title": "Perfect Game",
+    "titleJP": "完全試合",
+    "airDate": "2019-05-20",
+    "rating": 9.7,
+    "synopsis": "Zeke pitches. Erwin’s gamble costs the lives of his soldiers.",
+    "tags": [
+      "Battle",
+      "Emotional"
+    ]
+  },
+  {
+    "season": 3,
+    "episode": 17,
+    "title": "Hero",
+    "titleJP": "勇者",
+    "airDate": "2019-05-27",
+    "rating": 9.9,
+    "synopsis": "Armin holds the Colossal Titan long enough for the impossible.",
+    "tags": [
+      "Key Moment",
+      "Emotional"
+    ]
+  },
+  {
+    "season": 3,
+    "episode": 18,
+    "title": "Midnight Sun",
+    "titleJP": "白夜",
+    "airDate": "2019-06-03",
+    "rating": 9.9,
+    "synopsis": "One syringe, two bodies, and a choice that defines the Survey Corps.",
+    "tags": [
+      "Key Moment",
+      "Emotional"
+    ]
+  },
+  {
+    "season": 3,
+    "episode": 19,
+    "title": "The Basement",
+    "titleJP": "地下室",
+    "airDate": "2019-06-10",
+    "rating": 9.8,
+    "synopsis": "The door opens. Grisha’s journal rewrites everything the scouts know.",
+    "tags": [
+      "Lore",
+      "Key Moment"
+    ]
+  },
+  {
+    "season": 3,
+    "episode": 20,
+    "title": "That Day",
+    "titleJP": "あの日",
+    "airDate": "2019-06-17",
+    "rating": 9.7,
+    "synopsis": "Grisha’s memories: Marley, the restorationists and the Attack Titan’s burden.",
+    "tags": [
+      "Lore",
+      "Emotional"
+    ]
+  },
+  {
+    "season": 3,
+    "episode": 21,
+    "title": "Attack Titan",
+    "titleJP": "進撃の巨人",
+    "airDate": "2019-06-24",
+    "rating": 9.8,
+    "synopsis": "The Attack Titan has always moved forward, across memory and time.",
+    "tags": [
+      "Key Moment",
+      "Lore"
+    ]
+  },
+  {
+    "season": 3,
+    "episode": 22,
+    "title": "The Other Side of the Wall",
+    "titleJP": "壁の向こう側",
+    "airDate": "2019-07-01",
+    "rating": 9.9,
+    "synopsis": "The sea. For the first time, the horizon is not a wall — and Eren asks the question.",
+    "tags": [
+      "Key Moment",
+      "Emotional"
+    ]
+  },
+  {
+    "season": 4,
+    "episode": 1,
+    "title": "The Other Side of the Sea",
+    "titleJP": "海の向こう側",
+    "airDate": "2020-12-07",
+    "rating": 9.4,
+    "synopsis": "Four years later, a boy in Liberio runs through a war he does not understand.",
+    "tags": [
+      "Lore"
+    ]
+  },
+  {
+    "season": 4,
+    "episode": 2,
+    "title": "Midnight Train",
+    "titleJP": "暗闇の列車",
+    "airDate": "2020-12-14",
+    "rating": 9,
+    "synopsis": "Marley’s war ends, and the warriors come home to a country that uses them.",
+    "tags": [
+      "Lore"
+    ]
+  },
+  {
+    "season": 4,
+    "episode": 3,
+    "title": "The Door of Hope",
+    "titleJP": "希望の扉",
+    "airDate": "2020-12-21",
+    "rating": 9.1,
+    "synopsis": "Falco meets a wounded soldier in a hospital and changes a history.",
+    "tags": [
+      "Lore",
+      "Emotional"
+    ]
+  },
+  {
+    "season": 4,
+    "episode": 4,
+    "title": "From One Hand to Another",
+    "titleJP": "手から手へ",
+    "airDate": "2020-12-28",
+    "rating": 9.2,
+    "synopsis": "Letters, memories and a festival invitation arrive in Liberio.",
+    "tags": [
+      "Lore"
+    ]
+  },
+  {
+    "season": 4,
+    "episode": 5,
+    "title": "Declaration of War",
+    "titleJP": "宣戦布告",
+    "airDate": "2021-01-04",
+    "rating": 9.8,
+    "synopsis": "Willy Tybur declares war on Paradis. Eren answers from the audience.",
+    "tags": [
+      "Key Moment"
+    ]
+  },
+  {
+    "season": 4,
+    "episode": 6,
+    "title": "The War Hammer Titan",
+    "titleJP": "戦槌の巨人",
+    "airDate": "2021-01-11",
+    "rating": 9.6,
+    "synopsis": "A new titan enters the fight beneath the stage, and the survey corps descends.",
+    "tags": [
+      "Titan Reveal",
+      "Battle"
+    ]
+  },
+  {
+    "season": 4,
+    "episode": 7,
+    "title": "Assault",
+    "titleJP": "強襲",
+    "airDate": "2021-01-18",
+    "rating": 9.7,
+    "synopsis": "The raid on Liberio becomes a massacre on both sides of the fence.",
+    "tags": [
+      "Battle"
+    ]
+  },
+  {
+    "season": 4,
+    "episode": 8,
+    "title": "Assassin's Bullet",
+    "titleJP": "凶弾",
+    "airDate": "2021-01-25",
+    "rating": 9.5,
+    "synopsis": "Sasha Blouse dies on an airship, and a boy hears a name he will never forget.",
+    "tags": [
+      "Key Moment",
+      "Emotional"
+    ]
+  },
+  {
+    "season": 4,
+    "episode": 9,
+    "title": "Brave Volunteers",
+    "titleJP": "義勇兵",
+    "airDate": "2021-02-01",
+    "rating": 9,
+    "synopsis": "Paradis learns to build a navy and to mistrust the people building it.",
+    "tags": [
+      "Lore"
+    ]
+  },
+  {
+    "season": 4,
+    "episode": 10,
+    "title": "A Sound Argument",
+    "titleJP": "正論",
+    "airDate": "2021-02-08",
+    "rating": 9.1,
+    "synopsis": "Hizuru’s offer, Kiyomi’s eyes and the cold mathematics of survival.",
+    "tags": [
+      "Lore"
+    ]
+  },
+  {
+    "season": 4,
+    "episode": 11,
+    "title": "Deceiver",
+    "titleJP": "偽り者",
+    "airDate": "2021-02-15",
+    "rating": 8.9,
+    "synopsis": "A coup inside the walls, and a wine cellar nobody counted.",
+    "tags": [
+      "Lore"
+    ]
+  },
+  {
+    "season": 4,
+    "episode": 12,
+    "title": "Guides",
+    "titleJP": "導く者",
+    "airDate": "2021-02-22",
+    "rating": 9,
+    "synopsis": "Nicolo serves a meal that becomes an apology and a reckoning.",
+    "tags": [
+      "Emotional"
+    ]
+  },
+  {
+    "season": 4,
+    "episode": 13,
+    "title": "Children of the Forest",
+    "titleJP": "森の子供達",
+    "airDate": "2021-03-01",
+    "rating": 9.3,
+    "synopsis": "Sasha’s family meets the girl who shot her, and chooses.",
+    "tags": [
+      "Emotional",
+      "Lore"
+    ]
+  },
+  {
+    "season": 4,
+    "episode": 14,
+    "title": "Savagery",
+    "titleJP": "暴悪",
+    "airDate": "2021-03-08",
+    "rating": 9.2,
+    "synopsis": "The Jaegerist uprising spills across the island in a single night.",
+    "tags": [
+      "Battle"
+    ]
+  },
+  {
+    "season": 4,
+    "episode": 15,
+    "title": "Sole Salvation",
+    "titleJP": "唯一の救い",
+    "airDate": "2021-03-15",
+    "rating": 9.1,
+    "synopsis": "Zeke and Ksaver: the making of a man who would end his own people.",
+    "tags": [
+      "Lore"
+    ]
+  },
+  {
+    "season": 4,
+    "episode": 16,
+    "title": "Above and Below",
+    "titleJP": "天と地",
+    "airDate": "2021-03-22",
+    "rating": 9.4,
+    "synopsis": "The survey corps splits between those who follow Eren and those who stop him.",
+    "tags": [
+      "Key Moment"
+    ]
+  },
+  {
+    "season": 4,
+    "episode": 17,
+    "title": "Judgement",
+    "titleJP": "断罪",
+    "airDate": "2022-01-10",
+    "rating": 9.3,
+    "synopsis": "The Marleyan fleet arrives at Shiganshina, and the Nine collide.",
+    "tags": [
+      "Battle"
+    ]
+  },
+  {
+    "season": 4,
+    "episode": 18,
+    "title": "Sneak Attack",
+    "titleJP": "騙し討ち",
+    "airDate": "2022-01-17",
+    "rating": 9.5,
+    "synopsis": "A coordinated ambush turns the port into a graveyard of airships.",
+    "tags": [
+      "Battle",
+      "Key Moment"
+    ]
+  },
+  {
+    "season": 4,
+    "episode": 19,
+    "title": "Two Brothers",
+    "titleJP": "兄と弟",
+    "airDate": "2022-01-24",
+    "rating": 9.6,
+    "synopsis": "Eren and Zeke meet inside the Paths, and the world goes quiet.",
+    "tags": [
+      "Key Moment"
+    ]
+  },
+  {
+    "season": 4,
+    "episode": 20,
+    "title": "Memories of the Future",
+    "titleJP": "未来の記憶",
+    "airDate": "2022-01-31",
+    "rating": 9.9,
+    "synopsis": "The Founding Titan shows Eren a future he has already chosen.",
+    "tags": [
+      "Key Moment",
+      "Lore"
+    ]
+  },
+  {
+    "season": 4,
+    "episode": 21,
+    "title": "From You, 2000 Years Ago",
+    "titleJP": "二千年前の君から",
+    "airDate": "2022-02-07",
+    "rating": 9.9,
+    "synopsis": "Ymir’s choice, and the origin of all titans, is finally spoken.",
+    "tags": [
+      "Lore",
+      "Key Moment"
+    ]
+  },
+  {
+    "season": 4,
+    "episode": 22,
+    "title": "Thaw",
+    "titleJP": "氷解",
+    "airDate": "2022-02-14",
+    "rating": 9.2,
+    "synopsis": "The Rumbling begins. Annie returns to a world she no longer recognises.",
+    "tags": [
+      "Emotional"
+    ]
+  },
+  {
+    "season": 4,
+    "episode": 23,
+    "title": "Sunset",
+    "titleJP": "夕焼け",
+    "airDate": "2022-02-21",
+    "rating": 9.1,
+    "synopsis": "Two fronts, one sunset; old enemies share a campfire because there is nothing else left.",
+    "tags": [
+      "Emotional"
+    ]
+  },
+  {
+    "season": 4,
+    "episode": 24,
+    "title": "Pride",
+    "titleJP": "矜持",
+    "airDate": "2022-02-28",
+    "rating": 9.3,
+    "synopsis": "A port is taken, a titan falls, and the alliance loses someone irreplaceable.",
+    "tags": [
+      "Battle"
+    ]
+  },
+  {
+    "season": 4,
+    "episode": 25,
+    "title": "Night of the End",
+    "titleJP": "終末の夜",
+    "airDate": "2022-03-07",
+    "rating": 9.4,
+    "synopsis": "Confessions around a fire: what each of them is guilty of, and why they fight anyway.",
+    "tags": [
+      "Lore",
+      "Emotional"
+    ]
+  },
+  {
+    "season": 4,
+    "episode": 26,
+    "title": "Traitor",
+    "titleJP": "裏切り者",
+    "airDate": "2023-03-04",
+    "rating": 9.5,
+    "synopsis": "The alliance reaches Fort Salta and finds the founder waiting.",
+    "tags": [
+      "Battle",
+      "Key Moment"
+    ]
+  },
+  {
+    "season": 4,
+    "episode": 27,
+    "title": "Retrospective",
+    "titleJP": "懐古",
+    "airDate": "2023-03-04",
+    "rating": 9.6,
+    "synopsis": "In the Paths, Armin reminds Zeke what small things are worth living for.",
+    "tags": [
+      "Emotional",
+      "Key Moment"
+    ]
+  },
+  {
+    "season": 4,
+    "episode": 28,
+    "title": "The Dawn",
+    "titleJP": "暁",
+    "airDate": "2023-11-04",
+    "rating": 9.8,
+    "synopsis": "The Rumbling stops. The world remains, changed beyond recognition — and so do they.",
+    "tags": [
+      "Key Moment",
+      "Emotional"
+    ]
+  }
+]

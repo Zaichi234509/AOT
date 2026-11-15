@@ -1,0 +1,50 @@
+[
+  {
+    "id": "pure-3m",
+    "name": "Small Pure Titan",
+    "sizeRange": "3–5 m",
+    "heightMeters": 4,
+    "description": "Short, fast and often childlike in proportion. Easy for a trained soldier to kill alone — if they don't hesitate.",
+    "threat": "Low"
+  },
+  {
+    "id": "pure-7m",
+    "name": "Standard Pure Titan",
+    "sizeRange": "5–10 m",
+    "heightMeters": 7,
+    "description": "The most common class. Mindless, sunlight-driven and capable of breaking through a wooden door but not a wall.",
+    "threat": "Moderate"
+  },
+  {
+    "id": "pure-15m",
+    "name": "Large Pure Titan",
+    "sizeRange": "10–15 m",
+    "heightMeters": 13,
+    "description": "Heavy enough to uproot trees and fast enough to catch a horse. ODM gear strongly advised; a blade to the nape is still advised more.",
+    "threat": "High"
+  },
+  {
+    "id": "abnormal",
+    "name": "Abnormal",
+    "sizeRange": "3–15 m",
+    "heightMeters": 9,
+    "description": "Ignores humans to pursue a fixed goal — a wall, a building, a face it remembers. Unpredictable, and therefore the deadliest kind.",
+    "threat": "Extreme"
+  },
+  {
+    "id": "wall-titan",
+    "name": "Wall Titan",
+    "sizeRange": "60 m",
+    "heightMeters": 60,
+    "description": "A hardened Colossal Titan embedded in the walls, dormant for a century and waiting for a single command.",
+    "threat": "Extreme"
+  },
+  {
+    "id": "titan-shifter",
+    "name": "Titan Shifter",
+    "sizeRange": "4–60 m",
+    "heightMeters": 15,
+    "description": "A Subject of Ymir who can transform at will and regenerate. Only a shifter can inherit one of the Nine — by eating its previous holder.",
+    "threat": "High"
+  }
+]

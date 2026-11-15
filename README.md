@@ -1,6 +1,8 @@
 # 🗡️ MASTER PROMPT — Full Attack on Titan Website Build
 
 > **This is a complete, self-contained prompt to build the entire website from scratch. Copy everything inside the code block below and paste it into your AI coding assistant, dev environment, or hand it to a development team.**
+>
+> **✅ Implemented in this repository.** Run `npm install && npm run dev`. See **[BUILD.md](./BUILD.md)** for what was built, the architecture, the three documented adaptations (procedural 3D, procedural artwork, synthesised audio) and how to drop in real assets.
 
 ---
 

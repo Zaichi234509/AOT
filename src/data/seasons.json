@@ -1,0 +1,30 @@
+[
+  {
+    "season": 1,
+    "label": "Season 1",
+    "year": "2013",
+    "episodeCount": 25,
+    "studioNote": "WIT Studio · 25 episodes"
+  },
+  {
+    "season": 2,
+    "label": "Season 2",
+    "year": "2017",
+    "episodeCount": 12,
+    "studioNote": "WIT Studio · 12 episodes"
+  },
+  {
+    "season": 3,
+    "label": "Season 3",
+    "year": "2018–2019",
+    "episodeCount": 22,
+    "studioNote": "WIT Studio · 22 episodes"
+  },
+  {
+    "season": 4,
+    "label": "Final Season",
+    "year": "2020–2023",
+    "episodeCount": 28,
+    "studioNote": "MAPPA · 28 episodes"
+  }
+]
