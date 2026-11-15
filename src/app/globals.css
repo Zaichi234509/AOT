@@ -419,6 +419,19 @@ input[type='range'].aot-range::-moz-range-thumb {
   font-synthesis-weight: none;
 }
 
+/* Anchor offset for the fixed navbar (direct hash loads) */
+section[id],
+main[id] {
+  scroll-margin-top: 72px;
+}
+
+/* Hide the browser's native search clear button (we render our own) */
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 /* Animated route line on the world map */
 @keyframes route-dash {
   to {

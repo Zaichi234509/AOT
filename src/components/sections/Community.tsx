@@ -3,7 +3,7 @@
 import { ArrowUpRight, MessageCircle, Palette, Radio, Tv } from 'lucide-react'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { WingsLogo } from '@/components/ui/WingsLogo'
-import { Button } from '@/components/ui/Button'
+import { LinkButton } from '@/components/ui/Button'
 import { GlassCard } from '@/components/ui/GlassCard'
 import { ScenePoster } from '@/components/ui/ScenePoster'
 import { useSectionReveal } from '@/hooks/useGSAP'
@@ -135,21 +135,17 @@ export function Community() {
               argue about whether the Rumbling was inevitable.
             </p>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-              <Button
-                type="button"
-                size="md"
-                onClick={() => window.open('https://discord.com', '_blank', 'noopener,noreferrer')}
-              >
+              <LinkButton href="https://discord.com" external size="md">
                 Join the community
-              </Button>
-              <Button
-                type="button"
+              </LinkButton>
+              <LinkButton
+                href="https://github.com/Zaichi234509/AOT"
+                external
                 size="md"
                 variant="outline"
-                onClick={() => window.open('https://github.com/Zaichi234509/AOT', '_blank', 'noopener,noreferrer')}
               >
                 View the source
-              </Button>
+              </LinkButton>
             </div>
           </div>
         </div>

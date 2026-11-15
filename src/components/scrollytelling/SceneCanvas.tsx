@@ -9,6 +9,7 @@ export default function SceneCanvas() {
   return (
     <Canvas
       className="absolute inset-0"
+      style={{ position: 'absolute', inset: 0 }}
       dpr={[1, 1.6]}
       gl={{
         antialias: false,
