@@ -7,7 +7,7 @@ import pureRaw from '@/data/pure-titans.json'
 import type { Titan, PureTitanClass } from '@/types/titan'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { SearchInput } from '@/components/ui/SearchInput'
-import { ImageSearchLink } from '@/components/ui/ImageSearchLink'
+import { ImageSearchLink, imageSearchHref } from '@/components/ui/ImageSearchLink'
 import { Tabs } from '@/components/ui/Tabs'
 import { Badge } from '@/components/ui/Badge'
 import { GlassCard } from '@/components/ui/GlassCard'
@@ -222,9 +222,26 @@ export function TitanBestiary() {
         {active ? (
           <div>
             <div className="relative h-52 md:h-64">
-              <ScenePoster motif="titan" accent={active.accent} showLabel={false} seed={active.name.length * 5} />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/30 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-6">
+              <a
+                href={imageSearchHref(active.name)}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Open image results for ${active.name}`}
+                className="focus-ring absolute inset-0 z-0 block overflow-hidden"
+              >
+                <ScenePoster
+                  motif="titan"
+                  accent={active.accent}
+                  showLabel={false}
+                  seed={active.name.length * 5}
+                  className="transition-transform duration-700 ease-out-expo hover:scale-[1.03]"
+                />
+              </a>
+              <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-ink-900 via-ink-900/30 to-transparent" />
+              <div className="pointer-events-none absolute right-4 top-4 z-10 rounded-full border border-white/20 bg-black/60 px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.16em] text-parchment backdrop-blur">
+                View image results ↗
+              </div>
+              <div className="absolute inset-x-0 bottom-0 z-20 p-6">
                 <div className="flex flex-wrap items-center gap-2">
                   <Badge color={active.accent} variant="solid">
                     Nine Titans
