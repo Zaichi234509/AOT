@@ -1,18 +1,19 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import { ArrowUpRight, ShieldAlert, Swords } from 'lucide-react'
+import { ShieldAlert, Swords } from 'lucide-react'
 import titansRaw from '@/data/titans.json'
 import pureRaw from '@/data/pure-titans.json'
 import type { Titan, PureTitanClass } from '@/types/titan'
 import { SectionHeader } from '@/components/ui/SectionHeader'
+import { SearchInput } from '@/components/ui/SearchInput'
+import { ImageSearchLink } from '@/components/ui/ImageSearchLink'
 import { Tabs } from '@/components/ui/Tabs'
 import { Badge } from '@/components/ui/Badge'
 import { GlassCard } from '@/components/ui/GlassCard'
 import { Modal } from '@/components/ui/Modal'
 import { ScenePoster } from '@/components/ui/ScenePoster'
 import { useSectionReveal } from '@/hooks/useGSAP'
-import { cn } from '@/lib/utils'
 
 const titans = titansRaw as Titan[]
 const pureTitans = pureRaw as PureTitanClass[]
@@ -39,7 +40,21 @@ const SIZE_SCALE = [
 export function TitanBestiary() {
   const rootRef = useSectionReveal<HTMLDivElement>([])
   const [tab, setTab] = useState<Tab>('nine')
+  const [query, setQuery] = useState('')
   const [openId, setOpenId] = useState<string | null>(null)
+
+  const filteredTitans = useMemo(() => {
+    const q = query.trim().toLowerCase()
+    return titans.filter((titan) =>
+      !q || `${titan.name} ${titan.nameJP} ${titan.holder} ${titan.ability} ${titan.weakness}`.toLowerCase().includes(q)
+    )
+  }, [query])
+  const filteredPureTitans = useMemo(() => {
+    const q = query.trim().toLowerCase()
+    return pureTitans.filter((pure) =>
+      !q || `${pure.name} ${pure.sizeRange} ${pure.threat} ${pure.description}`.toLowerCase().includes(q)
+    )
+  }, [query])
 
   const active = useMemo(() => titans.find((t) => t.id === openId) ?? null, [openId])
 
@@ -58,70 +73,80 @@ export function TitanBestiary() {
           accent="#CC2200"
         />
 
-        <div className="mt-12 flex flex-col items-start justify-between gap-4 md:flex-row md:items-center" data-reveal>
-          <Tabs<Tab>
-            items={[
-              { id: 'nine', label: 'The Nine Titans', count: titans.length, color: '#CC2200' },
-              { id: 'pure', label: 'Pure Titans & Abnormals', count: pureTitans.length, color: '#7A8C6A' },
-            ]}
-            value={tab}
-            onChange={setTab}
-            ariaLabel="Titan category"
+        <div className="mt-12 flex flex-col gap-4" data-reveal>
+          <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+            <Tabs<Tab>
+              items={[
+                { id: 'nine', label: 'The Nine Titans', count: titans.length, color: '#CC2200' },
+                { id: 'pure', label: 'Pure Titans & Abnormals', count: pureTitans.length, color: '#7A8C6A' },
+              ]}
+              value={tab}
+              onChange={setTab}
+              ariaLabel="Titan category"
+            />
+            <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-smoke">
+              Threat assessments · Survey Corps records
+            </p>
+          </div>
+          <SearchInput
+            value={query}
+            onChange={setQuery}
+            placeholder="Search titans, holders or abilities…"
+            label="Search titans"
+            className="w-full md:max-w-sm"
           />
-          <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-smoke">
-            Threat assessments · Survey Corps records
-          </p>
         </div>
 
         {tab === 'nine' ? (
           <div className="-mx-6 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-4 no-scrollbar md:mx-0 md:px-0">
-            {titans.map((titan) => (
-              <button
-                key={titan.id}
-                type="button"
-                onClick={() => setOpenId(titan.id)}
-                className="focus-ring group w-[300px] shrink-0 snap-start text-left md:w-[340px]"
-                aria-label={`Open ${titan.name} details`}
-              >
-                <GlassCard padding="none" hover className="h-full" style={{ borderColor: `${titan.accent}2e` }}>
-                  <div className="relative h-44 overflow-hidden">
-                    <ScenePoster motif="titan" accent={titan.accent} showLabel={false} seed={titan.name.length * 7} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/30 to-transparent" />
-                    <span className="absolute left-3 top-3 rounded-full border border-white/20 bg-black/50 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.16em] text-parchment/80 backdrop-blur">
-                      {titan.height}
-                    </span>
-                    <span className="absolute right-3 top-3 grid h-7 w-7 place-items-center rounded-full border border-white/20 bg-black/40 text-parchment/70 opacity-0 transition-opacity group-hover:opacity-100">
-                      <ArrowUpRight size={13} />
-                    </span>
-                    <div className="absolute inset-x-0 bottom-0 p-4">
-                      <p className="font-mono text-[9px] uppercase tracking-[0.24em]" style={{ color: titan.accent }}>
-                        {titan.monogram} · Nine Titans
-                      </p>
-                      <h3 className="mt-1 font-display text-xl text-parchment">{titan.name}</h3>
-                      <p className="font-jp text-[10px] tracking-[0.2em] text-parchment/50">{titan.nameJP}</p>
+            {filteredTitans.map((titan) => (
+              <div key={titan.id} className="group relative w-[300px] shrink-0 snap-start md:w-[340px]">
+                <button
+                  type="button"
+                  onClick={() => setOpenId(titan.id)}
+                  className="focus-ring block h-full w-full text-left"
+                  aria-label={`Open ${titan.name} details`}
+                >
+                  <GlassCard padding="none" hover className="h-full" style={{ borderColor: `${titan.accent}2e` }}>
+                    <div className="relative h-44 overflow-hidden">
+                      <ScenePoster motif="titan" accent={titan.accent} showLabel={false} seed={titan.name.length * 7} />
+                      <div className="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/30 to-transparent" />
+                      <span className="absolute left-3 top-3 rounded-full border border-white/20 bg-black/50 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.16em] text-parchment/80 backdrop-blur">
+                        {titan.height}
+                      </span>
+                      <div className="absolute inset-x-0 bottom-0 p-4">
+                        <p className="font-mono text-[9px] uppercase tracking-[0.24em]" style={{ color: titan.accent }}>
+                          {titan.monogram} · Nine Titans
+                        </p>
+                        <h3 className="mt-1 font-display text-xl text-parchment">{titan.name}</h3>
+                        <p className="font-jp text-[10px] tracking-[0.2em] text-parchment/50">{titan.nameJP}</p>
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="p-4">
-                    <p className="font-mono text-[8px] uppercase tracking-[0.2em] text-smoke">Current holder</p>
-                    <p className="text-[13px] text-parchment/85">{titan.holder}</p>
-
-                    <div className="mt-3 flex items-start gap-2">
-                      <Swords size={11} className="mt-1 shrink-0" style={{ color: titan.accent }} />
-                      <p className="line-clamp-3 text-[11.5px] leading-relaxed text-ash">{titan.ability}</p>
+                    <div className="p-4">
+                      <p className="font-mono text-[8px] uppercase tracking-[0.2em] text-smoke">Current holder</p>
+                      <p className="text-[13px] text-parchment/85">{titan.holder}</p>
+                      <div className="mt-3 flex items-start gap-2">
+                        <Swords size={11} className="mt-1 shrink-0" style={{ color: titan.accent }} />
+                        <p className="line-clamp-3 text-[11.5px] leading-relaxed text-ash">{titan.ability}</p>
+                      </div>
+                      <div className="mt-2 flex items-start gap-2">
+                        <ShieldAlert size={11} className="mt-1 shrink-0 text-secondary" />
+                        <p className="line-clamp-2 text-[11.5px] leading-relaxed text-smoke">{titan.weakness}</p>
+                      </div>
                     </div>
-                    <div className="mt-2 flex items-start gap-2">
-                      <ShieldAlert size={11} className="mt-1 shrink-0 text-secondary" />
-                      <p className="line-clamp-2 text-[11.5px] leading-relaxed text-smoke">{titan.weakness}</p>
-                    </div>
-                  </div>
-                </GlassCard>
-              </button>
+                  </GlassCard>
+                </button>
+                <ImageSearchLink
+                  name={titan.name}
+                  className="absolute right-3 top-3 z-10"
+                />
+              </div>
             ))}
           </div>
         ) : (
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {pureTitans.map((pure) => (
+            {filteredPureTitans.map((pure) => (
               <GlassCard key={pure.id} hover className="h-full" style={{ borderColor: `${THREAT_COLOR[pure.threat]}26` }}>
                 <div className="flex items-start justify-between gap-3">
                   <div>
@@ -143,10 +168,19 @@ export function TitanBestiary() {
                   <span className="font-mono text-[9px] text-smoke">{pure.heightMeters} m avg.</span>
                 </div>
                 <p className="mt-3 text-[12px] leading-relaxed text-ash">{pure.description}</p>
+                <div className="mt-4 border-t border-white/10 pt-3">
+                  <ImageSearchLink name={`${pure.name} titan`} variant="inline" />
+                </div>
               </GlassCard>
             ))}
           </div>
         )}
+
+        {((tab === 'nine' && filteredTitans.length === 0) || (tab === 'pure' && filteredPureTitans.length === 0)) ? (
+          <p className="mt-8 rounded-lg border border-white/10 bg-white/[0.02] p-8 text-center font-display text-parchment">
+            No titan records found. Try another search.
+          </p>
+        ) : null}
 
         {/* size comparison */}
         <div className="mt-12 glass-card p-5 md:p-6" data-reveal>
@@ -201,6 +235,9 @@ export function TitanBestiary() {
                   {active.name}
                 </h3>
                 <p className="font-jp text-sm tracking-[0.2em] text-ash">{active.nameJP}</p>
+                <div className="mt-3">
+                  <ImageSearchLink name={active.name} variant="button" accent={active.accent} />
+                </div>
               </div>
             </div>
 
