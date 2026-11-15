@@ -16,6 +16,8 @@ export type CharacterStats = {
 
 export type Character = {
   id: string
+  /** Portrait still shown in the profile modal, e.g. `/images/characters/eren-yeager.jpg`. */
+  image: string
   name: string
   nameJP: string
   affiliation: Affiliation

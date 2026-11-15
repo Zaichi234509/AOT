@@ -6,7 +6,7 @@ import charactersRaw from '@/data/characters.json'
 import type { Affiliation, Character } from '@/types/character'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { SearchInput } from '@/components/ui/SearchInput'
-import { ImageSearchLink, imageSearchHref } from '@/components/ui/ImageSearchLink'
+import { ImageSearchLink } from '@/components/ui/ImageSearchLink'
 import { Tabs } from '@/components/ui/Tabs'
 import { Badge, AFFILIATION_COLORS } from '@/components/ui/Badge'
 import { CharacterGlyph } from '@/components/ui/CharacterGlyph'
@@ -183,29 +183,21 @@ export function CharacterEncyclopedia() {
       <Modal open={Boolean(active)} onClose={() => setOpenId(null)} labelledBy="character-name">
         {active ? (
           <div className="grid gap-0 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
-            <div className="relative min-h-[280px]">
-              <a
-                href={imageSearchHref(active.name)}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Open image results for ${active.name}`}
-                className="focus-ring absolute inset-0 z-10 block overflow-hidden"
-              >
-                <CharacterGlyph
-                  monogram={active.monogram}
-                  nameJP={active.nameJP}
-                  accent={active.accent}
-                  variant="hero"
-                  className="h-full min-h-[280px] w-full transition-transform duration-700 ease-out-expo hover:scale-[1.03]"
-                />
-                <span className="absolute bottom-4 right-4 rounded-full border border-white/20 bg-black/65 px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.16em] text-parchment backdrop-blur">
-                  View image results ↗
-                </span>
-              </a>
-              <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-ink-900/90 via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:to-ink-900/80" />
+            <div className="relative min-h-[320px] overflow-hidden bg-ink-850 md:sticky md:top-0 md:h-[62vh] md:min-h-[380px] md:self-start">
+              <img
+                src={active.image}
+                alt={`${active.name} — portrait still from Attack on Titan`}
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 h-full w-full object-cover object-top"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-900/90 via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:to-ink-900/80" />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 p-5 md:hidden">
                 <h3 className="font-display text-2xl text-parchment">{active.name}</h3>
               </div>
+              <p className="absolute left-3 top-3 z-20 rounded-full border border-white/15 bg-black/55 px-2.5 py-1 font-mono text-[8px] uppercase tracking-[0.16em] text-parchment/70 backdrop-blur">
+                Portrait · Archive still
+              </p>
             </div>
 
             <div className="relative p-6 md:p-8">
@@ -219,9 +211,6 @@ export function CharacterEncyclopedia() {
                 {active.name}
               </h3>
               <p className="font-jp text-sm tracking-[0.2em] text-ash">{active.nameJP}</p>
-              <div className="mt-4">
-                <ImageSearchLink name={active.name} variant="button" accent={active.accent} />
-              </div>
 
               <dl className="mt-5 grid grid-cols-2 gap-3 border-y border-white/10 py-4 text-[12px]">
                 {[

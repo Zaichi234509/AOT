@@ -2,6 +2,8 @@ export type TitanKind = 'nine' | 'pure'
 
 export type Titan = {
   id: string
+  /** Still shown in the bestiary modal, e.g. `/images/titans/attack-titan.jpg`. */
+  image: string
   name: string
   nameJP: string
   kind: TitanKind
