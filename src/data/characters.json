@@ -1,6 +1,7 @@
 [
   {
     "id": "eren-yeager",
+    "image": "/images/characters/eren-yeager.jpg",
     "name": "Eren Yeager",
     "nameJP": "エレン・イェーガー",
     "affiliation": "Survey Corps",
@@ -30,6 +31,7 @@
   },
   {
     "id": "mikasa-ackerman",
+    "image": "/images/characters/mikasa-ackerman.jpg",
     "name": "Mikasa Ackerman",
     "nameJP": "ミカサ・アッカーマン",
     "affiliation": "Survey Corps",
@@ -56,6 +58,7 @@
   },
   {
     "id": "levi-ackerman",
+    "image": "/images/characters/levi-ackerman.jpg",
     "name": "Levi Ackerman",
     "nameJP": "リヴァイ・アッカーマン",
     "affiliation": "Survey Corps",
@@ -82,6 +85,7 @@
   },
   {
     "id": "armin-arlert",
+    "image": "/images/characters/armin-arlert.jpg",
     "name": "Armin Arlert",
     "nameJP": "アルミン・アルレルト",
     "affiliation": "Survey Corps",
@@ -109,6 +113,7 @@
   },
   {
     "id": "erwin-smith",
+    "image": "/images/characters/erwin-smith.jpg",
     "name": "Erwin Smith",
     "nameJP": "エルヴィン・スミス",
     "affiliation": "Survey Corps",
@@ -135,6 +140,7 @@
   },
   {
     "id": "hange-zoe",
+    "image": "/images/characters/hange-zoe.jpg",
     "name": "Hange Zoë",
     "nameJP": "ハンジ・ゾエ",
     "affiliation": "Survey Corps",
@@ -161,6 +167,7 @@
   },
   {
     "id": "jean-kirstein",
+    "image": "/images/characters/jean-kirstein.jpg",
     "name": "Jean Kirstein",
     "nameJP": "ジャン・キルシュタイン",
     "affiliation": "Survey Corps",
@@ -187,6 +194,7 @@
   },
   {
     "id": "connie-springer",
+    "image": "/images/characters/connie-springer.jpg",
     "name": "Connie Springer",
     "nameJP": "コニー・スプリンガー",
     "affiliation": "Survey Corps",
@@ -209,6 +217,7 @@
   },
   {
     "id": "sasha-blouse",
+    "image": "/images/characters/sasha-blouse.jpg",
     "name": "Sasha Blouse",
     "nameJP": "サシャ・ブラウス",
     "affiliation": "Survey Corps",
@@ -232,6 +241,7 @@
   },
   {
     "id": "annie-leonhart",
+    "image": "/images/characters/annie-leonhart.jpg",
     "name": "Annie Leonhart",
     "nameJP": "アニ・レオンハート",
     "affiliation": "Marley",
@@ -256,6 +266,7 @@
   },
   {
     "id": "reiner-braun",
+    "image": "/images/characters/reiner-braun.jpg",
     "name": "Reiner Braun",
     "nameJP": "ライナー・ブラウン",
     "affiliation": "Marley",
@@ -280,6 +291,7 @@
   },
   {
     "id": "bertholdt-hoover",
+    "image": "/images/characters/bertholdt-hoover.jpg",
     "name": "Bertholdt Hoover",
     "nameJP": "ベルトルト・フーバー",
     "affiliation": "Marley",
@@ -304,6 +316,7 @@
   },
   {
     "id": "zeke-yeager",
+    "image": "/images/characters/zeke-yeager.jpg",
     "name": "Zeke Yeager",
     "nameJP": "ジーク・イェーガー",
     "affiliation": "Marley",
@@ -328,6 +341,7 @@
   },
   {
     "id": "historia-reiss",
+    "image": "/images/characters/historia-reiss.jpg",
     "name": "Historia Reiss",
     "nameJP": "ヒストリア・レイス",
     "affiliation": "Military Police",
@@ -351,6 +365,7 @@
   },
   {
     "id": "falco-grice",
+    "image": "/images/characters/falco-grice.jpg",
     "name": "Falco Grice",
     "nameJP": "ファルコ・グライス",
     "affiliation": "Marley",
@@ -375,6 +390,7 @@
   },
   {
     "id": "gabi-braun",
+    "image": "/images/characters/gabi-braun.jpg",
     "name": "Gabi Braun",
     "nameJP": "ガビ・ブラウン",
     "affiliation": "Marley",
@@ -397,6 +413,7 @@
   },
   {
     "id": "pieck-finger",
+    "image": "/images/characters/pieck-finger.jpg",
     "name": "Pieck Finger",
     "nameJP": "ピーク・フィンガー",
     "affiliation": "Marley",
@@ -420,6 +437,7 @@
   },
   {
     "id": "grisha-yeager",
+    "image": "/images/characters/grisha-yeager.jpg",
     "name": "Grisha Yeager",
     "nameJP": "グリシャ・イェーガー",
     "affiliation": "Civilian",

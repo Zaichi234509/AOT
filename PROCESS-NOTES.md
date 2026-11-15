@@ -94,6 +94,13 @@ Technical architecture lives in [`BUILD.md`](./BUILD.md); the original spec live
 2. **Procedural artwork instead of licensed anime images** — character monogram plates and
    SVG scene posters, plus one generated social image (`public/og-image.jpg`). Swap in
    real images via `public/images/`.
+   **Update (later request):** the *character profile modal* and the *titan bestiary modal*
+   no longer send people to an image search — they show a real still. 18 character
+   portraits (720×900) and 9 titan stills (1280×720) now live in
+   `public/images/characters/` and `public/images/titans/`, referenced by a new `image`
+   field in `characters.json` / `titans.json`. Card grids, gallery plates and the map stay
+   procedural, and the small "search images" chips on the cards were left alone. Details
+   and licensing note: `public/images/README.md`.
 3. **Synthesised audio instead of streamed music** — wind + rumble via WebAudio; the
    soundtrack section is an honest simulated transport linking to official streams.
 4. **Depth of field + motion blur omitted** — both are full-screen per-frame passes that

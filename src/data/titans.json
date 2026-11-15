@@ -1,6 +1,7 @@
 [
   {
     "id": "founding-titan",
+    "image": "/images/titans/founding-titan.jpg",
     "name": "Founding Titan",
     "nameJP": "始祖の巨人",
     "kind": "nine",
@@ -16,6 +17,7 @@
   },
   {
     "id": "attack-titan",
+    "image": "/images/titans/attack-titan.jpg",
     "name": "Attack Titan",
     "nameJP": "進撃の巨人",
     "kind": "nine",
@@ -31,6 +33,7 @@
   },
   {
     "id": "colossal-titan",
+    "image": "/images/titans/colossal-titan.jpg",
     "name": "Colossal Titan",
     "nameJP": "超大型巨人",
     "kind": "nine",
@@ -46,6 +49,7 @@
   },
   {
     "id": "armored-titan",
+    "image": "/images/titans/armored-titan.jpg",
     "name": "Armored Titan",
     "nameJP": "鎧の巨人",
     "kind": "nine",
@@ -61,6 +65,7 @@
   },
   {
     "id": "female-titan",
+    "image": "/images/titans/female-titan.jpg",
     "name": "Female Titan",
     "nameJP": "女型の巨人",
     "kind": "nine",
@@ -76,6 +81,7 @@
   },
   {
     "id": "beast-titan",
+    "image": "/images/titans/beast-titan.jpg",
     "name": "Beast Titan",
     "nameJP": "獣の巨人",
     "kind": "nine",
@@ -91,6 +97,7 @@
   },
   {
     "id": "jaw-titan",
+    "image": "/images/titans/jaw-titan.jpg",
     "name": "Jaw Titan",
     "nameJP": "顎の巨人",
     "kind": "nine",
@@ -106,6 +113,7 @@
   },
   {
     "id": "cart-titan",
+    "image": "/images/titans/cart-titan.jpg",
     "name": "Cart Titan",
     "nameJP": "車力の巨人",
     "kind": "nine",
@@ -121,6 +129,7 @@
   },
   {
     "id": "war-hammer-titan",
+    "image": "/images/titans/war-hammer-titan.jpg",
     "name": "War Hammer Titan",
     "nameJP": "戦槌の巨人",
     "kind": "nine",
