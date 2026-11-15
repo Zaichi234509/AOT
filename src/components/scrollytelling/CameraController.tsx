@@ -6,6 +6,7 @@ import * as THREE from 'three'
 import { activeSceneIndex, getStageProgress, sceneLocalProgress } from '@/lib/scroll'
 import { CAMERA_KEYS, SCENE_FX, sampleCamera } from '@/lib/sceneKeyframes'
 import { lerp, smoothstep } from '@/lib/utils'
+import { motionAllowed } from '@/lib/reducedMotion'
 
 void CAMERA_KEYS
 
@@ -26,13 +27,15 @@ export function CameraController() {
     const local = sceneLocalProgress(progress, scene)
     const sample = sampleCamera(scene, local)
 
-    // subtle pointer parallax adds life without breaking the choreography
-    const parallaxX = pointer.x * (scene === 1 ? 6 : 0.6)
-    const parallaxY = pointer.y * (scene === 1 ? 6 : 0.35)
+    // subtle pointer parallax adds life without breaking the choreography;
+    // reduced-motion visitors keep the choreography but lose the drifting
+    const allow = motionAllowed()
+    const parallaxX = allow ? pointer.x * (scene === 1 ? 6 : 0.6) : 0
+    const parallaxY = allow ? pointer.y * (scene === 1 ? 6 : 0.35) : 0
 
     // impact shake — colossal reveal, battle chaos, the Rumbling
     const fx = SCENE_FX[scene]
-    const shake = fx.shake * (scene === 0 ? smoothstep(0.44, 0.58, local) : 1)
+    const shake = allow ? fx.shake * (scene === 0 ? smoothstep(0.44, 0.58, local) : 1) : 0
     const t = state.clock.elapsedTime
     const jitterX = shake > 0 ? Math.sin(t * 37.3) * shake * 0.45 : 0
     const jitterY = shake > 0 ? Math.cos(t * 41.1) * shake * 0.32 : 0

@@ -7,6 +7,10 @@ Titan bestiary, episode guide, timeline, soundtrack section, gallery and communi
 
 > Looking for the step-by-step log of what was built, fixed and changed?
 > See **[PROCESS-NOTES.md](./PROCESS-NOTES.md)**.
+>
+> Looking for the 3D rendering/mesh upgrade — IBL, shadows, per-scene grade,
+> model slots, before/after screenshots and the measured numbers?
+> See **[docs/RENDERING-UPGRADE.md](./docs/RENDERING-UPGRADE.md)**.
 
 ```bash
 npm install

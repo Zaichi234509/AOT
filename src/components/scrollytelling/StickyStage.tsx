@@ -25,11 +25,43 @@ export function StickyStage() {
   const activeScene = useStore((s) => s.activeScene)
   const [flash, setFlash] = useState(0)
   const previous = useRef(activeScene)
+  const trackRef = useRef<HTMLDivElement | null>(null)
+  const [onScreen, setOnScreen] = useState(true)
+  const [pageVisible, setPageVisible] = useState(true)
 
   useEffect(() => {
     setMounted(true)
     setWebgl(supportsWebGL())
   }, [])
+
+  /*
+   * Stop the render loop when the stage has been scrolled away.
+   *
+   * A profile taken in the Titan Bestiary section showed the canvas still
+   * issuing draw calls long after the stage had left the viewport; nothing here
+   * needs to render while the visitor is reading. The observer watches the
+   * 3200vh track (the sticky child stays pinned inside it), so "no part of the
+   * track is in the viewport" pauses the loop, and scrolling back resumes it.
+   */
+  useEffect(() => {
+    const el = trackRef.current
+    if (!el || typeof IntersectionObserver === 'undefined') return
+    const observer = new IntersectionObserver(
+      ([entry]) => setOnScreen(entry.isIntersecting),
+      { rootMargin: '120px 0px' }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    const onVisibility = () => setPageVisible(!document.hidden)
+    onVisibility()
+    document.addEventListener('visibilitychange', onVisibility)
+    return () => document.removeEventListener('visibilitychange', onVisibility)
+  }, [])
+
+  const paused = !onScreen || !pageVisible
 
   useEffect(() => {
     if (previous.current === activeScene) return
@@ -43,7 +75,7 @@ export function StickyStage() {
 
   return (
     <section id="hero" aria-label="Cinematic 3D retelling of Attack on Titan">
-      <div id="stage-track" className="relative w-full" style={{ height: `${STAGE_VH}vh` }}>
+      <div ref={trackRef} id="stage-track" className="relative w-full" style={{ height: `${STAGE_VH}vh` }}>
         <div className="sticky top-0 h-screen w-full overflow-hidden bg-ink-950">
           {/* ── stage ── */}
           {!mounted ? (
@@ -54,7 +86,7 @@ export function StickyStage() {
             </CanvasBoundary>
           ) : (
             <CanvasBoundary fallback={<MobileStage />}>
-              <SceneCanvas />
+              <SceneCanvas paused={paused} />
             </CanvasBoundary>
           )}
 

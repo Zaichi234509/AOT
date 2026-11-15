@@ -51,8 +51,12 @@ export function Reveal({
     if (!el) return
     const c = config.current
     const p = c.scene === undefined ? globalProgress : sceneLocalProgress(globalProgress, c.scene)
+    // Clamp the out-range to the scene: some cards use end > 1 to mean "hold
+    // until the scene ends", which otherwise leaves them half-visible for the
+    // rest of the stage.
+    const end = Math.min(1, c.end)
     const inAlpha = smoothstep(c.start, c.start + c.fadeIn, p)
-    const outAlpha = 1 - smoothstep(c.end - c.fadeOut, c.end, p)
+    const outAlpha = 1 - smoothstep(end - c.fadeOut, end, p)
     const alpha = clamp(inAlpha * outAlpha, 0, 1)
     const offsetY = (1 - inAlpha) * c.y - (1 - outAlpha) * c.y * 0.45
     const offsetX = (1 - inAlpha) * c.x
