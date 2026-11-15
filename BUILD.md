@@ -5,6 +5,9 @@ This repository now contains the **built website** described by the master promp
 seven-scene real-time 3D retelling followed by the world map, character encyclopedia,
 Titan bestiary, episode guide, timeline, soundtrack section, gallery and community hub.
 
+> Looking for the step-by-step log of what was built, fixed and changed?
+> See **[PROCESS-NOTES.md](./PROCESS-NOTES.md)**.
+
 ```bash
 npm install
 npm run dev        # http://localhost:3000
