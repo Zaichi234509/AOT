@@ -4,6 +4,8 @@ import { Suspense } from 'react'
 import { useStore } from '@/store/useStore'
 import { CameraController } from './CameraController'
 import { PostProcessingFX } from './PostProcessingFX'
+import { PreloadSceneModels } from './three/ModelSlot'
+import { debugFlags } from '@/lib/debugFlags'
 import { Scene1Shiganshina } from './scenes/Scene1Shiganshina'
 import { Scene2Walls } from './scenes/Scene2Walls'
 import { Scene3Corps } from './scenes/Scene3Corps'
@@ -22,19 +24,26 @@ const SCENES = [
   Scene7Rumbling,
 ]
 
+/**
+ * Only the scene at the current scroll position is mounted, so only its models,
+ * textures and geometry are resident. The next scene's *configured* models are
+ * warmed in the background so the swap has something to show.
+ */
 export function Experience() {
   const activeScene = useStore((s) => s.activeScene)
   const Scene = SCENES[activeScene] ?? SCENES[0]
+  const upcoming = Math.min(SCENES.length - 1, activeScene + 1)
 
   return (
     <>
       <CameraController />
+      <PreloadSceneModels scene={upcoming} />
       <Suspense fallback={null}>
         <group key={activeScene}>
           <Scene />
         </group>
       </Suspense>
-      <PostProcessingFX />
+      {debugFlags().post ? <PostProcessingFX /> : null}
     </>
   )
 }

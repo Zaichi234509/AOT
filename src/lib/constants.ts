@@ -134,8 +134,11 @@ export const NAV_LINKS = [
 
 export const BREAKPOINTS = { mobile: 768, tablet: 1024 } as const
 
-/** Hero-quality fallback used until real .glb assets are dropped in /public/models. */
-export const MODELS_LOADED = false
+/*
+ * Model loading is configured per slot in `src/lib/models.ts` (each slot falls
+ * back to its procedural component on its own), so there is no global
+ * "models loaded" flag any more.
+ */
 
 export const CHARACTER_ART_GRADIENTS = [
   'linear-gradient(150deg,#1c2a1a 0%,#2d5a27 55%,#0d120c 100%)',

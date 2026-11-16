@@ -1,34 +1,45 @@
 'use client'
 
-import { useMemo } from 'react'
-import { Ground, Particles, SkyDome, SceneAtmosphere } from '../three/Atmosphere'
-import { Building, TitanBody } from '../three/Figures'
-import { getBrickTexture } from '../three/Atmosphere'
+import { useMemo, useRef } from 'react'
+import { useFrame } from '@react-three/fiber'
+import * as THREE from 'three'
+import { Ground, Particles, SceneAtmosphere, SkyDome } from '../three/Atmosphere'
+import { Boulder, Building, TitanBody, WallGate } from '../three/Figures'
+import { ContactShadow, KeyLight } from '../three/Lighting'
+import { ModelSlot } from '../three/ModelSlot'
+import { SceneEnvironment, type EnvPreset } from '../three/environment'
+import { SCENE_FX } from '@/lib/sceneKeyframes'
+import { seededRandom } from '@/lib/utils'
+
+const SCENE = 4
+const FX = SCENE_FX[SCENE]
+const ENV: EnvPreset = 'trostSunset'
 
 function CityBlock() {
   const buildings = useMemo(() => {
-    const items: {
+    const rnd = seededRandom(17)
+    const items: Array<{
       position: [number, number, number]
       width: number
       depth: number
       height: number
       rotationY: number
-    }[] = []
-    let seed = 17
-    const rnd = () => {
-      seed = (seed * 16807) % 2147483647
-      return (seed % 1000) / 1000
-    }
-    for (let row = 0; row < 4; row += 1) {
-      for (let col = 0; col < 7; col += 1) {
-        const width = 6 + rnd() * 4
-        const depth = 6 + rnd() * 4
-        const height = 9 + rnd() * 9
-        const x = -30 + col * 10 + (rnd() - 0.5) * 2
-        const z = 6 - row * 26 + (rnd() - 0.5) * 4
-        // leave a gutter for the camera flight path
-        if (col === 3 && row < 3) continue
-        items.push({ position: [x, 0, z], width, depth, height, rotationY: (rnd() - 0.5) * 0.3 })
+      tone: string
+    }> = []
+    for (let row = 0; row < 5; row += 1) {
+      for (let col = 0; col < 9; col += 1) {
+        const x = -40 + col * 10 + (rnd() - 0.5) * 2
+        const z = 8 - row * 26 + (rnd() - 0.5) * 4
+        // keep a 26 m wide street clear for the camera flight
+        if (Math.abs(x) < 13) continue
+        items.push({
+          position: [x, 0, z],
+          width: 7 + rnd() * 3,
+          depth: 7 + rnd() * 3,
+          height: 9 + rnd() * 10,
+          rotationY: (rnd() - 0.5) * 0.24,
+          tone: rnd() > 0.5 ? '#8d7f6a' : '#7d715e',
+        })
       }
     }
     return items
@@ -37,64 +48,75 @@ function CityBlock() {
   return (
     <group>
       {buildings.map((b, i) => (
-        <Building key={i} {...b} color={i % 2 ? '#4a3b2c' : '#54432f'} windows={i % 3 !== 0} />
+        <Building
+          key={i}
+          {...b}
+          roofColor={i % 3 === 0 ? '#5a3a26' : '#4a3020'}
+          windows={i % 2 === 0}
+        />
       ))}
     </group>
   )
 }
 
 export function Scene5Trost() {
-  const brick = useMemo(() => getBrickTexture(), [])
-
   return (
     <>
-      <SceneAtmosphere bg="#6b4a2c" fog="#8a6038" near={30} far={190} />
+      <SceneEnvironment preset={ENV} intensity={1.1} />
+      <SceneAtmosphere bg="#6b4a2c" fog="#9a6b42" near={45} far={260} />
+      <SkyDome preset={ENV} radius={700} exposure={FX.exposure} />
 
-      <SkyDome top="#2a1c30" horizon="#d4874a" bottom="#4a3220" />
+      <ambientLight intensity={0.14} color="#ffd9b0" />
+      <KeyLight
+        position={[62, 74, 26]}
+        target={[0, 8, -40]}
+        intensity={2.7}
+        color="#ffc07a"
+        shadowScale={86}
+        shadowMapSize={2048}
+        normalBias={0.09}
+        radius={3}
+      />
+      <pointLight position={[0, 18, -70]} intensity={140} distance={150} decay={2} color="#ff7a3a" />
+      <hemisphereLight args={['#ffb787', '#2a1f14', 0.3]} />
 
-      <ambientLight intensity={0.6} color="#ffd9b0" />
-      <directionalLight position={[40, 70, 30]} intensity={2} color="#ffc07a" />
-      <pointLight position={[0, 20, -60]} intensity={140} distance={180} color="#ff6a2a" />
-      <hemisphereLight args={['#ffb787', '#2a1f14', 0.8]} />
-
-      <Ground color="#3a2b1e" />
+      <Ground color="#40301f" size={700} repeat={130} />
 
       {/* Wall Rose at the far end of the district */}
-      <mesh position={[0, 25, -95]} receiveShadow>
-        <boxGeometry args={[260, 50, 12]} />
-        <meshStandardMaterial color="#6d6152" map={brick ?? undefined} roughness={0.95} />
-      </mesh>
+      <ModelSlot
+        slot="wall-maria-gate"
+        position={[0, 0, -98]}
+        fallback={<WallGate height={50} width={210} rows={12} cols={30} gateWidth={24} color="#6d6152" />}
+      />
 
       <CityBlock />
 
-      {/* the boulder Eren carried to plug the gate */}
-      <mesh position={[2, 9, -62]} castShadow>
-        <icosahedronGeometry args={[9, 2]} />
-        <meshStandardMaterial color="#5a5248" roughness={1} flatShading />
-      </mesh>
+      {/* the boulder that plugged the gate */}
+      <ModelSlot
+        slot="boulder"
+        position={[2, 0, -86]}
+        fallback={<Boulder radius={8.5} color="#5a5248" seed={7} rotationY={0.6} />}
+      />
 
-      {/* a titan stalking between the houses */}
-      <group position={[-14, 0, -34]} rotation={[0, 0.4, 0]}>
-        <TitanBody height={12} pose="reach" skin="#8a6048" eye="#FF4400" glow={3} muscles />
-      </group>
-      <group position={[18, 0, -18]} rotation={[0, -0.6, 0]}>
-        <TitanBody height={6} pose="march" skin="#9a7a5c" eye="#ffb000" glow={2.5} />
-      </group>
+      <ModelSlot
+        slot="attack-titan"
+        position={[-15, 0, -36]}
+        rotationY={0.4}
+        sceneIndex={SCENE}
+        fallback={<TitanBody height={12} pose="reach" rotationY={0.4} skin="#8a6048" eye="#FF4400" glow={3} />}
+      />
+      <ModelSlot
+        slot="pure-titan"
+        position={[19, 0, -20]}
+        rotationY={-0.6}
+        sceneIndex={SCENE}
+        fallback={<TitanBody height={6} pose="march" rotationY={-0.6} skin="#9a7a5c" eye="#ffb000" glow={2.5} variant="pure" />}
+      />
 
-      <Particles count={520} color="#D4874A" size={0.5} area={110} height={40} opacity={0.35} seed={41} />
-      <Particles count={150} color="#ffbb66" size={0.14} area={80} height={30} opacity={0.5} seed={43} rise />
+      <ContactShadow position={[0, 0.03, -50]} scale={44} opacity={0.6} blur={3} far={26} resolution={512} />
 
-      {/* rooftop tiles / falling debris */}
-      {Array.from({ length: 26 }).map((_, i) => (
-        <mesh
-          key={i}
-          position={[-26 + ((i * 37) % 62), 2 + ((i * 13) % 34), -6 - ((i * 17) % 60)]}
-          rotation={[i * 0.4, i * 0.7, i * 0.2]}
-        >
-          <boxGeometry args={[1.4, 0.16, 1.1]} />
-          <meshStandardMaterial color="#6a4a30" roughness={0.95} />
-        </mesh>
-      ))}
+      <Particles count={620} color="#d99a62" size={0.85} area={140} height={46} opacity={0.3} seed={41} />
+      <Particles count={220} color="#ffbb66" size={0.3} area={100} height={36} opacity={0.45} seed={43} rise />
     </>
   )
 }

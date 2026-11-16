@@ -9,11 +9,24 @@ export type CameraKey = {
 }
 
 export type SceneFX = {
+  /** tone-mapping exposure for the scene's grade */
+  exposure: number
   bloom: number
+  bloomThreshold: number
   vignetteOffset: number
   vignetteDarkness: number
   noise: number
   shake: number
+  /** post grade */
+  saturation: number
+  contrast: number
+  brightness: number
+  /** screen-space ambient occlusion intensity (0 = off) */
+  ao?: number
+  /** SSAO sample radius — in metres, so it scales with the scene */
+  aoRadius?: number
+  /** SSAO world distance threshold, metres */
+  aoDistance?: number
 }
 
 export type MapLocation = {
