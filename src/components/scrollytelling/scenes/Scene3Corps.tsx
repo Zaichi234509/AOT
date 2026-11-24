@@ -26,7 +26,7 @@ export function Scene3Corps() {
     const t = motionAllowed() ? state.clock.elapsedTime : 0
     if (key.current) key.current.intensity = 3.1 + Math.sin(t * 0.7) * 0.25
     if (titan.current) {
-      titan.current.position.x = 7.0 + Math.sin(t * 0.25) * 0.45
+      titan.current.position.x = 5.6 + Math.sin(t * 0.25) * 0.45
       titan.current.rotation.y = -0.35 + local * 0.2
     }
   })
@@ -104,12 +104,15 @@ export function Scene3Corps() {
       />
 
       <ContactShadow position={[0, 0.11, 0]} scale={8.5} opacity={0.8} blur={2.6} far={5} resolution={768} />
+      {/* anchors the distant titan to the ground instead of the sky */}
+      <ContactShadow position={[5.6, 0.11, -52]} scale={18} opacity={0.55} blur={3.2} far={22} resolution={512} />
 
       {/* the Attack Titan, looming behind */}
-      <group ref={titan} position={[7.0, 0, -62]}>
+      <group ref={titan} position={[5.6, 0, -52]}>
         <ModelSlot
           slot="attack-titan"
           sceneIndex={SCENE}
+          targetHeight={15}
           fallback={<TitanBody height={15} skin="#5f3426" eye="#FF4400" pose="hunch" glow={3.5} animate={false} />}
         />
       </group>

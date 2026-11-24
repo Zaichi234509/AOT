@@ -236,7 +236,7 @@ immersion. The 3D scrollytelling is the hero; content sections follow below.
 - **No backend/database** — fully static, deployable to edge CDN
 
 ### Assets
-- **3D Models:** Blender → .glb (Draco compressed), loaded via useGLTF
+- **3D Models:** Sketchfab CC BY 4.0 assets, gltf-transform (Draco + WebP), loaded via useGLTF
 - **Textures:** KTX2/Basis Universal, loaded via useKTX2
 - **Images:** Next.js `<Image>` with automatic WebP/AVIF optimization
 - **Fonts:** next/font/google (Cinzel, Inter, Noto Serif JP)
@@ -261,20 +261,15 @@ immersion. The 3D scrollytelling is the hero; content sections follow below.
 ```
 /aot-archive/
 ├── public/
-│   ├── models/                    # 3D .glb files (Draco compressed)
-│   │   ├── wall-maria-gate.glb
-│   │   ├── colossal-titan-head.glb
+│   ├── models/                    # shipped 3D .glb files (Draco + WebP)
 │   │   ├── eren-yeager.glb
 │   │   ├── mikasa-ackerman.glb
 │   │   ├── levi-ackerman.glb
 │   │   ├── attack-titan.glb
-│   │   ├── odm-gear.glb
-│   │   ├── pure-titan.glb
 │   │   ├── colossal-titan-full.glb
-│   │   ├── trost-building.glb
-│   │   ├── boulder.glb
-│   │   ├── basement-stairs.glb
-│   │   └── basement-room.glb
+│   │   ├── female-titan.glb
+│   │   └── trost-district.glb
+│   ├── draco/                     # local Draco decoder (no CDN)
 │   ├── textures/                  # KTX2 compressed textures
 │   │   ├── wall-stone.ktx2
 │   │   ├── titan-skin.ktx2

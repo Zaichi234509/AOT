@@ -38,5 +38,4 @@ yarn-error.log*
 next-env.d.ts
 
 # generated / heavy assets
-/public/models/*.glb
 /public/textures/*.ktx2

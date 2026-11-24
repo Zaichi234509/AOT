@@ -156,6 +156,7 @@ export function Scene7Rumbling() {
         position={[-24, 0, -30]}
         rotationY={0.3}
         sceneIndex={SCENE}
+        targetHeight={60}
         fallback={
           <TitanBody height={60} pose="march" variant="colossal" skin="#7a3120" eye="#FF4400" glow={5} animate={false} />
         }
@@ -165,8 +166,9 @@ export function Scene7Rumbling() {
         position={[27, 0, -46]}
         rotationY={-0.4}
         sceneIndex={SCENE}
+        targetHeight={55}
         fallback={
-          <TitanBody height={58} pose="stand" variant="colossal" skin="#672a1a" eye="#FF3300" glow={4} muscles={false} animate={false} />
+          <TitanBody height={55} pose="stand" variant="colossal" skin="#672a1a" eye="#FF3300" glow={4} muscles={false} animate={false} />
         }
       />
 

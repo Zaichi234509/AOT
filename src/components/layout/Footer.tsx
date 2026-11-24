@@ -105,6 +105,19 @@ export function Footer() {
           <p>This is a non-commercial fan-made website.</p>
         </div>
 
+        <p className="mt-3 max-w-4xl text-[10px] leading-relaxed text-smoke/60">
+          3D models: Prime Slayer3D, Kenny3D89, fectur.SEROD, Sidaivan,
+          stevendwisetya and Khaled.Guesmi — CC BY 4.0.{' '}
+          <a
+            href="https://github.com/Zaichi234509/AOT/blob/main/public/models/README.md"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline decoration-smoke/30 underline-offset-2 transition hover:text-parchment"
+          >
+            Model credits
+          </a>
+        </p>
+
         <div className="mt-6 flex items-center justify-between">
           <a
             href="https://github.com/Zaichi234509/AOT"
