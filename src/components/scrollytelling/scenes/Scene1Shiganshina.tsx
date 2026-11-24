@@ -145,6 +145,7 @@ export function Scene1Shiganshina() {
         slot="colossal-titan-head"
         position={[0, 0, -30]}
         sceneIndex={SCENE}
+        targetHeight={60}
         fallback={
           <TitanBody
             height={60}

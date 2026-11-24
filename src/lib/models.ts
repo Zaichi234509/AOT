@@ -1,21 +1,19 @@
 /**
  * Authored-model registry.
  *
- * `.glb` files are deliberately git-ignored in this repository, so the site
- * ships with none and every slot renders its procedural fallback. When you host
- * a model, point this registry at it and the slot upgrades in place — per slot,
- * not behind one global flag, and always with the procedural component as the
- * loading/error fallback.
+ * The seven hero `.glb` files shipped with this repository live in
+ * `public/models/` and are served from the same origin by default. Each slot
+ * renders its procedural fallback while the model loads and if the asset
+ * fails, so one broken model can never take the stage down.
  *
  * Configure with environment variables (see `.env.example`):
  *
  *   NEXT_PUBLIC_MODELS_BASE_URL   e.g. https://cdn.example.com/aot-models
  *   NEXT_PUBLIC_MODEL_<SLOT>_URL  optional per-slot override (absolute URL)
- *   NEXT_PUBLIC_DRACO_DECODER_PATH  optional, only if you ship Draco meshes
+ *   NEXT_PUBLIC_DRACO_DECODER_PATH optional, defaults to the bundled /draco/
  *
- * Contract for a drop-in (also documented in public/models/README.md):
- *   1 unit = 1 m, feet/base at the origin, +Y up, facing +Z,
- *   15k–30k triangles for hero meshes, Draco or meshopt compressed.
+ * The files are Draco + WebP optimised with `gltf-transform` (see
+ * `public/models/README.md` for the exact pipeline and licence register).
  */
 
 export type ModelSlotId =
@@ -28,9 +26,25 @@ export type ModelSlotId =
   | 'odm-gear'
   | 'pure-titan'
   | 'colossal-titan-full'
+  | 'female-titan'
   | 'trost-building'
+  | 'trost-district'
   | 'boulder'
   | 'basement-room'
+
+/** Local-space bone correction, in degrees. Applied after SkeletonUtils.clone. */
+export type ModelBonePose = {
+  /** matched against the cloned bone name (case-sensitive substring) */
+  match: string
+  rotation: [number, number, number]
+}
+
+export type ModelMaterial = {
+  color?: string
+  roughness?: number
+  metalness?: number
+  envMapIntensity?: number
+}
 
 export type ModelSlotDefinition = {
   id: ModelSlotId
@@ -38,12 +52,18 @@ export type ModelSlotDefinition = {
   file: string
   /** which procedural component this slot replaces */
   replaces: string
-  /** nominal height in metres, for checking a drop-in is correctly scaled */
+  /** nominal height in metres; the runtime re-normalises the glb to this */
   height?: number
   /** clip names to drive from scroll progress, first match wins */
   clips?: string[]
   /** scenes that would use it (0-based) */
   scenes: number[]
+  /** true only for models actually shipped in public/models/ */
+  shipped?: boolean
+  /** optional bone pose for models authored in a T/A-pose */
+  pose?: ModelBonePose[]
+  /** optional material override for untextured / washed-out assets */
+  material?: ModelMaterial
 }
 
 export const MODEL_SLOTS: Record<ModelSlotId, ModelSlotDefinition> = {
@@ -54,13 +74,17 @@ export const MODEL_SLOTS: Record<ModelSlotId, ModelSlotDefinition> = {
     height: 50,
     scenes: [0, 4],
   },
+  // The same Colossal Titan asset is used for the breach close-up and the
+  // full-body horizon shot. Keeping two slot ids lets scenes request the
+  // framing they want while the loader/cache sees one URL.
   'colossal-titan-head': {
     id: 'colossal-titan-head',
-    file: 'colossal-titan-head.glb',
+    file: 'colossal-titan-full.glb',
     replaces: 'TitanBody (variant="colossal", head/torso shot)',
     height: 60,
     clips: ['idle', 'steam', 'Idle'],
     scenes: [0],
+    shipped: true,
   },
   'eren-yeager': {
     id: 'eren-yeager',
@@ -69,6 +93,7 @@ export const MODEL_SLOTS: Record<ModelSlotId, ModelSlotDefinition> = {
     height: 1.7,
     clips: ['idle', 'Idle', 'stand'],
     scenes: [2],
+    shipped: true,
   },
   'mikasa-ackerman': {
     id: 'mikasa-ackerman',
@@ -77,6 +102,7 @@ export const MODEL_SLOTS: Record<ModelSlotId, ModelSlotDefinition> = {
     height: 1.7,
     clips: ['idle', 'Idle', 'stand'],
     scenes: [2],
+    shipped: true,
   },
   'levi-ackerman': {
     id: 'levi-ackerman',
@@ -85,6 +111,15 @@ export const MODEL_SLOTS: Record<ModelSlotId, ModelSlotDefinition> = {
     height: 1.6,
     clips: ['idle', 'Idle', 'stand'],
     scenes: [2],
+    shipped: true,
+    // The source rig is authored in a T-pose; drop the arms into a relaxed
+    // combat stance instead of shipping the mannequin pose to the stage.
+    pose: [
+      { match: 'Bip001_L_UpperArm', rotation: [-60, 0, 0] },
+      { match: 'Bip001_R_UpperArm', rotation: [-60, 0, 0] },
+      { match: 'Bip001_L_Forearm', rotation: [-30, 0, 0] },
+      { match: 'Bip001_R_Forearm', rotation: [-30, 0, 0] },
+    ],
   },
   'attack-titan': {
     id: 'attack-titan',
@@ -93,6 +128,7 @@ export const MODEL_SLOTS: Record<ModelSlotId, ModelSlotDefinition> = {
     height: 15,
     clips: ['idle', 'Idle', 'walk'],
     scenes: [2, 3, 4],
+    shipped: true,
   },
   'odm-gear': {
     id: 'odm-gear',
@@ -115,7 +151,16 @@ export const MODEL_SLOTS: Record<ModelSlotId, ModelSlotDefinition> = {
     replaces: 'TitanBody (variant="colossal")',
     height: 60,
     clips: ['walk', 'march', 'Walk'],
-    scenes: [6],
+    scenes: [0, 3, 6],
+    shipped: true,
+  },
+  'female-titan': {
+    id: 'female-titan',
+    file: 'female-titan.glb',
+    replaces: 'TitanBody (variant="attack", female silhouette)',
+    height: 14,
+    scenes: [3],
+    shipped: true,
   },
   'trost-building': {
     id: 'trost-building',
@@ -123,6 +168,17 @@ export const MODEL_SLOTS: Record<ModelSlotId, ModelSlotDefinition> = {
     replaces: 'Building',
     height: 12,
     scenes: [4],
+  },
+  // Sketchfab's Trost asset is a wall/district ring rather than a single
+  // building. Scale it as a distant backdrop behind the gate.
+  'trost-district': {
+    id: 'trost-district',
+    file: 'trost-district.glb',
+    replaces: 'distant Trost district wall',
+    height: 60,
+    scenes: [4],
+    shipped: true,
+    material: { color: '#8b7f69', roughness: 0.93, metalness: 0 },
   },
   boulder: {
     id: 'boulder',
@@ -140,7 +196,7 @@ export const MODEL_SLOTS: Record<ModelSlotId, ModelSlotDefinition> = {
   },
 }
 
-const BASE = (process.env.NEXT_PUBLIC_MODELS_BASE_URL ?? '').replace(/\/$/, '')
+const BASE = (process.env.NEXT_PUBLIC_MODELS_BASE_URL || '/models').replace(/\/$/, '')
 
 /** Explicit per-slot overrides; Next only inlines statically referenced env vars. */
 const OVERRIDES: Partial<Record<ModelSlotId, string | undefined>> = {
@@ -153,20 +209,28 @@ const OVERRIDES: Partial<Record<ModelSlotId, string | undefined>> = {
   'odm-gear': process.env.NEXT_PUBLIC_MODEL_ODM_GEAR_URL,
   'pure-titan': process.env.NEXT_PUBLIC_MODEL_PURE_TITAN_URL,
   'colossal-titan-full': process.env.NEXT_PUBLIC_MODEL_COLOSSAL_FULL_URL,
+  'female-titan': process.env.NEXT_PUBLIC_MODEL_FEMALE_TITAN_URL,
   'trost-building': process.env.NEXT_PUBLIC_MODEL_TROST_BUILDING_URL,
+  'trost-district': process.env.NEXT_PUBLIC_MODEL_TROST_DISTRICT_URL,
   boulder: process.env.NEXT_PUBLIC_MODEL_BOULDER_URL,
   'basement-room': process.env.NEXT_PUBLIC_MODEL_BASEMENT_ROOM_URL,
 }
 
-/** Draco decoder path; empty means "meshopt only", which needs no downloads. */
-export const DRACO_DECODER_PATH = process.env.NEXT_PUBLIC_DRACO_DECODER_PATH ?? ''
+/**
+ * Draco decoder path. The decoder is bundled in `public/draco/` so local model
+ * loading works with no CDN and no `.env` setup. An absolute URL may still be
+ * supplied for a remote deployment.
+ */
+export const DRACO_DECODER_PATH = process.env.NEXT_PUBLIC_DRACO_DECODER_PATH ?? '/draco/'
 
-/** Absolute (or root-relative) URL for a slot, or null when it is not configured. */
+/** Absolute (or root-relative) URL for a slot, or null when it is not shipped. */
 export function modelUrl(id: ModelSlotId): string | null {
   const override = OVERRIDES[id]
   if (override) return override
-  if (!BASE) return null
-  return `${BASE}/${MODEL_SLOTS[id].file}`
+
+  const slot = MODEL_SLOTS[id]
+  if (!slot.shipped) return null
+  return `${BASE}/${slot.file}`
 }
 
 export function isSlotConfigured(id: ModelSlotId): boolean {

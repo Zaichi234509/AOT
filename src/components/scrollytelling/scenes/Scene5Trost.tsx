@@ -89,6 +89,16 @@ export function Scene5Trost() {
         fallback={<WallGate height={50} width={210} rows={12} cols={30} gateWidth={24} color="#6d6152" />}
       />
 
+      {/* the wider Trost district, kept behind the gate so the camera lane stays clear */}
+      <ModelSlot
+        slot="trost-district"
+        position={[0, 0, -315]}
+        targetHeight={60}
+        castShadow={false}
+        receiveShadow={false}
+        fallback={<WallGate height={60} width={440} rows={14} cols={40} gateWidth={28} color="#6d6152" />}
+      />
+
       <CityBlock />
 
       {/* the boulder that plugged the gate */}
@@ -103,7 +113,8 @@ export function Scene5Trost() {
         position={[-15, 0, -36]}
         rotationY={0.4}
         sceneIndex={SCENE}
-        fallback={<TitanBody height={12} pose="reach" rotationY={0.4} skin="#8a6048" eye="#FF4400" glow={3} />}
+        targetHeight={15}
+        fallback={<TitanBody height={15} pose="reach" rotationY={0.4} skin="#8a6048" eye="#FF4400" glow={3} />}
       />
       <ModelSlot
         slot="pure-titan"
